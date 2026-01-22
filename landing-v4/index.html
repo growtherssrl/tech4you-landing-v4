@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tech4You - Esplora 120 tecnologie climate tech pronte per il mercato. Prototipi TRL 6-9, 433 ricercatori, accesso prioritario ai fondi PNRR.">
+  <title>Tech4You | Onboarding Tecnologie Climate Tech</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Supabase JS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <!-- ========================================
+       STEPS CONTAINER (Full Page, No Navbar in Flow)
+       ======================================== -->
+  <main class="steps-container">
+
+    <!-- ========================================
+         STEP 1 - WELCOME (Immersive Hero)
+         ======================================== -->
+    <section class="step step-1 active" data-step="1">
+      <div class="hero-welcome">
+        <div class="hero-overlay"></div>
+        <div class="container">
+          <div class="hero-content-centered">
+            <span class="hero-badge animate-fade-in-up delay-1">Ecosistema PNRR - NextGenerationEU</span>
+            <h1 class="animate-fade-in-up delay-2">Benvenuto nel mondo <span class="highlight">Tech4You</span></h1>
+            <p class="hero-subtitle animate-fade-in-up delay-3">
+              4 anni di ricerca. 110M investiti. 120 tecnologie climate tech pronte per il mercato.
+            </p>
+            <p class="hero-description animate-fade-in-up delay-4">
+              Un ecosistema di <strong>7 Organismi di Ricerca</strong> del Mezzogiorno in un unico interlocutore.
+              <strong>433 ricercatori</strong> con competenze rare in climate tech.
+              Prototipi <strong>TRL 6-9</strong> pronti per test industriali e trasferimento tecnologico.
+            </p>
+
+            <!-- Animated Proof Bar -->
+            <div class="proof-bar-animated animate-fade-in-up delay-5">
+              <div class="proof-item">
+                <span class="proof-number" data-target="4">0</span>
+                <span class="proof-unit">anni</span>
+                <span class="proof-label">R&D completato</span>
+              </div>
+              <div class="proof-item">
+                <span class="proof-number" data-target="110">0</span>
+                <span class="proof-unit">M</span>
+                <span class="proof-label">Gia investiti</span>
+              </div>
+              <div class="proof-item">
+                <span class="proof-number-text">TRL 6-9</span>
+                <span class="proof-label">Pronti per test</span>
+              </div>
+              <div class="proof-item">
+                <span class="proof-number" data-target="93">0</span>
+                <span class="proof-unit">imprese</span>
+                <span class="proof-label">Gia attive</span>
+              </div>
+            </div>
+
+            <button class="btn btn-accent btn-lg cta-primary animate-fade-in-up delay-6" onclick="goToStep(2)">
+              Esplora le opportunita
+              <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator animate-bounce">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         STEP 2 - CLUSTER SELECTION (Immersive)
+         ======================================== -->
+    <section class="step step-2" data-step="2">
+      <div class="step-fullpage">
+        <div class="container">
+          <div class="step-header">
+            <h2 class="animate-fade-in-up">Quali aree vuoi esplorare?</h2>
+            <p class="text-muted animate-fade-in-up delay-1">Seleziona il cluster tecnologico di tuo interesse</p>
+          </div>
+
+          <div class="clusters-grid">
+            <!-- Energy -->
+            <div class="cluster-card animate-scale-in delay-1" data-cluster="energy">
+              <div class="cluster-icon">&#9889;</div>
+              <div class="cluster-content">
+                <h3>Energy</h3>
+                <span class="cluster-count"><span class="tech-count" data-cluster="energy">--</span> tecnologie</span>
+                <p class="cluster-hook">"Il tuo impianto produce al massimo?"</p>
+                <p class="cluster-desc">Efficienza energetica, smart grid, storage, rinnovabili.</p>
+              </div>
+              <div class="cluster-radio">
+                <div class="radio-circle"></div>
+              </div>
+            </div>
+
+            <!-- Circular -->
+            <div class="cluster-card animate-scale-in delay-2" data-cluster="circular">
+              <div class="cluster-icon">&#9851;</div>
+              <div class="cluster-content">
+                <h3>Circular</h3>
+                <span class="cluster-count"><span class="tech-count" data-cluster="circular">--</span> tecnologie</span>
+                <p class="cluster-hook">"Il 70% delle batterie EV finisce in discarica"</p>
+                <p class="cluster-desc">Economia circolare, riciclo, blue economy, risorse idriche.</p>
+              </div>
+              <div class="cluster-radio">
+                <div class="radio-circle"></div>
+              </div>
+            </div>
+
+            <!-- Climate -->
+            <div class="cluster-card animate-scale-in delay-3" data-cluster="climate">
+              <div class="cluster-icon">&#127777;</div>
+              <div class="cluster-content">
+                <h3>Climate</h3>
+                <span class="cluster-count"><span class="tech-count" data-cluster="climate">--</span> tecnologie</span>
+                <p class="cluster-hook">"Quanto preavviso hai prima di un'alluvione?"</p>
+                <p class="cluster-desc">Rischio climatico, early warning, resilienza territoriale.</p>
+              </div>
+              <div class="cluster-radio">
+                <div class="radio-circle"></div>
+              </div>
+            </div>
+
+            <!-- AgriFood -->
+            <div class="cluster-card animate-scale-in delay-4" data-cluster="agrifood">
+              <div class="cluster-icon">&#127793;</div>
+              <div class="cluster-content">
+                <h3>AgriFood</h3>
+                <span class="cluster-count"><span class="tech-count" data-cluster="agrifood">--</span> tecnologie</span>
+                <p class="cluster-hook">"Quanta acqua sprechi irrigando 'a occhio'?"</p>
+                <p class="cluster-desc">Precision farming, tracciabilita, food tech, agricoltura 4.0.</p>
+              </div>
+              <div class="cluster-radio">
+                <div class="radio-circle"></div>
+              </div>
+            </div>
+
+            <!-- Cultural -->
+            <div class="cluster-card animate-scale-in delay-5" data-cluster="cultural">
+              <div class="cluster-icon">&#127963;</div>
+              <div class="cluster-content">
+                <h3>Cultural</h3>
+                <span class="cluster-count"><span class="tech-count" data-cluster="cultural">--</span> tecnologie</span>
+                <p class="cluster-hook">"Quanti visitatori perdi senza esperienza digitale?"</p>
+                <p class="cluster-desc">Patrimonio culturale, turismo smart, digitalizzazione.</p>
+              </div>
+              <div class="cluster-radio">
+                <div class="radio-circle"></div>
+              </div>
+            </div>
+
+            <!-- Health -->
+            <div class="cluster-card animate-scale-in delay-6" data-cluster="health">
+              <div class="cluster-icon">&#128138;</div>
+              <div class="cluster-content">
+                <h3>Health</h3>
+                <span class="cluster-count"><span class="tech-count" data-cluster="health">--</span> tecnologie</span>
+                <p class="cluster-hook">"I tuoi scarti contengono piu antiossidanti del prodotto?"</p>
+                <p class="cluster-desc">Nutraceutica, salute, bioeconomia, scarti valorizzati.</p>
+              </div>
+              <div class="cluster-radio">
+                <div class="radio-circle"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-navigation step-navigation-single">
+            <button class="btn btn-ghost" onclick="goToStep(1)">
+              <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+              Indietro
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         STEP 3 - TECNOLOGIE
+         ======================================== -->
+    <section class="step step-3" data-step="3">
+      <div class="step-fullpage">
+        <div class="container">
+          <div class="step-header">
+            <h2 id="tech-section-title">Tecnologie</h2>
+            <p class="text-muted" id="tech-section-subtitle">Caricamento...</p>
+          </div>
+
+          <!-- TRL Filters + Back Button -->
+          <div class="tech-toolbar">
+            <button class="btn btn-ghost btn-back-inline" onclick="goToStep(2)">
+              <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+              Cambia cluster
+            </button>
+            <div class="trl-filters">
+              <button class="trl-filter active" data-trl="all">Tutti i TRL</button>
+              <button class="trl-filter" data-trl="9">TRL 9</button>
+              <button class="trl-filter" data-trl="8">TRL 8</button>
+              <button class="trl-filter" data-trl="7">TRL 7</button>
+              <button class="trl-filter" data-trl="6">TRL 6</button>
+            </div>
+          </div>
+
+          <!-- Tech Grid Container -->
+          <div id="tech-container">
+            <div class="loading-state">
+              <div class="spinner"></div>
+              <p>Caricamento tecnologie...</p>
+            </div>
+          </div>
+
+          <div class="step-navigation">
+            <button class="btn btn-ghost" onclick="goToStep(2)">
+              <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+              Cambia cluster
+            </button>
+            <button class="btn btn-accent btn-lg" onclick="goToStep(4)">
+              Continua
+              <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         STEP 4 - DECISION POINT
+         ======================================== -->
+    <section class="step step-4" data-step="4">
+      <div class="decision-container">
+        <!-- Option A - Book Call (Prominent) -->
+        <div class="decision-option option-a">
+          <div class="decision-content">
+            <div class="decision-icon animate-pulse">&#128640;</div>
+            <h2>Vuoi approfondire come queste tecnologie possono creare valore per la tua azienda?</h2>
+            <ul class="decision-benefits">
+              <li>
+                <span class="benefit-check">&#10003;</span>
+                <span><strong>R&D gia completato</strong> - 4 anni di ricerca e 110M investiti</span>
+              </li>
+              <li>
+                <span class="benefit-check">&#10003;</span>
+                <span><strong>Team gia formato</strong> - 433 ricercatori specializzati</span>
+              </li>
+              <li>
+                <span class="benefit-check">&#10003;</span>
+                <span><strong>Fondi gia disponibili</strong> - 22M+ bandi a cascata per PoC</span>
+              </li>
+              <li>
+                <span class="benefit-check">&#10003;</span>
+                <span><strong>Validazione gia fatta</strong> - TRL 6-9, pronte per test industriali</span>
+              </li>
+            </ul>
+            <button class="btn btn-accent btn-lg btn-block" onclick="goToStep(5)">
+              Prenota una call conoscitiva
+              <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Option B - Explore More -->
+        <div class="decision-option option-b">
+          <div class="decision-content">
+            <div class="decision-icon">&#128269;</div>
+            <h3>Vuoi esplorare anche altre tecnologie?</h3>
+            <p class="text-muted">Torna indietro per selezionare un altro cluster e scoprire piu soluzioni.</p>
+            <button class="btn btn-ghost btn-lg" onclick="goToStep(2)">
+              <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+              Esplora altri cluster
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         STEP 5 - BOOKING FORM
+         ======================================== -->
+    <section class="step step-5" data-step="5">
+      <div class="form-fullpage">
+        <div class="container">
+          <div class="form-wrapper">
+            <div class="form-header">
+              <h2 class="animate-fade-in-up">Prenota una call con il nostro team</h2>
+              <p class="text-muted animate-fade-in-up delay-1">30 minuti per capire come la tua azienda puo trarre il massimo da 4 anni di ricerca e 120 tecnologie.</p>
+            </div>
+
+            <div class="form-card animate-fade-in-up delay-2">
+              <form id="booking-form">
+                <div class="form-group">
+                  <label for="nome">Nome e Cognome *</label>
+                  <input type="text" id="nome" name="nome" class="form-input" placeholder="Mario Rossi" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email aziendale *</label>
+                  <input type="email" id="email" name="email" class="form-input" placeholder="nome@azienda.com" required>
+                  <span class="form-hint">Utilizziamo email aziendali per garantire comunicazioni professionali</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="azienda">Azienda *</label>
+                  <input type="text" id="azienda" name="azienda" class="form-input" placeholder="Nome azienda" required>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="ruolo">Ruolo</label>
+                    <select id="ruolo" name="ruolo" class="form-select">
+                      <option value="">Seleziona...</option>
+                      <option value="ceo">CEO / Founder</option>
+                      <option value="cto">CTO / Technical Director</option>
+                      <option value="innovation">Innovation Manager</option>
+                      <option value="rd">R&D Manager</option>
+                      <option value="operations">Operations Manager</option>
+                      <option value="altro">Altro</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="area_interesse">Area di interesse</label>
+                    <select id="area_interesse" name="area_interesse" class="form-select" disabled>
+                      <option value="">Pre-compilato dal percorso</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-accent btn-lg btn-block">
+                  Prenota la call
+                  <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </button>
+
+                <p class="form-privacy">
+                  Inviando accetti la <a href="#">Privacy Policy</a>. Niente spam, solo contenuti rilevanti.
+                </p>
+              </form>
+            </div>
+
+            <!-- Thank You Message (hidden by default) -->
+            <div class="thank-you-message hidden" id="thank-you">
+              <div class="thank-you-icon animate-scale-in">&#127881;</div>
+              <h2>Grazie per la tua richiesta!</h2>
+              <p>Ti contatteremo a breve per fissare la call conoscitiva.</p>
+              <p class="text-muted">Nel frattempo, puoi continuare a esplorare le nostre tecnologie.</p>
+              <button class="btn btn-accent btn-lg" onclick="goToStep(2)">
+                Esplora altre tecnologie
+              </button>
+            </div>
+
+            <div class="step-navigation">
+              <button class="btn btn-ghost" onclick="goToStep(4)">
+                <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Indietro
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================
+       TECH DETAIL - IMMERSIVE FULL PAGE EXPANSION
+       ======================================== -->
+  <div class="tech-immersive" id="tech-immersive">
+    <div class="tech-immersive-backdrop"></div>
+    <div class="tech-immersive-content">
+      <button class="tech-immersive-close" onclick="closeTechImmersive()">
+        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <div class="tech-immersive-body" id="tech-immersive-body">
+        <!-- Dynamic content -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       JAVASCRIPT
+       ======================================== -->
+  <script>
+    // ==========================================
+    // SUPABASE CONFIGURATION
+    // ==========================================
+    const SUPABASE_URL = 'https://jfcwreeugwpkjywhahqn.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmY3dyZWV1Z3dwa2p5d2hhaHFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc4ODA0ODgsImV4cCI6MjA4MzQ1NjQ4OH0.n2QbBclTbKNcUg7ZB73_SbF5HkA37z3O7QhQ4g_kp0M';
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // ==========================================
+    // STATE MANAGEMENT
+    // ==========================================
+    const state = {
+      currentStep: 1,
+      maxStepReached: 1,
+      selectedCluster: null,
+      selectedTech: null,
+      tecnologieCache: {},
+      clusterCounts: {},
+      formData: {},
+      sessionId: generateUUID(),
+      currentTrlFilter: 'all'
+    };
+
+    // ==========================================
+    // CLUSTER DATA
+    // ==========================================
+    const clusterData = {
+      energy: { name: 'Energy', fullName: 'Energia & Efficienza', dbName: 'Energy', color: '#8FC68E' },
+      circular: { name: 'Circular', fullName: 'Economia Circolare & Blue', dbName: 'Circular', color: '#6ABEA4' },
+      climate: { name: 'Climate', fullName: 'Clima & Rischio Territoriale', dbName: 'Climate', color: '#3FABB2' },
+      agrifood: { name: 'AgriFood', fullName: 'Precision Farming & Food', dbName: 'AgriFood', color: '#0098BB' },
+      cultural: { name: 'Cultural', fullName: 'Patrimonio Culturale', dbName: 'Cultural', color: '#0C919C' },
+      health: { name: 'Health', fullName: 'Salute & Benessere', dbName: 'Health', color: '#07667A' }
+    };
+
+    // ==========================================
+    // UTILITY FUNCTIONS
+    // ==========================================
+    function generateUUID() {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        const r = Math.random() * 16 | 0;
+        const v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+      });
+    }
+
+    function getTipoIcon(tipo) {
+      if (!tipo) return '&#128230;';
+      const t = tipo.toLowerCase();
+      if (t.includes('software')) return '&#128187;';
+      if (t.includes('physical')) return '&#128295;';
+      if (t.includes('algorithm')) return '&#129518;';
+      if (t.includes('platform')) return '&#127760;';
+      if (t.includes('iot')) return '&#128225;';
+      if (t.includes('app')) return '&#128241;';
+      if (t.includes('database')) return '&#128451;';
+      return '&#128230;';
+    }
+
+    function truncate(text, max) {
+      if (!text) return '';
+      return text.length > max ? text.substring(0, max) + '...' : text;
+    }
+
+    // ==========================================
+    // TRACKING EVENTS
+    // ==========================================
+    function trackEvent(eventName, data = {}) {
+      const event = {
+        event: eventName,
+        sessionId: state.sessionId,
+        timestamp: new Date().toISOString(),
+        ...data
+      };
+      console.log('Track:', event);
+    }
+
+    // ==========================================
+    // STEP NAVIGATION
+    // ==========================================
+    function goToStep(stepNumber) {
+      if (stepNumber < 1 || stepNumber > 5) return;
+
+      trackEvent('step_view', { from: state.currentStep, to: stepNumber });
+
+      const currentStepEl = document.querySelector(`.step[data-step="${state.currentStep}"]`);
+      const nextStepEl = document.querySelector(`.step[data-step="${stepNumber}"]`);
+
+      if (!currentStepEl || !nextStepEl) return;
+
+      const direction = stepNumber > state.currentStep ? 'left' : 'right';
+      const inDirection = direction === 'left' ? 'right' : 'left';
+
+      // Start both animations simultaneously
+      currentStepEl.classList.add(`slide-out-${direction}`);
+      nextStepEl.classList.add('active', `slide-in-${inDirection}`);
+
+      // Clean up after animation completes
+      setTimeout(() => {
+        currentStepEl.classList.remove('active', `slide-out-${direction}`);
+        nextStepEl.classList.remove(`slide-in-${inDirection}`);
+
+        state.currentStep = stepNumber;
+        if (stepNumber > state.maxStepReached) {
+          state.maxStepReached = stepNumber;
+        }
+
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        handleStepEnter(stepNumber);
+
+      }, 400); // Match CSS transition duration
+    }
+
+    function handleStepEnter(stepNumber) {
+      switch(stepNumber) {
+        case 1:
+          animateProofNumbers();
+          break;
+        case 2:
+          loadClusterCounts();
+          break;
+        case 3:
+          if (state.selectedCluster) {
+            loadTecnologie(state.selectedCluster);
+          }
+          break;
+        case 5:
+          prefillForm();
+          break;
+      }
+    }
+
+    // ==========================================
+    // STEP 1 - ANIMATED NUMBERS
+    // ==========================================
+    function animateProofNumbers() {
+      document.querySelectorAll('.proof-number[data-target]').forEach(el => {
+        const target = parseInt(el.dataset.target);
+        let current = 0;
+        const increment = target / 50;
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          el.textContent = Math.floor(current);
+        }, 40);
+      });
+    }
+
+    // ==========================================
+    // STEP 2 - CLUSTER SELECTION
+    // ==========================================
+    async function loadClusterCounts() {
+      for (const [key, data] of Object.entries(clusterData)) {
+        const { count, error } = await supabaseClient
+          .from('tecnologie')
+          .select('*', { count: 'exact', head: true })
+          .eq('cluster', data.dbName);
+
+        if (!error) {
+          state.clusterCounts[key] = count;
+          const countEl = document.querySelector(`.tech-count[data-cluster="${key}"]`);
+          if (countEl) countEl.textContent = count;
+        }
+      }
+    }
+
+    function selectCluster(cluster) {
+      document.querySelectorAll('.cluster-card').forEach(card => {
+        card.classList.remove('selected');
+      });
+
+      const selectedCard = document.querySelector(`.cluster-card[data-cluster="${cluster}"]`);
+      if (selectedCard) {
+        selectedCard.classList.add('selected');
+      }
+
+      state.selectedCluster = cluster;
+      trackEvent('cluster_select', { cluster });
+
+      // Go directly to Step 3 (Tecnologie)
+      setTimeout(() => {
+        goToStep(3);
+      }, 300);
+    }
+
+    // ==========================================
+    // STEP 3 - TECNOLOGIE
+    // ==========================================
+    async function loadTecnologie(cluster) {
+      showLoading(true);
+
+      if (state.tecnologieCache[cluster]) {
+        renderTecnologie(state.tecnologieCache[cluster]);
+        showLoading(false);
+        return;
+      }
+
+      const dbCluster = clusterData[cluster]?.dbName || cluster;
+
+      const { data, error } = await supabaseClient
+        .from('tecnologie')
+        .select('*')
+        .eq('cluster', dbCluster)
+        .order('trl', { ascending: false, nullsFirst: false });
+
+      if (error) {
+        console.error('Errore caricamento:', error);
+        showError('Impossibile caricare le tecnologie. Riprova piu tardi.');
+        return;
+      }
+
+      state.tecnologieCache[cluster] = data || [];
+      renderTecnologie(state.tecnologieCache[cluster]);
+      showLoading(false);
+    }
+
+    function renderTecnologie(tecnologie) {
+      const container = document.getElementById('tech-container');
+      const clusterInfo = clusterData[state.selectedCluster];
+
+      document.getElementById('tech-section-title').textContent = `Tecnologie ${clusterInfo.name}`;
+      document.getElementById('tech-section-subtitle').textContent =
+        `${tecnologie.length} soluzioni pronte per test e trasferimento | ${clusterInfo.fullName}`;
+
+      let filteredTech = tecnologie;
+      if (state.currentTrlFilter !== 'all') {
+        filteredTech = tecnologie.filter(t => t.trl == state.currentTrlFilter);
+      }
+
+      // Store for click handling
+      currentTecnologie = filteredTech;
+
+      if (filteredTech.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <p>Nessuna tecnologia disponibile per questo filtro.</p>
+            <button class="btn btn-ghost" onclick="filterByTrl('all')">Mostra tutte</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="tech-grid" id="tech-grid">
+          ${filteredTech.map((tech, index) => renderTechCard(tech, index)).join('')}
+        </div>
+      `;
+
+      // Add click handlers via event delegation
+      document.getElementById('tech-grid').addEventListener('click', handleTechCardClick);
+    }
+
+    function handleTechCardClick(e) {
+      const card = e.target.closest('.tech-card');
+      if (!card) return;
+
+      const index = parseInt(card.dataset.techIndex);
+      if (!isNaN(index) && currentTecnologie[index]) {
+        openTechImmersive(currentTecnologie[index]);
+      }
+    }
+
+    // Store tecnologie for click handling
+    let currentTecnologie = [];
+
+    function renderTechCard(tech, index) {
+      const tipoIcon = getTipoIcon(tech.tipo_dimostratore);
+      const trlClass = tech.trl ? `trl-${tech.trl}` : 'trl-null';
+      const trlText = tech.trl ? `TRL ${tech.trl}` : 'TRL N/D';
+      const delay = Math.min(index * 0.05, 0.5);
+
+      // Challenge-oriented: extract the core problem/solution from description
+      const challenge = extractChallenge(tech);
+      // Show full description (no truncation)
+      const description = tech.descrizione_estesa || 'Descrizione non disponibile';
+
+      return `
+        <div class="tech-card animate-fade-in-up" style="animation-delay: ${delay}s"
+             data-tech-index="${index}">
+          <div class="tech-header">
+            <span class="tech-tipo-icon">${tipoIcon}</span>
+            <h3 class="tech-nome">${tech.nome || 'Nome non disponibile'}</h3>
+            <span class="trl-badge ${trlClass}">${trlText}</span>
+          </div>
+
+          ${challenge ? `
+          <div class="tech-challenge">
+            <span class="challenge-label">Sfida affrontata:</span>
+            <span class="challenge-text">${challenge}</span>
+          </div>
+          ` : ''}
+
+          <p class="tech-desc">${truncate(description, 180)}</p>
+
+          <div class="tech-meta">
+            ${tech.tipo_dimostratore ? `<span class="meta-tag">${tech.tipo_dimostratore}</span>` : ''}
+            ${tech.affiliazione ? `<span class="meta-tag meta-tag-affiliation">${tech.affiliazione}</span>` : ''}
+            ${tech.tags && tech.tags.length > 0 ? tech.tags.slice(0, 2).map(t => `<span class="meta-tag meta-tag-topic">${t}</span>`).join('') : ''}
+          </div>
+
+          <span class="tech-expand-hint">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            </svg>
+            Scopri di piu
+          </span>
+        </div>
+      `;
+    }
+
+    // Extract challenge/problem statement from technology
+    function extractChallenge(tech) {
+      if (tech.sfida_risolta) return tech.sfida_risolta;
+
+      // Generate challenge based on cluster and tipo
+      const clusterChallenges = {
+        'Climate': 'Previsione e gestione rischi climatici',
+        'Energy': 'Ottimizzazione efficienza energetica',
+        'Circular': 'Recupero e valorizzazione risorse',
+        'AgriFood': 'Agricoltura di precisione sostenibile',
+        'Cultural': 'Digitalizzazione patrimonio culturale',
+        'Health': 'Valorizzazione composti bioattivi'
+      };
+
+      return clusterChallenges[tech.cluster] || null;
+    }
+
+    // ==========================================
+    // IMMERSIVE TECH DETAIL
+    // ==========================================
+    function openTechImmersive(tech) {
+      if (!tech) return;
+
+      state.selectedTech = tech;
+      trackEvent('tech_click', { techName: tech.nome, cluster: state.selectedCluster });
+
+      const clusterInfo = clusterData[state.selectedCluster];
+      const immersive = document.getElementById('tech-immersive');
+      const body = document.getElementById('tech-immersive-body');
+
+      // Challenge info
+      const challenge = extractChallenge(tech);
+
+      body.innerHTML = `
+        <div class="tech-immersive-header" style="--cluster-color: ${clusterInfo.color}">
+          <div class="tech-immersive-cluster">${clusterInfo.name}</div>
+          <span class="tech-tipo-icon-large">${getTipoIcon(tech.tipo_dimostratore)}</span>
+          <h1 class="animate-fade-in-up">${tech.nome}</h1>
+          <div class="tech-immersive-badges animate-fade-in-up delay-1">
+            <span class="trl-badge-large trl-${tech.trl || 'null'}">TRL ${tech.trl || 'N/D'}</span>
+            ${tech.tipo_dimostratore ? `<span class="tipo-badge">${tech.tipo_dimostratore}</span>` : ''}
+          </div>
+        </div>
+
+        <div class="tech-immersive-details">
+          ${challenge ? `
+          <div class="tech-challenge-banner animate-fade-in-up delay-2">
+            <span class="challenge-banner-icon">&#127919;</span>
+            <div class="challenge-banner-content">
+              <span class="challenge-banner-label">Sfida affrontata</span>
+              <span class="challenge-banner-text">${challenge}</span>
+            </div>
+          </div>
+          ` : ''}
+
+          <div class="tech-detail-section animate-fade-in-up delay-2">
+            <h3>Descrizione completa</h3>
+            <p class="tech-full-desc">${tech.descrizione_estesa || 'Descrizione non disponibile'}</p>
+          </div>
+
+          <div class="tech-detail-grid animate-fade-in-up delay-3">
+            <div class="tech-detail-item">
+              <span class="detail-label">Maturita tecnologica</span>
+              <span class="detail-value">TRL ${tech.trl || 'N/D'} - ${getTrlDescription(tech.trl)}</span>
+            </div>
+            ${tech.responsabile ? `
+              <div class="tech-detail-item">
+                <span class="detail-label">Team / Responsabile</span>
+                <span class="detail-value">${tech.responsabile}</span>
+              </div>
+            ` : ''}
+            ${tech.affiliazione ? `
+              <div class="tech-detail-item">
+                <span class="detail-label">Organismo di Ricerca</span>
+                <span class="detail-value">${tech.affiliazione}</span>
+              </div>
+            ` : ''}
+            ${tech.tipo_dimostratore ? `
+              <div class="tech-detail-item">
+                <span class="detail-label">Tipo dimostratore</span>
+                <span class="detail-value">${tech.tipo_dimostratore}</span>
+              </div>
+            ` : ''}
+          </div>
+
+          ${tech.competitive_advantages && tech.competitive_advantages.length > 0 ? `
+          <div class="tech-detail-section animate-fade-in-up delay-4">
+            <h3>Vantaggi Competitivi</h3>
+            <ul class="competitive-advantages-list">
+              ${tech.competitive_advantages.map(adv => `
+                <li>
+                  <span class="advantage-icon">&#10003;</span>
+                  <span>${adv}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+          ` : ''}
+
+          ${tech.market_targets && tech.market_targets.length > 0 ? `
+          <div class="tech-detail-section animate-fade-in-up delay-4">
+            <h3>Mercati Target</h3>
+            <div class="market-targets-grid">
+              ${tech.market_targets.map(target => `
+                <div class="market-target-card">
+                  <span class="market-segment">${target.segment}</span>
+                  <span class="market-desc">${target.description}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          ` : ''}
+
+          ${tech.tags && tech.tags.length > 0 ? `
+          <div class="tech-tags-section animate-fade-in-up delay-4">
+            ${tech.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+          </div>
+          ` : ''}
+
+          <div class="tech-immersive-cta animate-fade-in-up delay-5">
+            <button class="btn btn-accent btn-xl btn-block" onclick="closeTechImmersive(); goToStep(4);">
+              Scopri le possibili sinergie con Tech4You
+              <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </button>
+            <button class="btn btn-ghost btn-lg" onclick="closeTechImmersive()">
+              Torna alle tecnologie
+            </button>
+          </div>
+        </div>
+      `;
+
+      immersive.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      // Animate in
+      setTimeout(() => {
+        immersive.classList.add('visible');
+      }, 10);
+    }
+
+    function getTrlDescription(trl) {
+      const descriptions = {
+        9: 'Sistema operativo in ambiente reale',
+        8: 'Sistema completo e qualificato',
+        7: 'Prototipo in ambiente operativo',
+        6: 'Prototipo in ambiente rilevante',
+        5: 'Validazione in ambiente rilevante',
+        4: 'Validazione in laboratorio'
+      };
+      return descriptions[trl] || 'In sviluppo';
+    }
+
+    function closeTechImmersive() {
+      const immersive = document.getElementById('tech-immersive');
+      immersive.classList.remove('visible');
+
+      setTimeout(() => {
+        immersive.classList.remove('active');
+        document.body.style.overflow = '';
+      }, 400);
+    }
+
+    function filterByTrl(trl) {
+      state.currentTrlFilter = trl;
+
+      document.querySelectorAll('.trl-filter').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.trl === trl);
+      });
+
+      if (state.selectedCluster && state.tecnologieCache[state.selectedCluster]) {
+        renderTecnologie(state.tecnologieCache[state.selectedCluster]);
+      }
+    }
+
+    function showLoading(show) {
+      const container = document.getElementById('tech-container');
+      if (show) {
+        container.innerHTML = `
+          <div class="loading-state">
+            <div class="spinner"></div>
+            <p>Caricamento tecnologie...</p>
+          </div>
+        `;
+      }
+    }
+
+    function showError(message) {
+      const container = document.getElementById('tech-container');
+      container.innerHTML = `
+        <div class="error-state">
+          <p>${message}</p>
+          <button onclick="loadTecnologie(state.selectedCluster)" class="btn btn-dark">Riprova</button>
+        </div>
+      `;
+    }
+
+    // ==========================================
+    // STEP 5 - FORM HANDLING
+    // ==========================================
+    function prefillForm() {
+      const areaSelect = document.getElementById('area_interesse');
+      if (state.selectedCluster && clusterData[state.selectedCluster]) {
+        areaSelect.innerHTML = `<option value="${state.selectedCluster}">${clusterData[state.selectedCluster].fullName}</option>`;
+      }
+    }
+
+    function validateEmail(email) {
+      const personalDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'libero.it', 'icloud.com', 'live.com', 'msn.com', 'aol.com', 'mail.com', 'protonmail.com', 'ymail.com'];
+      const domain = email.split('@')[1]?.toLowerCase();
+      return domain && !personalDomains.includes(domain);
+    }
+
+    async function submitForm(formData) {
+      try {
+        const { error } = await supabaseClient
+          .from('leads')
+          .insert([{
+            nome: formData.nome,
+            email: formData.email,
+            azienda: formData.azienda,
+            ruolo: formData.ruolo,
+            area_interesse: formData.area_interesse,
+            tecnologia_interesse: state.selectedTech?.nome || null,
+            session_id: state.sessionId,
+            source: 'landing-v4'
+          }]);
+
+        if (error) throw error;
+
+        trackEvent('form_submit', { cluster: state.selectedCluster, tech: state.selectedTech?.nome });
+
+        document.querySelector('.form-card').classList.add('hidden');
+        document.querySelector('.form-header').classList.add('hidden');
+        document.getElementById('thank-you').classList.remove('hidden');
+
+      } catch (err) {
+        console.error('Form submit error:', err);
+        alert('Si e verificato un errore. Riprova piu tardi.');
+      }
+    }
+
+    // ==========================================
+    // SAVE/RESTORE STATE
+    // ==========================================
+    function saveState() {
+      localStorage.setItem('t4y_v4_state', JSON.stringify({
+        selectedCluster: state.selectedCluster,
+        maxStepReached: state.maxStepReached,
+        sessionId: state.sessionId
+      }));
+    }
+
+    function restoreState() {
+      const saved = localStorage.getItem('t4y_v4_state');
+      if (saved) {
+        const data = JSON.parse(saved);
+        state.selectedCluster = data.selectedCluster;
+        state.maxStepReached = data.maxStepReached;
+        state.sessionId = data.sessionId || state.sessionId;
+
+        if (state.selectedCluster) {
+          const card = document.querySelector(`.cluster-card[data-cluster="${state.selectedCluster}"]`);
+          if (card) card.classList.add('selected');
+          document.getElementById('btn-step2-next').disabled = false;
+        }
+      }
+    }
+
+    // ==========================================
+    // INITIALIZE
+    // ==========================================
+    document.addEventListener('DOMContentLoaded', function() {
+      restoreState();
+
+      // Cluster card click handlers
+      document.querySelectorAll('.cluster-card').forEach(card => {
+        card.addEventListener('click', function() {
+          selectCluster(this.dataset.cluster);
+        });
+      });
+
+      // TRL filter handlers
+      document.querySelectorAll('.trl-filter').forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterByTrl(this.dataset.trl);
+        });
+      });
+
+      // Form submit handler
+      document.getElementById('booking-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = {
+          nome: document.getElementById('nome').value,
+          email: document.getElementById('email').value,
+          azienda: document.getElementById('azienda').value,
+          ruolo: document.getElementById('ruolo').value,
+          area_interesse: state.selectedCluster || 'general'
+        };
+
+        if (!validateEmail(formData.email)) {
+          alert('Per favore inserisci un\'email aziendale (non personale come Gmail, Yahoo, etc.)');
+          return;
+        }
+
+        submitForm(formData);
+      });
+
+      // Close immersive on Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeTechImmersive();
+      });
+
+      // Close immersive on backdrop click
+      document.querySelector('.tech-immersive-backdrop')?.addEventListener('click', closeTechImmersive);
+
+      // Save state on unload
+      window.addEventListener('beforeunload', saveState);
+
+      // Animate proof numbers
+      animateProofNumbers();
+
+      // Track initial view
+      trackEvent('step_view', { step: 1 });
+    });
+  </script>
+
+</body>
+</html>

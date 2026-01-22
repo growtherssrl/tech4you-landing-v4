@@ -1,0 +1,20 @@
+# OS files
+.DS_Store
+*.DS_Store
+
+# Large PDF files
+*.pdf
+
+# JSON data files (keep in Supabase)
+DEMOS_FULL_v3.json
+
+# Node modules
+node_modules/
+
+# Environment files
+.env
+.env.local
+
+# IDE
+.idea/
+.vscode/
