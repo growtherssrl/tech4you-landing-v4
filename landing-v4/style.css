@@ -28,8 +28,8 @@
   --warning: #ffc107;
   --danger: #dc3545;
 
-  --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'Space Grotesk', sans-serif;
+  --font-primary: 'Space Grotesk', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Space Grotesk', 'Poppins', sans-serif;
   --font-secondary: 'Lora', Georgia, serif;
 
   /* Fluid spacing using clamp */
