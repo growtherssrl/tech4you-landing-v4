@@ -496,6 +496,13 @@
     function goToStep(stepNumber) {
       if (stepNumber < 1 || stepNumber > 5) return;
 
+      // Close immersive view if open and reset body overflow
+      const immersive = document.getElementById('tech-immersive');
+      if (immersive && immersive.classList.contains('active')) {
+        immersive.classList.remove('active', 'visible');
+      }
+      document.body.style.overflow = '';
+
       trackEvent('step_view', { from: state.currentStep, to: stepNumber });
 
       const currentStepEl = document.querySelector(`.step[data-step="${state.currentStep}"]`);
