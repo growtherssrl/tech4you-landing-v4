@@ -211,10 +211,9 @@ p { font-size: var(--text-base); }
    STEPS CONTAINER - Full Page
    ======================================== */
 .steps-container {
-  min-height: 100vh;
+  height: 100vh;
   position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   margin: 0;
   padding: 0;
   background: var(--light);
@@ -225,7 +224,8 @@ p { font-size: var(--text-base); }
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
+  overflow-y: auto;
   margin: 0;
   padding: 0;
   opacity: 0;
@@ -238,7 +238,7 @@ p { font-size: var(--text-base); }
 }
 
 .step.active {
-  position: relative;
+  position: absolute;
   opacity: 1;
   visibility: visible;
   transform: translateX(0);
@@ -284,7 +284,7 @@ p { font-size: var(--text-base); }
 }
 
 .step-fullpage {
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -380,7 +380,7 @@ p { font-size: var(--text-base); }
    STEP 1 - HERO WELCOME (Immersive)
    ======================================== */
 .hero-welcome {
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
