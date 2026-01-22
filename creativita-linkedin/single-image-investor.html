@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech4You - LinkedIn Ads - Single Image Investor (1200x627)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f0f0;
+      padding: 40px;
+    }
+
+    .ads-container {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .ad-group {
+      margin-bottom: 40px;
+    }
+
+    .ad-group h2 {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Base Ad Style - 1200x627 */
+    .ad-single {
+      width: 1200px;
+      height: 627px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      margin-bottom: 30px;
+    }
+
+    .ad-single:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Color Variants - Investor focused (darker, more premium) */
+    .ad-single.investor-primary {
+      background: linear-gradient(135deg, #07667A 0%, #0053CE 100%);
+    }
+
+    .ad-single.investor-dark {
+      background: linear-gradient(135deg, #212529 0%, #07667A 100%);
+    }
+
+    .ad-single.investor-premium {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    }
+
+    .ad-single.investor-gold {
+      background: linear-gradient(135deg, #212529 0%, #2d2d2d 100%);
+    }
+
+    /* Pattern Overlay */
+    .ad-single::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    /* Content Layout */
+    .ad-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      padding: 48px 60px;
+      color: white;
+    }
+
+    .ad-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 40px;
+    }
+
+    .ad-right {
+      width: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    /* Badge */
+    .ad-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255,255,255,0.15);
+      width: fit-content;
+    }
+
+    .ad-badge.gold {
+      background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
+      color: #1a1a2e;
+      border: none;
+    }
+
+    /* Headline */
+    .ad-headline {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      max-width: 650px;
+    }
+
+    .ad-headline-small {
+      font-size: 36px;
+    }
+
+    /* Subheadline */
+    .ad-subheadline {
+      font-size: 18px;
+      opacity: 0.9;
+      line-height: 1.5;
+      margin-bottom: 32px;
+      max-width: 550px;
+    }
+
+    /* Stats */
+    .ad-stats {
+      display: flex;
+      gap: 40px;
+    }
+
+    .ad-stat {
+      text-align: left;
+    }
+
+    .ad-stat-number {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .ad-stat-number.gold {
+      background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .ad-stat-label {
+      font-size: 12px;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* CTA */
+    .ad-cta {
+      background: #FBE91B;
+      color: #212529;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .ad-cta.premium {
+      background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
+      color: #1a1a2e;
+    }
+
+    .ad-cta-white {
+      background: white;
+      color: #0053CE;
+    }
+
+    .ad-cta-arrow {
+      font-size: 20px;
+    }
+
+    /* Logo */
+    .ad-logo {
+      position: absolute;
+      bottom: 48px;
+      right: 60px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ad-logo-text {
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .ad-logo-tagline {
+      font-size: 11px;
+      opacity: 0.6;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Metric Highlight Box */
+    .metric-box {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .metric-box.gold-border {
+      border: 2px solid rgba(212, 175, 55, 0.5);
+    }
+
+    .metric-box-number {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .metric-box-number.gold {
+      background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .metric-box-label {
+      font-size: 13px;
+      opacity: 0.8;
+    }
+
+    /* Split Layout */
+    .ad-content.split {
+      padding: 0;
+    }
+
+    .ad-split-left {
+      flex: 1;
+      padding: 48px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .ad-split-right {
+      width: 400px;
+      background: rgba(0,0,0,0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 48px;
+    }
+
+    /* Portfolio Grid in Ad */
+    .portfolio-mini {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      width: 100%;
+    }
+
+    .portfolio-mini-item {
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .portfolio-mini-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .portfolio-mini-name {
+      font-size: 11px;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    .portfolio-mini-count {
+      font-size: 10px;
+      opacity: 0.6;
+    }
+
+    /* Urgency strip */
+    .urgency-strip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(90deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
+      color: #1a1a2e;
+      padding: 10px 60px;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* Feature list */
+    .feature-list {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 15px;
+      opacity: 0.9;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      color: #FBE91B;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+<div class="ads-container">
+
+  <!-- ========================================
+       MAIN VALUE PROP - INVESTOR
+       ======================================== -->
+  <div class="ad-group">
+    <h2>Awareness - Investor General</h2>
+
+    <!-- Ad 1: Deal flow esclusivo -->
+    <div class="ad-single investor-premium">
+      <div class="ad-content">
+        <div class="ad-left">
+          <span class="ad-badge">💼 Deal Flow Esclusivo</span>
+          <h1 class="ad-headline">120 opportunità climate-tech pre-screened. Zero early-stage risk.</h1>
+          <p class="ad-subheadline">Accesso strutturato al più grande portfolio di tecnologie climate-tech del Sud Italia. TRL 6-9, già validate in ambiente operativo.</p>
+          <div class="ad-stats">
+            <div class="ad-stat">
+              <div class="ad-stat-number gold">€110M</div>
+              <div class="ad-stat-label">Già investiti</div>
+            </div>
+            <div class="ad-stat">
+              <div class="ad-stat-number">120</div>
+              <div class="ad-stat-label">Tecnologie</div>
+            </div>
+            <div class="ad-stat">
+              <div class="ad-stat-number">65</div>
+              <div class="ad-stat-label">Brevetti</div>
+            </div>
+          </div>
+        </div>
+        <div class="ad-right">
+          <div class="ad-cta premium">
+            Richiedi briefing
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+      </div>
+      <div class="ad-logo">
+        <div>
+          <div class="ad-logo-text">Tech4You</div>
+          <div class="ad-logo-tagline">Investor Access</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ad 2: Finestra temporale -->
+    <div class="ad-single investor-dark">
+      <div class="urgency-strip">⚡ €110M già investiti da chi si è mosso prima</div>
+      <div class="ad-content" style="padding-top: 80px;">
+        <div class="ad-left">
+          <span class="ad-badge gold">Finestra Temporale Unica</span>
+          <h1 class="ad-headline">La finestra per intercettare queste opportunità si sta chiudendo</h1>
+          <p class="ad-subheadline">€120B di fondi PNRR in scadenza. Le tecnologie più promettenti vengono acquisite ora. Briefing esclusivo in 30 minuti.</p>
+          <div class="ad-cta premium" style="margin-top: 16px;">
+            Prenota il tuo briefing
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-right">
+          <div class="metric-box gold-border">
+            <div class="metric-box-number gold">€120B</div>
+            <div class="metric-box-label">Funding pipeline disponibile</div>
+          </div>
+        </div>
+      </div>
+      <div class="ad-logo">
+        <div class="ad-logo-text">Tech4You</div>
+      </div>
+    </div>
+
+    <!-- Ad 3: Portfolio overview -->
+    <div class="ad-single investor-primary">
+      <div class="ad-content split">
+        <div class="ad-split-left">
+          <span class="ad-badge">💼 Portfolio Climate-Tech</span>
+          <h1 class="ad-headline">6 cluster tematici, 120 tecnologie, 30 sfide risolte</h1>
+          <p class="ad-subheadline">Deal flow curato per VC Climate, CVC Utility, Acceleratori e Innovation Scout. Due diligence kit incluso.</p>
+          <div class="ad-cta premium" style="margin-top: 24px;">
+            Accedi al portfolio
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-split-right">
+          <div class="portfolio-mini">
+            <div class="portfolio-mini-item">
+              <div class="portfolio-mini-icon">⚡</div>
+              <div class="portfolio-mini-name">Energy</div>
+              <div class="portfolio-mini-count">25 tech</div>
+            </div>
+            <div class="portfolio-mini-item">
+              <div class="portfolio-mini-icon">♻️</div>
+              <div class="portfolio-mini-name">Circular</div>
+              <div class="portfolio-mini-count">27 tech</div>
+            </div>
+            <div class="portfolio-mini-item">
+              <div class="portfolio-mini-icon">🌍</div>
+              <div class="portfolio-mini-name">Climate</div>
+              <div class="portfolio-mini-count">26 tech</div>
+            </div>
+            <div class="portfolio-mini-item">
+              <div class="portfolio-mini-icon">🌾</div>
+              <div class="portfolio-mini-name">AgriFood</div>
+              <div class="portfolio-mini-count">15 tech</div>
+            </div>
+            <div class="portfolio-mini-item">
+              <div class="portfolio-mini-icon">🏛️</div>
+              <div class="portfolio-mini-name">Cultural</div>
+              <div class="portfolio-mini-count">17 tech</div>
+            </div>
+            <div class="portfolio-mini-item">
+              <div class="portfolio-mini-icon">🧬</div>
+              <div class="portfolio-mini-name">Health</div>
+              <div class="portfolio-mini-count">8 tech</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       INVESTOR TYPE SPECIFIC
+       ======================================== -->
+  <div class="ad-group">
+    <h2>Target Specifici - VC / CVC / Acceleratori</h2>
+
+    <!-- VC Climate -->
+    <div class="ad-single investor-premium">
+      <div class="ad-content">
+        <div class="ad-left">
+          <span class="ad-badge">🎯 Per VC Climate</span>
+          <h1 class="ad-headline">Deal flow esclusivo Sud Italia, zero competition</h1>
+          <p class="ad-subheadline">120 tecnologie climate-tech con TRL 6-9, IP protetta, team di ricerca dedicati. Pipeline non ancora sul mercato.</p>
+          <ul class="feature-list">
+            <li>Shortlist personalizzata 5-10 deal</li>
+            <li>Schede tecniche con IP status</li>
+            <li>Intro diretta ai team</li>
+            <li>Co-investment pubblico disponibile</li>
+          </ul>
+        </div>
+        <div class="ad-right">
+          <div class="ad-cta premium">
+            Richiedi briefing VC
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+      </div>
+      <div class="ad-logo">
+        <div class="ad-logo-text">Tech4You</div>
+      </div>
+    </div>
+
+    <!-- CVC Utility -->
+    <div class="ad-single investor-dark">
+      <div class="ad-content">
+        <div class="ad-left">
+          <span class="ad-badge">🏭 Per CVC Utility</span>
+          <h1 class="ad-headline">Tecnologie da integrare nel tuo business, validate e pronte</h1>
+          <p class="ad-subheadline">Energy storage, smart grid, wave energy, efficienza edifici. Prototipi TRL 7-8 pronti per pilot industriali.</p>
+          <div class="ad-stats">
+            <div class="ad-stat">
+              <div class="ad-stat-number">25</div>
+              <div class="ad-stat-label">Tech Energy</div>
+            </div>
+            <div class="ad-stat">
+              <div class="ad-stat-number">27</div>
+              <div class="ad-stat-label">Tech Circular</div>
+            </div>
+            <div class="ad-stat">
+              <div class="ad-stat-number">TRL 7-8</div>
+              <div class="ad-stat-label">Maturità</div>
+            </div>
+          </div>
+        </div>
+        <div class="ad-right">
+          <div class="ad-cta premium">
+            Esplora le tecnologie
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+      </div>
+      <div class="ad-logo">
+        <div class="ad-logo-text">Tech4You</div>
+      </div>
+    </div>
+
+    <!-- Acceleratori -->
+    <div class="ad-single investor-primary">
+      <div class="ad-content">
+        <div class="ad-left">
+          <span class="ad-badge">🚀 Per Acceleratori</span>
+          <h1 class="ad-headline">Pipeline per programmi verticali climate-tech</h1>
+          <p class="ad-subheadline">Tecnologie spin-off ready con team già formati. Perfette per programmi di accelerazione tematici.</p>
+          <ul class="feature-list">
+            <li>120 tecnologie pre-screened</li>
+            <li>Team di ricerca dedicati</li>
+            <li>IP già protetta (65 brevetti)</li>
+            <li>Co-funding PNRR disponibile</li>
+          </ul>
+        </div>
+        <div class="ad-right">
+          <div class="ad-cta">
+            Scopri la pipeline
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+      </div>
+      <div class="ad-logo">
+        <div class="ad-logo-text">Tech4You</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       BRIEFING CTA
+       ======================================== -->
+  <div class="ad-group">
+    <h2>CTA Briefing</h2>
+
+    <div class="ad-single investor-gold">
+      <div class="ad-content">
+        <div class="ad-left">
+          <span class="ad-badge gold">💼 Briefing Esclusivo</span>
+          <h1 class="ad-headline">30 minuti per accedere a opportunità che non trovi altrove</h1>
+          <p class="ad-subheadline">Briefing personalizzato con shortlist deal, schede tecniche, IP status e intro ai team. Due diligence kit incluso.</p>
+          <div class="ad-cta premium" style="margin-top: 24px;">
+            Prenota il tuo briefing
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-right">
+          <div class="metric-box gold-border">
+            <div style="font-size: 14px; opacity: 0.7; margin-bottom: 8px;">Include</div>
+            <div style="font-size: 16px; font-weight: 600; line-height: 1.6;">
+              Shortlist 5-10 deal<br>
+              Schede tecniche<br>
+              IP status report<br>
+              Intro ai team
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ad-logo">
+        <div class="ad-logo-text">Tech4You</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================
+       EVENT PROMO - INVESTOR
+       ======================================== -->
+  <div class="ad-group">
+    <h2>Event Promo - Investor</h2>
+
+    <div class="ad-single investor-premium">
+      <div class="urgency-strip">📅 15-18 posti riservati agli investitori</div>
+      <div class="ad-content split" style="padding-top: 40px;">
+        <div class="ad-split-left">
+          <span class="ad-badge gold">Evento Esclusivo</span>
+          <h1 class="ad-headline">Tech4You Climate Innovation Day</h1>
+          <p class="ad-subheadline">Milano Bicocca | Fine Febbraio 2026<br>Demo live, speed matching con ricercatori, briefing express. Su invito.</p>
+          <div class="ad-cta premium" style="margin-top: 24px;">
+            Richiedi invito prioritario
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-split-right">
+          <div style="text-align: center;">
+            <div style="font-size: 16px; opacity: 0.7; margin-bottom: 8px;">FEBBRAIO</div>
+            <div style="font-size: 64px; font-weight: 800; line-height: 1; background: linear-gradient(135deg, #d4af37, #f4e4bc); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">2026</div>
+            <div style="font-size: 14px; opacity: 0.7; margin-top: 12px;">Milano Bicocca</div>
+            <div style="margin-top: 16px; padding: 8px 16px; background: rgba(212,175,55,0.2); border-radius: 20px; font-size: 12px; font-weight: 600;">70-80 posti totali</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

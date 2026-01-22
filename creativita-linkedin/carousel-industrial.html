@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech4You - LinkedIn Carousel - Industrial (1080x1080)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f0f0;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .carousel-info {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 32px;
+    }
+
+    .carousel-container {
+      margin-bottom: 80px;
+    }
+
+    .carousel-title {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .carousel-slides {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      padding-bottom: 20px;
+    }
+
+    /* Base Slide Style - 1080x1080 */
+    .slide {
+      width: 540px;
+      height: 540px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Colors */
+    .slide.primary { background: linear-gradient(135deg, #0053CE 0%, #07667A 100%); }
+    .slide.energy { background: linear-gradient(135deg, #8FC68E 0%, #6ABEA4 100%); }
+    .slide.circular { background: linear-gradient(135deg, #6ABEA4 0%, #3FABB2 100%); }
+    .slide.climate { background: linear-gradient(135deg, #3FABB2 0%, #0098BB 100%); }
+    .slide.agrifood { background: linear-gradient(135deg, #0098BB 0%, #0C919C 100%); }
+    .slide.cultural { background: linear-gradient(135deg, #0C919C 0%, #07667A 100%); }
+    .slide.health { background: linear-gradient(135deg, #07667A 0%, #0053CE 100%); }
+    .slide.dark { background: linear-gradient(135deg, #212529 0%, #07667A 100%); }
+    .slide.white { background: #ffffff; color: #212529; }
+
+    /* Pattern */
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .slide.white::before {
+      opacity: 0;
+    }
+
+    /* Content */
+    .slide-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 40px;
+      color: white;
+    }
+
+    .slide.white .slide-content {
+      color: #212529;
+    }
+
+    /* Slide number */
+    .slide-number {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      font-size: 14px;
+      font-weight: 600;
+      opacity: 0.6;
+    }
+
+    /* Badge */
+    .slide-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,0.2);
+      width: fit-content;
+    }
+
+    .slide.white .slide-badge {
+      background: rgba(0,83,206,0.1);
+      color: #0053CE;
+      border-color: rgba(0,83,206,0.2);
+    }
+
+    /* Headline */
+    .slide-headline {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    /* Subheadline */
+    .slide-subheadline {
+      font-size: 16px;
+      opacity: 0.9;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    /* Icon */
+    .slide-icon {
+      font-size: 64px;
+      margin-bottom: 16px;
+    }
+
+    /* Metric */
+    .slide-metric {
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .slide-metric-number {
+      font-size: 80px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .slide-metric-label {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    /* Stats */
+    .slide-stats {
+      display: flex;
+      gap: 24px;
+      margin-top: auto;
+    }
+
+    .slide-stat {
+      text-align: center;
+      flex: 1;
+    }
+
+    .slide-stat-number {
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .slide-stat-label {
+      font-size: 11px;
+      opacity: 0.7;
+      text-transform: uppercase;
+    }
+
+    /* CTA */
+    .slide-cta {
+      background: #FBE91B;
+      color: #212529;
+      padding: 16px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: auto;
+      width: 100%;
+    }
+
+    /* Logo */
+    .slide-logo {
+      margin-top: auto;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    /* List */
+    .slide-list {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    .slide-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .slide-list li::before {
+      content: '✓';
+      color: #FBE91B;
+      font-weight: 700;
+    }
+
+    .slide.white .slide-list li::before {
+      color: #0053CE;
+    }
+
+    /* Swipe indicator */
+    .swipe-indicator {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      font-size: 12px;
+      opacity: 0.6;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Carousel Ads - Industrial</h1>
+<p class="carousel-info">Ogni carousel è composto da 5-7 slide da 1080x1080px (qui mostrate a 50%)</p>
+
+<!-- ========================================
+     CAROUSEL 1: Overview 6 Cluster
+     ======================================== -->
+<div class="carousel-container">
+  <h2 class="carousel-title">Carousel 1: Overview 6 Cluster</h2>
+  <div class="carousel-slides">
+
+    <!-- Slide 1: Intro -->
+    <div class="slide primary">
+      <div class="slide-content" style="justify-content: center; align-items: center; text-align: center;">
+        <span class="slide-number">1/8</span>
+        <span class="slide-badge">Tech4You</span>
+        <h2 class="slide-headline" style="font-size: 36px;">6 aree di innovazione, 30 sfide industriali risolte</h2>
+        <p class="slide-subheadline">Scorri per scoprire le tecnologie per il tuo settore →</p>
+        <div class="slide-stats">
+          <div class="slide-stat">
+            <div class="slide-stat-number">120</div>
+            <div class="slide-stat-label">Prototipi</div>
+          </div>
+          <div class="slide-stat">
+            <div class="slide-stat-number">TRL 6-9</div>
+            <div class="slide-stat-label">Maturità</div>
+          </div>
+          <div class="slide-stat">
+            <div class="slide-stat-number">433</div>
+            <div class="slide-stat-label">Ricercatori</div>
+          </div>
+        </div>
+        <div class="swipe-indicator">Scorri →</div>
+      </div>
+    </div>
+
+    <!-- Slide 2: Energy -->
+    <div class="slide energy">
+      <div class="slide-content">
+        <span class="slide-number">2/8</span>
+        <div class="slide-icon">⚡</div>
+        <span class="slide-badge">Energy & Efficienza</span>
+        <h2 class="slide-headline">25 prototipi per ottimizzare energia e efficienza</h2>
+        <ul class="slide-list">
+          <li>AI per fotovoltaico (+12% resa)</li>
+          <li>Storage ibrido microgrids</li>
+          <li>Wave energy converter</li>
+          <li>Gestione CER intelligente</li>
+        </ul>
+        <div class="slide-logo">Tech4You</div>
+        <div class="swipe-indicator">Scorri →</div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Circular -->
+    <div class="slide circular">
+      <div class="slide-content">
+        <span class="slide-number">3/8</span>
+        <div class="slide-icon">♻️</div>
+        <span class="slide-badge">Circular Economy & Blue</span>
+        <h2 class="slide-headline">27 prototipi per economia circolare e risorsa idrica</h2>
+        <ul class="slide-list">
+          <li>Riciclo batterie (>90% recupero)</li>
+          <li>Valorizzazione CO2 biogas</li>
+          <li>Droni microplastiche marine</li>
+          <li>Trattamento reflui innovativo</li>
+        </ul>
+        <div class="slide-logo">Tech4You</div>
+        <div class="swipe-indicator">Scorri →</div>
+      </div>
+    </div>
+
+    <!-- Slide 4: Climate -->
+    <div class="slide climate">
+      <div class="slide-content">
+        <span class="slide-number">4/8</span>
+        <div class="slide-icon">🌍</div>
+        <span class="slide-badge">Clima & Rischio</span>
+        <h2 class="slide-headline">26 prototipi per gestione rischio climatico</h2>
+        <ul class="slide-list">
+          <li>Early warning alluvioni (6-12h)</li>
+          <li>Monitoraggio frane AI</li>
+          <li>Fire detection in 5 minuti</li>
+          <li>Gestione siccità predittiva</li>
+        </ul>
+        <div class="slide-logo">Tech4You</div>
+        <div class="swipe-indicator">Scorri →</div>
+      </div>
+    </div>
+
+    <!-- Slide 5: AgriFood -->
+    <div class="slide agrifood">
+      <div class="slide-content">
+        <span class="slide-number">5/8</span>
+        <div class="slide-icon">🌾</div>
+        <span class="slide-badge">AgriFood</span>
+        <h2 class="slide-headline">15 prototipi per agricoltura e food</h2>
+        <ul class="slide-list">
+          <li>Irrigazione precisione (-50% acqua)</li>
+          <li>Tracciabilità blockchain</li>
+          <li>Serre smart robotizzate</li>
+          <li>Valorizzazione scarti</li>
+        </ul>
+        <div class="slide-logo">Tech4You</div>
+        <div class="swipe-indicator">Scorri →</div>
+      </div>
+    </div>
+
+    <!-- Slide 6: Cultural -->
+    <div class="slide cultural">
+      <div class="slide-content">
+        <span class="slide-number">6/8</span>
+        <div class="slide-icon">🏛️</div>
+        <span class="slide-badge">Cultural Heritage</span>
+        <h2 class="slide-headline">17 prototipi per patrimonio culturale</h2>
+        <ul class="slide-list">
+          <li>Esperienze XR immersive</li>
+          <li>Documentazione digitale</li>
+          <li>Itinerari AI personalizzati</li>
+          <li>Conservazione preventiva</li>
+        </ul>
+        <div class="slide-logo">Tech4You</div>
+        <div class="swipe-indicator">Scorri →</div>
+      </div>
+    </div>
+
+    <!-- Slide 7: Health -->
+    <div class="slide health">
+      <div class="slide-content">
+        <span class="slide-number">7/8</span>
+        <div class="slide-icon">🧬</div>
+        <span class="slide-badge">Health & Wellness</span>
+        <h2 class="slide-headline">8 prototipi per salute e benessere</h2>
+        <ul class="slide-list">
+          <li>Nutraceutici da scarti</li>
+          <li>Dermocosmetici funzionali</li>
+          <li>AI ricerca biomedica</li>
+          <li>Wearable clinici</li>
+        </ul>
+        <div class="slide-logo">Tech4You</div>
+        <div class="swipe-indicator">Scorri →</div>
+      </div>
+    </div>
+
+    <!-- Slide 8: CTA -->
+    <div class="slide white">
+      <div class="slide-content" style="justify-content: center; align-items: center; text-align: center;">
+        <span class="slide-number">8/8</span>
+        <span class="slide-badge">Assessment Gratuito</span>
+        <h2 class="slide-headline" style="color: #0053CE;">Scopri quali tecnologie risolvono le tue sfide</h2>
+        <p class="slide-subheadline" style="color: #495057;">In 45 minuti: mappatura sfide, matching prototipi, roadmap con fondi disponibili.</p>
+        <div class="slide-cta">
+          Prenota Assessment →
+        </div>
+        <div class="slide-logo" style="color: #0053CE;">Tech4You</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========================================
+     CAROUSEL 2: Focus Energy
+     ======================================== -->
+<div class="carousel-container">
+  <h2 class="carousel-title">Carousel 2: Focus Energy - 5 Sfide</h2>
+  <div class="carousel-slides">
+
+    <!-- Slide 1: Intro -->
+    <div class="slide energy">
+      <div class="slide-content" style="justify-content: center; align-items: center; text-align: center;">
+        <span class="slide-number">1/6</span>
+        <div class="slide-icon">⚡</div>
+        <h2 class="slide-headline">5 sfide Energy risolte con tecnologie TRL 7</h2>
+        <p class="slide-subheadline">Scorri per scoprire le soluzioni →</p>
+        <div class="slide-logo">Tech4You</div>
+      </div>
+    </div>
+
+    <!-- Slide 2: Sfida 1 -->
+    <div class="slide energy">
+      <div class="slide-content">
+        <span class="slide-number">2/6</span>
+        <span class="slide-badge">Sfida 1</span>
+        <h2 class="slide-headline">Il tuo impianto FV produce al massimo?</h2>
+        <div class="slide-metric">
+          <div class="slide-metric-number">+12%</div>
+          <div class="slide-metric-label">produzione con SMPPT AI</div>
+        </div>
+        <p class="slide-subheadline" style="margin-top: auto;">Nessuna modifica hardware. €12-18k/anno risparmiati per 1MW.</p>
+      </div>
+    </div>
+
+    <!-- Slide 3: Sfida 2 -->
+    <div class="slide energy">
+      <div class="slide-content">
+        <span class="slide-number">3/6</span>
+        <span class="slide-badge">Sfida 2</span>
+        <h2 class="slide-headline">Storage che copre picchi e emergenze</h2>
+        <div class="slide-metric">
+          <div class="slide-metric-number">48h</div>
+          <div class="slide-metric-label">autonomia con storage ibrido</div>
+        </div>
+        <p class="slide-subheadline" style="margin-top: auto;">Batterie + idrogeno. Autoconsumo CER dal 40% all'80%.</p>
+      </div>
+    </div>
+
+    <!-- Slide 4: Sfida 3 -->
+    <div class="slide energy">
+      <div class="slide-content">
+        <span class="slide-number">4/6</span>
+        <span class="slide-badge">Sfida 3</span>
+        <h2 class="slide-headline">Energia dalle onde senza parti mobili</h2>
+        <div class="slide-metric">
+          <div class="slide-metric-number">35%</div>
+          <div class="slide-metric-label">efficienza U-OWC</div>
+        </div>
+        <p class="slide-subheadline" style="margin-top: auto;">Integrabile in porti e dighe esistenti. Testato a Reggio Calabria.</p>
+      </div>
+    </div>
+
+    <!-- Slide 5: Sfida 4 -->
+    <div class="slide energy">
+      <div class="slide-content">
+        <span class="slide-number">5/6</span>
+        <span class="slide-badge">Sfida 4</span>
+        <h2 class="slide-headline">Retrofit edifici senza impianti</h2>
+        <div class="slide-metric">
+          <div class="slide-metric-number">-35%</div>
+          <div class="slide-metric-label">consumi HVAC</div>
+        </div>
+        <p class="slide-subheadline" style="margin-top: auto;">Pareti Trombe passive. Payback 3-5 anni senza incentivi.</p>
+      </div>
+    </div>
+
+    <!-- Slide 6: CTA -->
+    <div class="slide white">
+      <div class="slide-content" style="justify-content: center; align-items: center; text-align: center;">
+        <span class="slide-number">6/6</span>
+        <div class="slide-icon" style="color: #8FC68E;">⚡</div>
+        <h2 class="slide-headline" style="color: #212529;">Vuoi ottimizzare la tua energia?</h2>
+        <p class="slide-subheadline" style="color: #495057;">Assessment gratuito: scopri le tecnologie più adatte alle tue sfide.</p>
+        <div class="slide-cta">
+          Prenota Assessment Energy →
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ========================================
+     CAROUSEL 3: Social Proof + CTA
+     ======================================== -->
+<div class="carousel-container">
+  <h2 class="carousel-title">Carousel 3: Social Proof + Assessment CTA</h2>
+  <div class="carousel-slides">
+
+    <!-- Slide 1 -->
+    <div class="slide dark">
+      <div class="slide-content" style="justify-content: center; align-items: center; text-align: center;">
+        <span class="slide-number">1/5</span>
+        <h2 class="slide-headline" style="font-size: 36px;">Perché le aziende scelgono Tech4You?</h2>
+        <p class="slide-subheadline">Scorri per scoprire →</p>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide primary">
+      <div class="slide-content" style="justify-content: center; align-items: center; text-align: center;">
+        <span class="slide-number">2/5</span>
+        <div class="slide-metric">
+          <div class="slide-metric-number">€110M</div>
+          <div class="slide-metric-label">già investiti nell'ecosistema</div>
+        </div>
+        <p class="slide-subheadline" style="margin-top: 24px;">93 imprese attive stanno già beneficiando delle tecnologie T4Y</p>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide primary">
+      <div class="slide-content" style="justify-content: center; align-items: center; text-align: center;">
+        <span class="slide-number">3/5</span>
+        <div class="slide-metric">
+          <div class="slide-metric-number">€120B</div>
+          <div class="slide-metric-label">funding pubblico disponibile</div>
+        </div>
+        <p class="slide-subheadline" style="margin-top: 24px;">PNRR, Horizon Europe, PON/POR Sud, Accordi per l'Innovazione</p>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide primary">
+      <div class="slide-content" style="justify-content: center; align-items: center; text-align: center;">
+        <span class="slide-number">4/5</span>
+        <div class="slide-metric">
+          <div class="slide-metric-number">0€</div>
+          <div class="slide-metric-label">per il Climate Innovation Assessment</div>
+        </div>
+        <p class="slide-subheadline" style="margin-top: 24px;">45 minuti per mappare sfide, tecnologie e fondi. Senza impegno.</p>
+      </div>
+    </div>
+
+    <!-- Slide 5: CTA -->
+    <div class="slide white">
+      <div class="slide-content" style="justify-content: center; align-items: center; text-align: center;">
+        <span class="slide-number">5/5</span>
+        <span class="slide-badge">Inizia ora</span>
+        <h2 class="slide-headline" style="color: #0053CE; font-size: 32px;">Scopri le tecnologie per la tua azienda</h2>
+        <ul class="slide-list" style="margin: 24px 0;">
+          <li>Mappatura sfide prioritarie</li>
+          <li>Matching con prototipi T4Y</li>
+          <li>Roadmap fondi disponibili</li>
+        </ul>
+        <div class="slide-cta">
+          Prenota Assessment Gratuito →
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

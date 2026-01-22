@@ -1,0 +1,129 @@
+demo_id,nome,cluster,trl,descrizione_estesa,tipo_dimostratore,pp_original,spoke
+SPOKE3_DEMO_007,Smart Water Platform with IRRIFRAME Integration,AgriFood,7,Digital platform for water resource management in agriculture.,Software platform,PP 3.3.1,3
+SPOKE3_DEMO_006,Nature-Based Erosion Control System,AgriFood,7,Erosion control system using nature-based solutions.,Physical demonstrator,PP 3.2.1,3
+SPOKE3_DEMO_004,WoodTrace 4.0 - Blockchain Platform for Forest-Wood Supply Chain,AgriFood,7,Blockchain platform for forest-wood supply chain traceability.,Software,PP 3.2.1,3
+SPOKE3_DEMO_014,PASCOLO - IoT Livestock Monitoring System,AgriFood,7,IoT device for ruminant monitoring.,Physical demonstrator (IoT wearable),PP 3.1.1,3
+SPOKE3_DEMO_001,Experimental Field Platform - Multiple Cropping System (MCS),AgriFood,7,Experimental field platform for agroecological cropping models.,Physical demonstrator,PP 3.1.1,3
+SPOKE3_DEMO_002,ICT FARM-TECH Platform - GeoNode-Based,AgriFood,7,ICT platform for sustainable agriculture monitoring.,Software platform,PP 3.1.1,3
+SPOKE3_DEMO_010,Smart Food ICT Platform - Blockchain-IoT-Web Integration,AgriFood,7,Smart food ICT platform with blockchain and IoT.,Physical demonstrator,PP 3.4.2 and PP 3.4.3,3
+SPOKE3_DEMO_009,Prototype ICT Systems for Environmental Data in Agri-Food Sites,AgriFood,7,Prototype ICT systems for environmental data acquisition.,Software,PP 3.4.1,3
+SPOKE3_DEMO_008,Smart Insect Farming System for Food Production,AgriFood,7,Smart system for insect farming for food use.,Physical demonstrator,PP 3.4.1,3
+SPOKE3_DEMO_005,Floating Hydroponic Greenhouse with Renewable Energy,AgriFood,6,Hydroponic greenhouse on floating platform.,Physical demonstrator,PP 3.1bis.1,3
+SPOKE3_DEMO_012,Hermetia Lucens Bioconversion System for Insect Flour Production,AgriFood,6,Hermetia lucens cultivation for insect flour production.,Physical demonstrator,PP 3.5.1,3
+SPOKE3_DEMO_011,Orange Peel Waste Full Valorization Technologies,AgriFood,6,Technologies for full valorization of orange peel waste.,Physical demonstrator,PP 3.5.1,3
+SPOKE3_DEMO_003,GreenHouse Smart Platform for Soilless Cultivation and Robotic Harvesting,AgriFood,6,Smart platform for automated soilless cultivation.,Physical demonstrator,PP 3.1.1,3
+SPOKE2_DEMO_040,Experimental Plant for Lithium Battery Recycling,Circular,8,Experimental plant for lithium battery recycling.,Physical demonstrator,PP 2.4.1,2
+SPOKE2_DEMO_028,YOLOv8 Algorithm for Marine Species Photo-Identification,Circular,8,AI algorithm for automatic marine species recognition.,Algorithm and web-application,PP 2.3.1,2
+SPOKE2_DEMO_019,Smart Marine Waste Management System - Port of Cetraro,Circular,7,Sediment bypass system for Cetraro harbour.,Physical demonstrator and Software Platform,PP 2.2.2,2
+SPOKE2_DEMO_017,Marine Drone for Microplastic Removal with Digital Platform,Circular,7,Marine drone for microplastic removal with digital platform.,Physical demonstrator and Software Platform,PP 2.2.1,2
+SPOKE2_DEMO_015,CO2 Valorization System for Biogas - UNICAL Campus,Circular,7,System for catalytic valorization of CO2 from biogas.,Physical demonstrator,PP 2.1.3,2
+SPOKE2_DEMO_010,Wastewater Treatment Pilot Plant for Biomass Cultivation - Metaponto,Circular,7,Pilot plant for wastewater treatment and biomass cultivation.,Physical demonstrator,PP 2.1.1,2
+SPOKE2_DEMO_018,MBBR-MBR Wastewater Treatment System with Photocatalytic Reactor,Circular,7,Wastewater treatment system with MBBR MBR and photocatalytic reactor.,Physical demonstrator and Software Platform,PP 2.2.1,2
+SPOKE1_DEMO_015,WebGIS Platform for Forest Fire Management and Simulation,Climate,7,A WebGIS platform for the management and simulation of forest fires.,Software platform,PP 1.4.3,1
+SPOKE1_DEMO_002,FilTipiC - Landslide Risk Management Platforms (PIS),Climate,7,Methods and models for landslide risk management at different scales.,Software Platform,PP 1.1.2,1
+SPOKE1_DEMO_003,Hypes - HYdro Prediction Engine System,Climate,7,Software platform for flood forecasting and scenario simulation.,DTW Flooding prediction,PP 1.2.1,1
+SPOKE1_DEMO_004,Crati and Busento Rivers Discharge Measurement Station with WebGIS,Climate,7,Innovative systems for river streamflow estimation.,Station for measuring river discharge,PP 1.2.1,1
+SPOKE1_DEMO_016,FLOWS - Mobile App for Flood Warning,Climate,7,Mobile app for urban flood early warning.,Software (Mobile Application),PP 1.2.1,1
+SPOKE1_DEMO_017,Seismic-Acoustic Sensors for Sediment Transport Monitoring,Climate,7,Sensor network for continuous sediment transport monitoring.,Physical demonstrator,PP 1.2.1,1
+SPOKE1_DEMO_018,IN-FLOOD - Urban Drainage IoT Monitoring Cerisano,Climate,7,IoT monitoring system for urban drainage.,Software Platform,PP 1.2.1,1
+SPOKE1_DEMO_019,HYDROWATCH CS - Urban Hydrogeological Monitoring Platform,Climate,7,Real-time monitoring platform for urban hydrogeological conditions.,Software Platform,PP 1.2.1,1
+SPOKE1_DEMO_024,HI-2D-FLO - High Resolution 2D Flood Modeling Platform,Climate,7,Integrated platform for high-resolution urban flood simulation.,Software Platform,PP 1.2.1,1
+SPOKE1_DEMO_005,Web-GIS Platform for Groundwater Monitoring,Climate,7,Web-GIS platform for managing monitored data and processed cartography.,Web-GIS platform,PP 1.2.2,1
+SPOKE1_DEMO_006,Transportable Membrane System for Chromium Groundwater Purification,Climate,7,Transportable membrane system for water purification in contaminated sites.,Physical demonstrator,PP 1.2.2,1
+SPOKE1_DEMO_008,Platform for Hydrological Response in Mountain Basins,Climate,7,Platform for processing precipitation data for hydrological response assessment.,Software Platform,PP 1.2.4,1
+SPOKE1_DEMO_009,BaC DSS - Drought Analysis System with Experimental Field,Climate,7,Experimental field for drought analysis with DSS software.,Physical demonstrator and software platform,PP 1.2.5,1
+SPOKE1_DEMO_001,FilTipiC - Multiscale and Cross-Circular Platform with LabSit Integration,Climate,7,Multiscale platform integrating LabSit instrumentation.,Physical Demonstrator and Software Platform,PP 1.1.1,1
+SPOKE1_DEMO_013,Real-Time Fire Monitoring System - Sila National Park,Climate,7,Real-time fire monitoring system based on satellite and smart cameras.,Physical demonstrator and software platform,PP 1.4.1,1
+SPOKE6_DEMO_006,Bayesian Network for Theft and Accident Risk Prediction,Climate,7,Bayesian Network for risk prediction.,Software Platform,PP 6.4.1 (2),6
+SPOKE6_DEMO_005,LiDAR Forest Biomass Estimation Workflow - Monte Curcio Sila,Climate,7,Workflow for forest biomass estimation using LiDAR.,Software Platform,PP 6.4.1 (1),6
+SPOKE1_DEMO_014,Forest Management Assessment System - Aspromonte,Climate,6,Indicators and models for forest management assessment.,Physical demonstrator,PP 1.4.2,1
+SPOKE1_DEMO_023,d-SW-SPH - Coastal Morphodynamic Numerical Model,Climate,6,Innovative numerical model for coastal morphodynamic simulation.,Software (Numerical Model),PP 1.3.1,1
+SPOKE1_DEMO_011,Sustainable Wooden Vessel for Marine Monitoring,Climate,6,Vessel designed for marine monitoring with sustainable materials.,Physical demonstrator,PP 1.3.1,1
+SPOKE1_DEMO_020,AI Vision System for Bridge Structural Defect Detection,Climate,6,AI system for automatic detection of structural defects in bridges.,Software Platform (AI/Computer Vision),PP 1.2.3,1
+SPOKE1_DEMO_007,Digital Twin for Water Distribution Network and Bridge Assessment,Climate,6,Software framework reproducing water distribution network functioning.,Digital Twin,PP 1.2.3,1
+SPOKE1_DEMO_010,IT Platform for Environmental Authorization Process,Climate,,Creation of an IT platform for authorization process.,,,PP 1.2.6,1
+SPOKE1_DEMO_012,Early Warning System for Coastal Erosion Risk,Climate,,Early Warning system for coastal erosion risk.,Physical demonstrator,PP 1.3.2,1
+SPOKE6_DEMO_013,PAER - Risk Acquisition and Processing Framework,Climate,,Framework for risk data acquisition and processing.,Software Platform,PP 6.2.1,6
+SPOKE6_DEMO_014,AI Wildfire Risk Mapping System for Calabria,Climate,,AI system for wildfire risk mapping.,Software Platform,PP 6.2.1,6
+SPOKE4_DEMO_003,ARCHEOrecords - Archaeological Documentation Mobile App,Cultural,9,Mobile app for archaeological documentation.,Software platform,PP 4.1.3,4
+SPOKE4_DEMO_010,Accelerated Erosion Assessment Protocol and Database - Semi-Arid Areas,Cultural,8,Protocol for accelerated erosion assessment.,Database and protocol,PP 4.3.2,4
+SPOKE4_DEMO_006,Cultural Heritage Chaotic Design Prototypes - Advanced Manufacturing,Cultural,8,Prototypes using chaotic design framework.,Physical demonstrator,PP 4.2.1 Action 4,4
+SPOKE4_DEMO_007,Spatial Data Infrastructure (SDI) for Tourism Ecosystem Assessment,Cultural,8,SDI for tourism ecosystem assessment.,SDI Platform,PP 4.2.2,4
+SPOKE4_DEMO_015,Interactive Web Platform for Coastal Architectural Heritage - XR and Gamification,Cultural,7,Interactive web platform for coastal heritage with XR.,APP,PP 4.5.3,4
+SPOKE4_DEMO_017,Digital User Profiling Platform for Heritage Safety - Multi-User Access,Cultural,7,Digital platform for heritage safety with multi-user access.,Digital platform,PP 4.7.1,4
+SPOKE4_DEMO_014,Underwater Audio Guide for Submerged Heritage Exploration,Cultural,7,Underwater audio guide for submerged heritage.,Physical,PP 4.5.2,4
+SPOKE4_DEMO_001,TEI-XML Publishing Platform - eXist-db,Cultural,7,Software for managing TEI-XML collections.,Software,PP 4.1.1,4
+SPOKE4_DEMO_002,MANIFRACTURE - AI Video Installation on Papier-Mache Art,Cultural,7,AI video installation on papier-mache art.,Video installation,PP 4.1.2,4
+SPOKE4_DEMO_016,3D-4D WebGIS Digital Twin and Climate Intelligence Chamber (CIC),Cultural,7,3D-4D WebGIS platform with climate intelligence chamber.,Software and Physical,PP 4.6.1,4
+SPOKE4_DEMO_009,Territorial Transformation Videogame - Unity Engine,Cultural,7,Videogame for exploring territorial transformations.,Software,PP 4.3.1,4
+SPOKE4_DEMO_008,Interactive Digital Platform for Sustainable Food Policies,Cultural,7,Interactive platform for sustainable food policies.,Web platform,PP 4.3.1,4
+SPOKE4_DEMO_018,ClimaScapes Matera - Climate-Adaptive Urban Regeneration NBS,Cultural,7,Climate-adaptive urban regeneration with NBS.,Physical demonstrator and Digital Platform,PP 4.3.1,4
+SPOKE4_DEMO_013,XR Platform for Cultural Heritage - Authoring Tool and AR/VR Apps,Cultural,7,Modular XR platform for cultural heritage applications.,Software platform,PP 4.5.1,4
+SPOKE4_DEMO_011,Heritage Conservation Technologies Integrated Suite,Cultural,7,Integrated suite for heritage conservation.,Physical and Software,PP 4.4.1,4
+SPOKE4_DEMO_005,HBIM-GIS Proto-Digital Twin - Casa Noha with Digital Product Passport,Cultural,6,Proto-Digital Twin integrating HBIM and GIS.,Digital Twin,PP 4.2.1 ACTION 1-3,4
+SPOKE4_DEMO_004,Seismic Risk Management Platform for Masonry Churches,Cultural,6,Platform for seismic risk management of churches.,Platform,PP 4.2.1 Action 2,4
+SPOKE4_DEMO_019,BLUEHORIZON - Modular ROV for Underwater Surveying,Cultural,6,,,,,4
+SPOKE4_DEMO_020,BlueNet - Underwater Wireless Sensor Network,Cultural,6,,,,,4
+SPOKE6_DEMO_010,SOCRATE - AI-Powered Cultural Itinerary Platform,Cultural,,AI system for personalized cultural itineraries.,Software Platform,PP 6.2.1,6
+SPOKE4_DEMO_NEW_001,EcoReef,Cultural,,,,,4
+SPOKE6_DEMO_001,Enabling Platform (EP) - Tech4You Central Infrastructure,Energy,8,Central technological infrastructure of Tech4You project.,Software Platform,PP 6.1.1,6
+SPOKE2_DEMO_013,Bio-Solar Green Roof System - Building 46C UNICAL,Energy,7,Bio-solar green roof system at UNICAL.,Physical demonstrator,PP 2.1.2,2
+SPOKE2_DEMO_041,Environmental Sensor System for Public Transport Monitoring,Energy,7,Environmental sensor system for public transport.,Physical demonstrator and Software Platform,PP 2.5.1,2
+SPOKE2_DEMO_012,Student Residence Multifunctional Hall Energy System,Energy,7,Energy system for student residence multifunctional hall.,Physical demonstrator and Software Platform,PP 2.1.2,2
+SPOKE2_DEMO_011,Trombe Wall Innovative Solution for Indoor Comfort,Energy,7,Innovative Trombe wall solution for indoor comfort and energy efficiency.,Physical demonstrator,PP 2.1.2,2
+SPOKE2_DEMO_044,Smart Microgrids with Dual Storage (Battery + Hydrogen),Energy,7,Advanced microgrid management with dual storage.,Software Platform,PP 2.1.1,2
+SPOKE2_DEMO_009,Off-Grid EV Charging Station with Ethanol Generator and PV,Energy,7,Off-grid charging station for EVs with ethanol generator and PV.,Physical demonstrator and Software Platform,PP 2.1.1,2
+SPOKE2_DEMO_008,Hybrid Solar-Thermal System with Parabolic Concentrators - UNICAL,Energy,7,Hybrid system for combined electricity and hot water production.,Physical demonstrator,PP 2.1.1,2
+SPOKE2_DEMO_007,U-OWC Wave Energy Converter - NOEL Reggio Calabria,Energy,7,U-shaped Oscillating Water Column device for wave energy conversion.,Physical demonstrator,PP 2.1.1,2
+SPOKE2_DEMO_006,SMPPT Physical Prototype - UNIRC Electronics Lab,Energy,7,SMPPT prototype for optimizing photovoltaic systems performance.,Physical demonstrator,PP 2.1.1,2
+SPOKE2_DEMO_005,SMPPT AI Algorithm for Photovoltaic Optimization,Energy,7,SMPPT algorithm based on AI for dynamic optimization of photovoltaic energy production.,Algorithm,PP 2.1.1,2
+SPOKE2_DEMO_004,Modular Biodiesel Production System,Energy,7,Modular biodiesel production system with four main steps.,Physical demonstrator,PP 2.1.1,2
+SPOKE2_DEMO_003,Pilot Plant for Lipid Extraction and Biodiesel Production,Energy,7,Pilot plant for lipid extraction and biodiesel production.,Physical demonstrator,PP 2.1.1,2
+SPOKE2_DEMO_035,Close-Range Photogrammetric Instrument for Herbaceous Vegetation,Energy,7,Close-range photogrammetric instrument for vegetation detection.,Physical demonstrator,PP 2.3.2,2
+SPOKE2_DEMO_016,Membrane Distillation and Crystallization System for Saline Water,Energy,7,System for recovery of elements from saline waters.,Physical demonstrator,PP 2.2.1,2
+SPOKE2_DEMO_020,Sediment Bypass System - Cetraro Harbour,Energy,7,Monitoring system for sediment transport.,Physical demonstrator,PP 2.2.2,2
+SPOKE2_DEMO_021,YES - Sediment Transport Monitoring System and QGIS Plugin,Energy,7,ASV for coastal monitoring with navigation and sensors.,Physical demonstrator,PP 2.2.2,2
+SPOKE2_DEMO_022,ASV - Autonomous Surface Vehicle for Coastal Monitoring,Energy,7,WebGIS prototype platform for territorial data management.,Physical demonstrator,PP 2.2.2,2
+SPOKE2_DEMO_023,WebGIS Prototype Platform for Territorial-Environmental Data,Energy,7,Integrated sea wave and wind acquisition station.,Software Platform,PP 2.2.2,2
+SPOKE2_DEMO_024,Integrated Sea Wave and Wind Acquisition Station,Energy,7,Software platform for meteo-marine data management.,Physical demonstrator and Software Platform,PP 2.2.2,2
+SPOKE2_DEMO_048,Coastal Flooding Analysis from Extreme Meteo-Marine Events,Energy,7,Analysis and mapping of coastal flooding from extreme events.,Software Platform,PP 2.2.2,2
+SPOKE2_DEMO_026,ROV System for Coralligenous Bioconstruction Mapping - Capo Rizzuto MPA,Energy,7,ROV system for mapping coralligenous bioconstructions.,Physical demonstrator and Software Platform,PP 2.3.1,2
+SPOKE2_DEMO_027,Insect Meal Aquaculture Feed Protocol - Tenebrio molitor,Energy,7,Protocols for aquaculture feed from insect meal.,Data-base and protocols,PP 2.3.1,2
+SPOKE2_DEMO_014,Rainwater Collection and Reuse System - Building 46C UNICAL,Energy,7,Rainwater collection and reuse system at UNICAL.,Physical demonstrator,PP 2.1.2,2
+SPOKE2_DEMO_029,Posidonia Oceanica Transplant Unit with Biomaterials,Energy,7,Transplant unit for Posidonia oceanica restoration.,Physical demonstrator,PP 2.3.1,2
+SPOKE2_DEMO_030,Smart Bio-Reef for Marine Biodiversity Monitoring - Capo Tirone,Energy,7,Smart bio-reef for marine biodiversity monitoring.,Physical demonstrator,PP 2.3.1,2
+SPOKE2_DEMO_031,Remote Sensing Methodology for Dune Environment Monitoring,Energy,7,Remote sensing methodology for monitoring dune environments.,Methodology,PP 2.3.1,2
+SPOKE2_DEMO_032,Membrane-Based Biosensor for Paraoxon Detection,Energy,7,Biosensor for detection of organophosphate microcontaminants.,Physical demonstrator,PP 2.3.1,2
+SPOKE2_DEMO_033,Biodegradable Adhesive Polymer - Collagen-Dopamine for Marine Applications,Energy,7,Biodegradable polymeric material with adhesive properties.,Physical demonstrator,PP 2.3.1,2
+SPOKE2_DEMO_034,Advanced ROV with DVL for Seagrass Meadow 3D Reconstruction,Energy,7,Advanced ROV system for 3D seabed reconstruction.,Physical demonstrator,PP 2.3.1,2
+SPOKE2_DEMO_050,Floating Spar Buoy for Meteo-Marine Monitoring - NOEL,Energy,7,,,,,2
+SPOKE2_DEMO_036,Climate-Controlled Chamber for Air Pollutant Biomonitoring,Energy,7,Climate-controlled chamber for biomonitoring air pollutants.,Physical demonstrator,PP 2.3.2,2
+SPOKE2_DEMO_037,Web App for Insect Identification - Conservation and Applied Interest,Energy,7,App for identification of insects.,Web application,PP 2.3.2,2
+SPOKE2_DEMO_038,QGIS Plug-in for Plant Species Climate Change Risk Assessment,Energy,7,QGIS plug-in for climate change risk assessment.,Software Platform,PP 2.3.2,2
+SPOKE2_DEMO_039,Satellite-Based Biodiversity Estimation Platform,Energy,7,Platform for remote estimation of biodiversity.,Software Platform,PP 2.3.2,2
+SPOKE6_DEMO_002,Advanced Technologies Public Catalog Platform,Energy,7,Public catalog of advanced technologies.,Software Platform,PP 6.2.1,6
+SPOKE2_DEMO_002,Biofuel-Biomass ORC Cogeneration System,Energy,7,Cogeneration system integrating biofuel engine with biomass ORC.,Physical demonstrator,PP 2.1.1,2
+SPOKE6_DEMO_003,Open Test 2.0 Platform - Super Users Test-Driven Innovation,Energy,7,Framework for test-driven innovation.,Software Platform,PP 6.3.1 (1),6
+SPOKE2_DEMO_046,CuBoat - Smart Floating Platform for Marine Water Quality Monitoring,Energy,7,Smart floating platform for marine water quality monitoring.,Physical demonstrator (IoT platform),PP 2.2.1,2
+SPOKE2_DEMO_045,T4U-XTEC - Concentrated Solar Thermal Energy Converter,Energy,6,Hybrid CSP system combining thermionic and thermoelectric technology.,Physical demonstrator,PP 2.1.3,2
+SPOKE2_DEMO_051,Insect-Based Aquafeed Production Protocol - Tenebrio molitor,Energy,6,Optimized protocols for insect-based aquafeed production.,Research protocol,PP 2.3.1,2
+SPOKE2_DEMO_042,Thematic Map for Renewable Energy Potential - Calabria Region,Energy,6,Thematic map for renewable energy potential in Calabria.,Software Platform,PP 2.5.2,2
+SPOKE2_DEMO_043,Organic Solar Cells - Nanocomposite Materials Research,Energy,6,Research on organic nanocomposite solar cells.,Research prototype,PP 2.1.1,2
+SPOKE2_DEMO_047,Sustainable Magnesian Cements from Desalination Brine,Energy,6,Sustainable magnesian cements from desalination brine.,Physical demonstrator (materials),PP 2.2.1,2
+SPOKE2_DEMO_001,REC Management Platform - Renewable Energy Communities,Energy,6,Management platform for Renewable Energy Communities with forecasting and optimization.,Software platform,PP 2.1.1,2
+SPOKE6_DEMO_004,AI-Based Testing Suite with Autonomous Agents - TEST4YOU,Energy,6,AI-based testing suite with autonomous agents.,Software Platform,PP 6.3.1 (2),6
+SPOKE2_DEMO_049,Regulatory Framework for Battery Second-Life Certification,Energy,5,,,,,2
+SPOKE6_DEMO_012,AI Lithium-Ion Battery Classifier for Recycling,Energy,,AI visual recognition for lithium battery classification.,Software Service,PP 6.2.1,6
+SPOKE6_DEMO_008,LoRA Multi-Hop IoT Platform,Energy,,LoRA Multi-Hop platform for IoT networks.,Software Platform,PP 6.2.1,6
+SPOKE2_DEMO_NEW_001,AI Energy Optimizer,Energy,,,,,2
+SPOKE6_DEMO_007,Holographic 5G/6G Communications System for XR/Metaverse,Energy,,Holographic 5G/6G communications system.,Physical demonstrator and Software Platform,PP 6.2.1,6
+SPOKE2_DEMO_NEW_002,AquaPure,Energy,,,,,2
+SPOKE6_DEMO_011,AI Energy Optimizer for Photovoltaic Systems,Energy,,Intelligent energy optimization system for PV.,Software Platform,PP 6.2.1,6
+SPOKE5_DEMO_001,Functional Food and Nutraceutical Product Line for Health Promotion,Health,8,Functional food and nutraceutical product line.,Functional food products,PP 5.1.1,5
+SPOKE5_DEMO_007,WEEPIE - Medication Compliance IoT System,Health,7,,,,,5
+SPOKE5_DEMO_002,Functional Dermocosmetic Line from Agro-Food By-Products,Health,7,Functional dermocosmetic line from agro-food by-products.,Physical Demonstrator,PP 5.2.1,5
+SPOKE5_DEMO_006,EDIPO - Diabetic Neuropathy Diagnostic Device,Health,7,,,,,5
+SPOKE6_DEMO_015,SupportAI - AI Environment for Biomedical Research,Health,6,AI system for biomedical research support.,Software Platform,PP 6.3.1,6
+SPOKE5_DEMO_005,Proteomic and Transcriptomic Profiling Panel for Nutraceutical Assessment,Health,6,Panel for assessing nutraceutical effectiveness.,Profiling Panel,PP 5.4.1,5
+SPOKE5_DEMO_008,Wellness Wearable - Personalized Wellness Farm Platform,Health,6,,,,,5
+SPOKE6_DEMO_009,EEG Decoding System for Brain-Computer Interface,Health,,BCI system with EEG sensors.,Physical demonstrator and Software Platform,PP 6.2.1,6

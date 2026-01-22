@@ -213,7 +213,8 @@ p { font-size: var(--text-base); }
 .steps-container {
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   margin: 0;
   padding: 0;
   background: var(--light);
@@ -285,8 +286,9 @@ p { font-size: var(--text-base); }
 .step-fullpage {
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  padding: var(--space-xl) 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-xl) var(--space-md);
   background: var(--white);
 }
 
@@ -379,7 +381,6 @@ p { font-size: var(--text-base); }
    ======================================== */
 .hero-welcome {
   min-height: 100vh;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -389,6 +390,7 @@ p { font-size: var(--text-base); }
   background-position: center;
   color: var(--white);
   text-align: center;
+  padding: var(--space-xl) var(--space-md);
   padding: 0;
   margin: 0;
 }

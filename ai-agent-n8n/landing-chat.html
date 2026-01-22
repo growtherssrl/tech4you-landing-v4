@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech4You | Ecosistema d'Innovazione sul Climate Change</title>
+  <meta name="description" content="120 tecnologie validate, 433 ricercatori, €110M investiti. Scopri come l'innovazione climate-tech può trasformare la tua organizzazione.">
+
+  <!-- Fonts - Tech4You Brand -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Tech4You Brand Colors */
+      --primary: #0098bb;
+      --primary-dark: #07667a;
+      --secondary: #0c919c;
+      --accent: #0098bb;
+      --accent-light: #00b8e0;
+      --accent-green: #8fc68e;
+      --dark-blue: #00323d;
+      --dark-blue-alt: #1e3957;
+      --yellow-accent: #fbe91b;
+      --text-primary: #1a1a2e;
+      --text-secondary: #4a5568;
+      --text-light: #718096;
+      --bg-white: #ffffff;
+      --bg-light: #f8fafc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-white);
+      min-height: 100vh;
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+
+    /* Animated background - subtle for white bg */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bg-animation::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: radial-gradient(ellipse at center, rgba(0, 152, 187, 0.03) 0%, transparent 70%);
+      animation: pulse 15s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.2); opacity: 0.5; }
+    }
+
+    /* Grid overlay - subtle for white bg */
+    .grid-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(0, 152, 187, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 152, 187, 0.02) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.9) 100%);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+
+    .logo-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-text span {
+      color: var(--accent);
+    }
+
+    .logo-img {
+      height: 40px;
+      width: auto;
+    }
+
+    .header-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(0, 152, 187, 0.1);
+      border: 1px solid rgba(0, 152, 187, 0.2);
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .header-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Main content */
+    main {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      gap: 4rem;
+      padding: 8rem 4rem 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Left section */
+    .content-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 .highlight {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-green) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 540px;
+      margin-bottom: 3rem;
+      font-weight: 400;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-item {
+      position: relative;
+    }
+
+    .stat-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    /* Trust badges */
+    .trust-section {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      max-width: 540px;
+    }
+
+    .trust-label {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .trust-logos {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      opacity: 0.8;
+    }
+
+    .trust-logo {
+      height: 32px;
+      filter: none;
+    }
+
+    /* Mini Carousel for Trust */
+    .mini-carousel {
+      overflow: hidden;
+      width: 100%;
+      mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+      margin-bottom: 1.5rem;
+    }
+
+    .mini-carousel-track {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: max-content;
+      animation: mini-scroll 18s linear infinite;
+    }
+
+    .mini-carousel-track img {
+      height: 45px;
+      width: 100px;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.6;
+      transition: all 0.3s ease;
+    }
+
+    .mini-carousel-track img:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+
+    @keyframes mini-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Institutional Section */
+    .institutional-section {
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .institutional-label {
+      font-size: 0.7rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+
+    .institutional-logos img {
+      height: 32px;
+      width: auto;
+      opacity: 0.8;
+    }
+
+    /* Right section - Chat */
+    .chat-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .chat-container {
+      background: var(--bg-white);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 24px;
+      overflow: hidden;
+      height: 600px;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.05),
+        0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-header {
+      padding: 1.25rem 1.5rem;
+      background: var(--primary);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .chat-header h3, .chat-header .chat-status {
+      color: #fff;
+    }
+
+    .chat-avatar {
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-avatar svg {
+      width: 24px;
+      height: 24px;
+      color: #fff;
+    }
+
+    .chat-info h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.125rem;
+      color: #fff;
+    }
+
+    .chat-info p {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .chat-status {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--accent);
+    }
+
+    .chat-status::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.9); }
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 1.5rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .message {
+      max-width: 85%;
+      padding: 1rem 1.25rem;
+      border-radius: 16px;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      animation: messageIn 0.3s ease-out;
+    }
+
+    @keyframes messageIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .message.bot {
+      background: var(--bg-light);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      color: var(--text-primary);
+    }
+
+    .message.user {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--primary-dark) 100%);
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+      font-weight: 500;
+    }
+
+    .message strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .message.bot strong {
+      color: var(--primary-dark);
+    }
+
+    .message .stats-inline {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      font-size: 0.8125rem;
+    }
+
+    .message .stats-inline span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-light);
+      border-radius: 16px;
+      border-bottom-left-radius: 4px;
+      align-self: flex-start;
+      max-width: 80px;
+    }
+
+    .typing-indicator span {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: typing 1.4s ease-in-out infinite;
+    }
+
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typing {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-4px); opacity: 1; }
+    }
+
+    .chat-input-area {
+      padding: 1rem 1.5rem;
+      background: var(--bg-light);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .chat-input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--bg-white);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .chat-input-wrapper:focus-within {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
+    }
+
+    .chat-input-wrapper.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .chat-input-wrapper.disabled .chat-input {
+      cursor: not-allowed;
+    }
+
+    .chat-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-size: 0.9375rem;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .chat-input:disabled {
+      cursor: not-allowed;
+    }
+
+    .chat-input::placeholder {
+      color: var(--text-secondary);
+    }
+
+    .chat-send-btn {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .chat-send-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+    }
+
+    .chat-send-btn svg {
+      width: 18px;
+      height: 18px;
+      color: var(--primary);
+    }
+
+    /* Cluster pills */
+    .cluster-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .cluster-pill {
+      padding: 0.5rem 1rem;
+      background: var(--bg-light);
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: var(--text-primary);
+    }
+
+    .cluster-pill:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* CTA Button in chat */
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.5rem;
+      background: var(--accent);
+      color: var(--dark-blue);
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 152, 187, 0.3);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      background: var(--accent-green);
+      box-shadow: 0 6px 20px rgba(0, 152, 187, 0.4);
+    }
+
+    .cta-button svg {
+      transition: transform 0.3s ease;
+    }
+
+    .cta-button:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      main {
+        grid-template-columns: 1fr;
+        padding: 6rem 2rem 2rem;
+        gap: 2rem;
+      }
+
+      .content-section {
+        text-align: center;
+        align-items: center;
+      }
+
+      .subtitle {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .stats-grid {
+        justify-content: center;
+      }
+
+      .trust-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .trust-logos {
+        justify-content: center;
+      }
+
+      .chat-container {
+        height: 500px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding: 1rem 1.5rem;
+      }
+
+      .header-badge {
+        display: none;
+      }
+
+      main {
+        padding: 5rem 1rem 1rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      .stat-value {
+        font-size: 1.75rem;
+      }
+
+      .stat-label {
+        font-size: 0.75rem;
+      }
+    }
+
+    /* N8N Chat Widget Override */
+    #n8n-chat {
+      --chat--color-primary: var(--accent);
+      --chat--color-secondary: var(--secondary);
+      --chat--color-background: var(--primary);
+      --chat--border-radius: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-animation"></div>
+  <div class="grid-overlay"></div>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo-t4y-1.png" alt="Tech4You" class="logo-img">
+    </div>
+  </header>
+
+  <main>
+    <section class="content-section">
+      <div class="eyebrow">Ecosistema PNRR - NextGenerationEU</div>
+      <h1>
+        Naviga le nostre tecnologie e scopri come
+        <span class="highlight">creano valore per te</span>
+      </h1>
+      <p class="subtitle">
+        120 soluzioni sviluppate da 433 ricercatori, €110M già investiti dal PNRR.
+        Esplora il portfolio, identifica le tecnologie per il tuo settore
+        e prenota una call gratuita di 10 minuti con un nostro esperto.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value">120</div>
+          <div class="stat-label">Tecnologie<br>TRL 6-9</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">€110M</div>
+          <div class="stat-label">Investimenti<br>attivati</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">433</div>
+          <div class="stat-label">Ricercatori<br>specializzati</div>
+        </div>
+      </div>
+
+      <div class="trust-section">
+        <div class="trust-label">Partner dell'ecosistema</div>
+        <div class="mini-carousel">
+          <div class="mini-carousel-track">
+            <img src="images/unical.png" alt="UNICAL">
+            <img src="images/cnr.png" alt="CNR">
+            <img src="images/tim.png" alt="TIM">
+            <img src="images/engineering.png" alt="Engineering">
+            <img src="images/nttdata.png" alt="NTT Data">
+            <img src="images/rina.png" alt="RINA">
+            <img src="images/unibas.png" alt="UNIBAS">
+            <img src="images/crea.png" alt="CREA">
+            <!-- Duplicate for seamless loop -->
+            <img src="images/unical.png" alt="UNICAL">
+            <img src="images/cnr.png" alt="CNR">
+            <img src="images/tim.png" alt="TIM">
+            <img src="images/engineering.png" alt="Engineering">
+            <img src="images/nttdata.png" alt="NTT Data">
+            <img src="images/rina.png" alt="RINA">
+            <img src="images/unibas.png" alt="UNIBAS">
+            <img src="images/crea.png" alt="CREA">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="chat-section">
+      <div class="chat-container" id="chat-widget">
+        <div class="chat-header">
+          <div class="chat-avatar">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div class="chat-info">
+            <h3>Tech4You Assistant</h3>
+            <p>Innovation Advisor</p>
+          </div>
+          <div class="chat-status">Online</div>
+        </div>
+
+        <div class="chat-messages" id="chat-messages">
+          <div class="message bot">
+            Benvenuto nell'ecosistema Tech4You.
+            <br><br>
+            Sono l'assistente digitale dell'Ecosistema d'Innovazione sul Climate Change, iniziativa finanziata dal PNRR - NextGenerationEU.
+            <div class="stats-inline">
+              <div><span>120</span> tecnologie</div>
+              <div><span>433</span> ricercatori</div>
+              <div><span>€110M</span> investiti</div>
+            </div>
+          </div>
+          <div class="message bot">
+            Come posso supportarLa nella scoperta delle nostre soluzioni?
+            <div class="cluster-pills">
+              <span class="cluster-pill" data-cluster="industrial">Sono un'impresa</span>
+              <span class="cluster-pill" data-cluster="investor">Sono un investitore</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-input-area">
+          <div class="chat-input-wrapper">
+            <input type="text" class="chat-input" id="chat-input" placeholder="Scriva qui il Suo messaggio...">
+            <button class="chat-send-btn" id="chat-send">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Configuration
+    const CONFIG = {
+      webhookUrl: 'https://n8n.growthers.io/webhook/tech4you-assistant/chat',
+      sessionId: 'session_' + Math.random().toString(36).substr(2, 9)
+    };
+
+    // DOM Elements
+    const chatMessages = document.getElementById('chat-messages');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const chatInputWrapper = document.querySelector('.chat-input-wrapper');
+
+    // State
+    let isWaiting = false;
+    let chatEnabled = false;
+
+    // Initially disable chat input
+    function disableChatInput() {
+      chatInput.disabled = true;
+      chatInputWrapper.classList.add('disabled');
+      chatInput.placeholder = 'Seleziona un\'opzione sopra per iniziare...';
+    }
+
+    // Enable chat input after button click
+    function enableChatInput() {
+      chatEnabled = true;
+      chatInput.disabled = false;
+      chatInputWrapper.classList.remove('disabled');
+      chatInput.placeholder = 'Scriva qui il Suo messaggio...';
+      chatInput.focus();
+    }
+
+    // Initialize with disabled input
+    disableChatInput();
+
+    // Send message
+    async function sendMessage(text, bypassCheck = false) {
+      if (!text.trim() || isWaiting) return;
+      if (!chatEnabled && !bypassCheck) return;
+
+      // Add user message
+      addMessage(text, 'user');
+      chatInput.value = '';
+
+      // Show typing indicator
+      isWaiting = true;
+      const typingEl = showTyping();
+
+      try {
+        const response = await fetch(CONFIG.webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            sessionId: CONFIG.sessionId,
+            chatInput: text,
+            action: 'sendMessage'
+          })
+        });
+
+        const data = await response.json();
+
+        // Remove typing indicator
+        typingEl.remove();
+        isWaiting = false;
+
+        // Add bot response
+        if (data.output) {
+          addMessage(data.output, 'bot');
+
+          // Check for redirect
+          checkForRedirect(data.output);
+        }
+
+      } catch (error) {
+        console.error('Error:', error);
+        typingEl.remove();
+        isWaiting = false;
+        addMessage('Mi scuso per l\'inconveniente. Si è verificato un errore temporaneo. La prego di riprovare.', 'bot');
+      }
+    }
+
+    // Add message to chat
+    function addMessage(text, type) {
+      const msgEl = document.createElement('div');
+      msgEl.className = `message ${type}`;
+      msgEl.innerHTML = formatMessage(text);
+      chatMessages.appendChild(msgEl);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Format message (convert markdown-like syntax)
+    function formatMessage(text) {
+      return text
+        // Remove REDIRECT comments and surrounding whitespace/newlines
+        .replace(/\s*<!--\s*REDIRECT\s*:.*?-->\s*/gis, '')
+        // Remove markdown links and keep just text
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        // Remove newlines BEFORE bold text (keep text inline)
+        .replace(/\n+\*\*/g, ' **')
+        // Remove newlines AFTER bold text (keep text inline)
+        .replace(/\*\*\n+/g, '** ')
+        // Bold text
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        // Line breaks
+        .replace(/\n/g, '<br>')
+        // Clean up multiple br tags
+        .replace(/(<br>){2,}/g, '<br><br>')
+        // Remove leading/trailing br
+        .replace(/^(<br>)+|(<br>)+$/g, '');
+    }
+
+    // Show typing indicator
+    function showTyping() {
+      const typingEl = document.createElement('div');
+      typingEl.className = 'typing-indicator';
+      typingEl.innerHTML = '<span></span><span></span><span></span>';
+      chatMessages.appendChild(typingEl);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      return typingEl;
+    }
+
+    // Check for redirect instruction and create button
+    function checkForRedirect(text) {
+      // More flexible regex to catch REDIRECT comments
+      const redirectMatch = text.match(/<!--\s*REDIRECT\s*:\s*(\{[\s\S]*?\})\s*-->/i);
+      if (redirectMatch) {
+        try {
+          // Clean up the JSON string
+          const jsonStr = redirectMatch[1].replace(/\n/g, '').replace(/\s+/g, ' ');
+          const redirectData = JSON.parse(jsonStr);
+          // Use URL directly without parameters
+          const url = redirectData.url;
+
+          console.log('Redirect URL:', url); // Debug
+
+          // Create a button instead of auto-redirect
+          setTimeout(() => {
+            const btnEl = document.createElement('div');
+            btnEl.className = 'message bot';
+            btnEl.innerHTML = `
+              <a href="${url}" class="cta-button" onclick="window.open('${url}', '_blank'); return false;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+                Accedi alla pagina dedicata
+              </a>
+            `;
+            chatMessages.appendChild(btnEl);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+          }, 500);
+        } catch (e) {
+          console.error('Redirect parse error:', e, 'Match:', redirectMatch[1]);
+        }
+      }
+    }
+
+    // Event listeners
+    chatSend.addEventListener('click', () => sendMessage(chatInput.value));
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage(chatInput.value);
+    });
+
+    // Quick action pills
+    document.querySelectorAll('.cluster-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        // Enable chat input on first button click
+        if (!chatEnabled) {
+          enableChatInput();
+        }
+
+        const type = pill.dataset.cluster;
+        if (type === 'industrial') {
+          sendMessage('Rappresento un\'impresa interessata alle vostre tecnologie');
+        } else if (type === 'investor') {
+          sendMessage('Opero nel settore degli investimenti in innovazione');
+        }
+
+        // Hide the pills after selection
+        const pillsContainer = pill.closest('.cluster-pills');
+        if (pillsContainer) {
+          pillsContainer.style.display = 'none';
+        }
+      });
+    });
+
+    // Auto-scroll on new messages
+    const observer = new MutationObserver(() => {
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    });
+    observer.observe(chatMessages, { childList: true });
+  </script>
+</body>
+</html>

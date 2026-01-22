@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech4You - LinkedIn Ads - Square Investor (1080x1080)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f0f0;
+      padding: 40px;
+    }
+
+    .ads-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      max-width: 2300px;
+      margin: 0 auto;
+    }
+
+    .ad-group {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .ad-group h2 {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .ad-row {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    /* Base Ad Style - 1080x1080 */
+    .ad-square {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Scale down for display */
+    .ad-square.preview {
+      transform: scale(0.5);
+      transform-origin: top left;
+      margin-right: -540px;
+      margin-bottom: -540px;
+    }
+
+    /* Color Variants - Investor */
+    .ad-square.investor-primary { background: linear-gradient(135deg, #07667A 0%, #0053CE 100%); }
+    .ad-square.investor-dark { background: linear-gradient(135deg, #212529 0%, #07667A 100%); }
+    .ad-square.investor-premium { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
+    .ad-square.investor-gold { background: linear-gradient(135deg, #212529 0%, #2d2d2d 100%); }
+
+    /* Pattern Overlay */
+    .ad-square::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    /* Content Layout */
+    .ad-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 60px;
+      color: white;
+    }
+
+    /* Badge */
+    .ad-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 32px;
+      border: 1px solid rgba(255,255,255,0.15);
+      width: fit-content;
+    }
+
+    .ad-badge.gold {
+      background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
+      color: #1a1a2e;
+      border: none;
+    }
+
+    /* Headline */
+    .ad-headline {
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Metric Big */
+    .metric-big {
+      text-align: center;
+      padding: 48px 0;
+    }
+
+    .metric-big-number {
+      font-size: 140px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .metric-big-number.gold {
+      background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .metric-big-label {
+      font-size: 24px;
+      opacity: 0.9;
+    }
+
+    /* Stats Row */
+    .ad-stats {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .ad-stat {
+      text-align: center;
+      flex: 1;
+    }
+
+    .ad-stat-number {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .ad-stat-number.gold {
+      background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .ad-stat-label {
+      font-size: 14px;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* CTA */
+    .ad-cta {
+      background: #FBE91B;
+      color: #212529;
+      padding: 24px 48px;
+      border-radius: 12px;
+      font-size: 22px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      width: 100%;
+      margin-top: auto;
+    }
+
+    .ad-cta.premium {
+      background: linear-gradient(135deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
+      color: #1a1a2e;
+    }
+
+    .ad-cta-arrow {
+      font-size: 28px;
+    }
+
+    /* Logo */
+    .ad-logo {
+      position: absolute;
+      bottom: 60px;
+      right: 60px;
+    }
+
+    .ad-logo-text {
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+    }
+
+    /* Subheadline */
+    .ad-subheadline {
+      font-size: 24px;
+      opacity: 0.9;
+      line-height: 1.4;
+      margin-bottom: 32px;
+    }
+
+    /* Center content variant */
+    .ad-content.centered {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .ad-content.centered .ad-headline {
+      flex-grow: 0;
+      justify-content: center;
+    }
+
+    /* Portfolio mini grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .portfolio-item {
+      background: rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .portfolio-item-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .portfolio-item-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .portfolio-item-count {
+      font-size: 12px;
+      opacity: 0.6;
+    }
+
+    /* Urgency banner */
+    .urgency-banner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(90deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
+      color: #1a1a2e;
+      padding: 16px;
+      font-size: 18px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* Feature list */
+    .feature-list {
+      list-style: none;
+      text-align: left;
+      margin: 24px 0;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 18px;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      color: #FBE91B;
+      font-weight: 700;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="ads-container">
+
+  <!-- ========================================
+       MAIN VALUE PROP
+       ======================================== -->
+  <div class="ad-group">
+    <h2>Investor - Main Value Prop (1080x1080)</h2>
+    <div class="ad-row">
+
+      <!-- Deal Flow -->
+      <div class="ad-square investor-premium preview">
+        <div class="ad-content centered">
+          <span class="ad-badge gold">💼 Deal Flow Esclusivo</span>
+          <div class="metric-big">
+            <div class="metric-big-number gold">120</div>
+            <div class="metric-big-label">opportunità climate-tech pre-screened</div>
+          </div>
+          <div class="ad-stats">
+            <div class="ad-stat">
+              <div class="ad-stat-number gold">€110M</div>
+              <div class="ad-stat-label">Già investiti</div>
+            </div>
+            <div class="ad-stat">
+              <div class="ad-stat-number">65</div>
+              <div class="ad-stat-label">Brevetti</div>
+            </div>
+          </div>
+          <div class="ad-cta premium">
+            Richiedi briefing
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-logo">
+          <div class="ad-logo-text">Tech4You</div>
+        </div>
+      </div>
+
+      <!-- Urgency -->
+      <div class="ad-square investor-dark preview">
+        <div class="urgency-banner">⚡ €110M già investiti da chi si è mosso prima</div>
+        <div class="ad-content centered" style="padding-top: 100px;">
+          <span class="ad-badge gold">Finestra Temporale</span>
+          <h1 class="ad-headline" style="font-size: 44px; text-align: center;">La finestra per queste opportunità si sta chiudendo</h1>
+          <div class="metric-big" style="padding: 24px 0;">
+            <div class="metric-big-number gold" style="font-size: 100px;">€120B</div>
+            <div class="metric-big-label" style="font-size: 20px;">funding pipeline in scadenza</div>
+          </div>
+          <div class="ad-cta premium">
+            Prenota briefing
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-logo">
+          <div class="ad-logo-text">Tech4You</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================
+       PORTFOLIO OVERVIEW
+       ======================================== -->
+  <div class="ad-group">
+    <h2>Investor - Portfolio Overview (1080x1080)</h2>
+    <div class="ad-row">
+
+      <div class="ad-square investor-primary preview">
+        <div class="ad-content centered">
+          <span class="ad-badge">💼 Portfolio Climate-Tech</span>
+          <h1 class="ad-headline" style="font-size: 40px; text-align: center;">6 cluster, 120 tecnologie, 30 sfide risolte</h1>
+          <div class="portfolio-grid">
+            <div class="portfolio-item">
+              <div class="portfolio-item-icon">⚡</div>
+              <div class="portfolio-item-name">Energy</div>
+              <div class="portfolio-item-count">25 tech</div>
+            </div>
+            <div class="portfolio-item">
+              <div class="portfolio-item-icon">♻️</div>
+              <div class="portfolio-item-name">Circular</div>
+              <div class="portfolio-item-count">27 tech</div>
+            </div>
+            <div class="portfolio-item">
+              <div class="portfolio-item-icon">🌍</div>
+              <div class="portfolio-item-name">Climate</div>
+              <div class="portfolio-item-count">26 tech</div>
+            </div>
+            <div class="portfolio-item">
+              <div class="portfolio-item-icon">🌾</div>
+              <div class="portfolio-item-name">AgriFood</div>
+              <div class="portfolio-item-count">15 tech</div>
+            </div>
+            <div class="portfolio-item">
+              <div class="portfolio-item-icon">🏛️</div>
+              <div class="portfolio-item-name">Cultural</div>
+              <div class="portfolio-item-count">17 tech</div>
+            </div>
+            <div class="portfolio-item">
+              <div class="portfolio-item-icon">🧬</div>
+              <div class="portfolio-item-name">Health</div>
+              <div class="portfolio-item-count">8 tech</div>
+            </div>
+          </div>
+          <div class="ad-cta premium">
+            Accedi al portfolio
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-logo">
+          <div class="ad-logo-text">Tech4You</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================
+       BRIEFING CTA
+       ======================================== -->
+  <div class="ad-group">
+    <h2>Investor - Briefing CTA (1080x1080)</h2>
+    <div class="ad-row">
+
+      <div class="ad-square investor-gold preview">
+        <div class="ad-content centered">
+          <span class="ad-badge gold">💼 Briefing Esclusivo</span>
+          <h1 class="ad-headline" style="font-size: 44px; text-align: center;">30 minuti per opportunità che non trovi altrove</h1>
+          <ul class="feature-list" style="max-width: 600px;">
+            <li>Shortlist 5-10 deal personalizzata</li>
+            <li>Schede tecniche con IP status</li>
+            <li>Intro diretta ai team</li>
+            <li>Due diligence kit incluso</li>
+          </ul>
+          <div class="ad-cta premium">
+            Prenota il briefing
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-logo">
+          <div class="ad-logo-text">Tech4You</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================
+       EVENT PROMO
+       ======================================== -->
+  <div class="ad-group">
+    <h2>Investor - Event Promo (1080x1080)</h2>
+    <div class="ad-row">
+
+      <div class="ad-square investor-premium preview">
+        <div class="urgency-banner">📅 15-18 posti riservati investitori</div>
+        <div class="ad-content centered" style="padding-top: 100px;">
+          <span class="ad-badge gold">Evento Esclusivo</span>
+          <h1 class="ad-headline" style="font-size: 44px; text-align: center;">Tech4You Climate Innovation Day</h1>
+          <div class="metric-big" style="padding: 24px 0;">
+            <div style="font-size: 24px; opacity: 0.7;">FEBBRAIO</div>
+            <div class="metric-big-number gold" style="font-size: 100px;">2026</div>
+            <div class="metric-big-label" style="font-size: 20px;">Milano Bicocca</div>
+          </div>
+          <div class="ad-cta premium">
+            Richiedi invito
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-logo">
+          <div class="ad-logo-text">Tech4You</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

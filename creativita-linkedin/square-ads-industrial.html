@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech4You - LinkedIn Ads - Square Industrial (1080x1080)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f0f0;
+      padding: 40px;
+    }
+
+    .ads-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      max-width: 2300px;
+      margin: 0 auto;
+    }
+
+    .ad-group {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .ad-group h2 {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .ad-row {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    /* Base Ad Style - 1080x1080 */
+    .ad-square {
+      width: 1080px;
+      height: 1080px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Scale down for display */
+    .ad-square.preview {
+      transform: scale(0.5);
+      transform-origin: top left;
+      margin-right: -540px;
+      margin-bottom: -540px;
+    }
+
+    /* Color Variants */
+    .ad-square.primary { background: linear-gradient(135deg, #0053CE 0%, #07667A 100%); }
+    .ad-square.energy { background: linear-gradient(135deg, #8FC68E 0%, #6ABEA4 100%); }
+    .ad-square.circular { background: linear-gradient(135deg, #6ABEA4 0%, #3FABB2 100%); }
+    .ad-square.climate { background: linear-gradient(135deg, #3FABB2 0%, #0098BB 100%); }
+    .ad-square.agrifood { background: linear-gradient(135deg, #0098BB 0%, #0C919C 100%); }
+    .ad-square.cultural { background: linear-gradient(135deg, #0C919C 0%, #07667A 100%); }
+    .ad-square.health { background: linear-gradient(135deg, #07667A 0%, #0053CE 100%); }
+    .ad-square.dark { background: linear-gradient(135deg, #212529 0%, #07667A 100%); }
+
+    /* Pattern Overlay */
+    .ad-square::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    /* Content Layout */
+    .ad-content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 60px;
+      color: white;
+    }
+
+    /* Badge */
+    .ad-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 32px;
+      border: 1px solid rgba(255,255,255,0.2);
+      width: fit-content;
+    }
+
+    /* Headline */
+    .ad-headline {
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Metric Big */
+    .metric-big {
+      text-align: center;
+      padding: 48px 0;
+    }
+
+    .metric-big-number {
+      font-size: 140px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .metric-big-label {
+      font-size: 24px;
+      opacity: 0.9;
+    }
+
+    /* Stats Row */
+    .ad-stats {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .ad-stat {
+      text-align: center;
+      flex: 1;
+    }
+
+    .ad-stat-number {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .ad-stat-label {
+      font-size: 14px;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* CTA */
+    .ad-cta {
+      background: #FBE91B;
+      color: #212529;
+      padding: 24px 48px;
+      border-radius: 12px;
+      font-size: 22px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      width: 100%;
+      margin-top: auto;
+    }
+
+    .ad-cta-arrow {
+      font-size: 28px;
+    }
+
+    /* Logo */
+    .ad-logo {
+      position: absolute;
+      bottom: 60px;
+      right: 60px;
+    }
+
+    .ad-logo-text {
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+    }
+
+    /* Icon Large */
+    .cluster-icon-large {
+      font-size: 120px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    /* Subheadline */
+    .ad-subheadline {
+      font-size: 24px;
+      opacity: 0.9;
+      line-height: 1.4;
+      margin-bottom: 32px;
+    }
+
+    /* Bottom section */
+    .ad-bottom {
+      margin-top: auto;
+    }
+
+    /* Center content variant */
+    .ad-content.centered {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .ad-content.centered .ad-headline {
+      flex-grow: 0;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="ads-container">
+
+  <!-- ========================================
+       AWARENESS - BRAND
+       ======================================== -->
+  <div class="ad-group">
+    <h2>Awareness - Brand (1080x1080)</h2>
+    <div class="ad-row">
+
+      <!-- Main Value Prop -->
+      <div class="ad-square primary preview">
+        <div class="ad-content centered">
+          <span class="ad-badge">Ecosistema PNRR</span>
+          <div class="metric-big">
+            <div class="metric-big-number">120</div>
+            <div class="metric-big-label">tecnologie climate-tech pronte per la tua azienda</div>
+          </div>
+          <div class="ad-stats">
+            <div class="ad-stat">
+              <div class="ad-stat-number">433</div>
+              <div class="ad-stat-label">Ricercatori</div>
+            </div>
+            <div class="ad-stat">
+              <div class="ad-stat-number">€120B</div>
+              <div class="ad-stat-label">Funding</div>
+            </div>
+            <div class="ad-stat">
+              <div class="ad-stat-number">93</div>
+              <div class="ad-stat-label">Imprese</div>
+            </div>
+          </div>
+          <div class="ad-cta">
+            Scopri le tecnologie
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-logo">
+          <div class="ad-logo-text">Tech4You</div>
+        </div>
+      </div>
+
+      <!-- Claim -->
+      <div class="ad-square dark preview">
+        <div class="ad-content centered">
+          <span class="ad-badge">Climate Innovation</span>
+          <h1 class="ad-headline" style="font-size: 64px; text-align: center;">More you change, less climate changes</h1>
+          <p class="ad-subheadline">L'ecosistema che trasforma le sfide climatiche in vantaggi competitivi</p>
+          <div class="ad-cta">
+            Assessment gratuito
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-logo">
+          <div class="ad-logo-text">Tech4You</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================
+       CLUSTER SPECIFIC
+       ======================================== -->
+  <div class="ad-group">
+    <h2>Cluster: Energy (1080x1080)</h2>
+    <div class="ad-row">
+
+      <div class="ad-square energy preview">
+        <div class="ad-content centered">
+          <span class="ad-badge">⚡ Energy</span>
+          <div class="cluster-icon-large">⚡</div>
+          <h1 class="ad-headline" style="font-size: 48px; text-align: center;">Il tuo impianto FV sta producendo al massimo?</h1>
+          <div class="metric-big" style="padding: 24px 0;">
+            <div class="metric-big-number" style="font-size: 100px;">+12%</div>
+            <div class="metric-big-label" style="font-size: 20px;">produzione con AI</div>
+          </div>
+          <div class="ad-cta">
+            Scopri SMPPT AI
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-logo">
+          <div class="ad-logo-text">Tech4You</div>
+        </div>
+      </div>
+
+      <div class="ad-square energy preview">
+        <div class="ad-content centered">
+          <span class="ad-badge">⚡ Comunità Energetiche</span>
+          <h1 class="ad-headline" style="font-size: 44px; text-align: center;">La tua CER sta massimizzando l'energia condivisa?</h1>
+          <div class="ad-stats" style="margin: 40px 0;">
+            <div class="ad-stat">
+              <div class="ad-stat-number">+25%</div>
+              <div class="ad-stat-label">Energia condivisa</div>
+            </div>
+            <div class="ad-stat">
+              <div class="ad-stat-number">-80%</div>
+              <div class="ad-stat-label">Tempi admin</div>
+            </div>
+          </div>
+          <div class="ad-cta">
+            Richiedi demo
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-logo">
+          <div class="ad-logo-text">Tech4You</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ad-group">
+    <h2>Cluster: Circular Economy (1080x1080)</h2>
+    <div class="ad-row">
+
+      <div class="ad-square circular preview">
+        <div class="ad-content centered">
+          <span class="ad-badge">♻️ Circular Economy</span>
+          <div class="cluster-icon-large">♻️</div>
+          <h1 class="ad-headline" style="font-size: 44px; text-align: center;">Il 70% delle batterie EV finisce in discarica</h1>
+          <div class="metric-big" style="padding: 24px 0;">
+            <div class="metric-big-number" style="font-size: 100px;">>90%</div>
+            <div class="metric-big-label" style="font-size: 20px;">recupero Li/Co</div>
+          </div>
+          <div class="ad-cta">
+            Scopri il processo
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-logo">
+          <div class="ad-logo-text">Tech4You</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ad-group">
+    <h2>Cluster: Climate Risk (1080x1080)</h2>
+    <div class="ad-row">
+
+      <div class="ad-square climate preview">
+        <div class="ad-content centered">
+          <span class="ad-badge">🌍 Climate Risk</span>
+          <div class="cluster-icon-large">🌍</div>
+          <h1 class="ad-headline" style="font-size: 44px; text-align: center;">Quanto preavviso hai prima di un'alluvione?</h1>
+          <div class="metric-big" style="padding: 24px 0;">
+            <div class="metric-big-number" style="font-size: 100px;">6-12h</div>
+            <div class="metric-big-label" style="font-size: 20px;">con Hypes AI</div>
+          </div>
+          <div class="ad-cta">
+            Scopri Hypes AI
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-logo">
+          <div class="ad-logo-text">Tech4You</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ad-group">
+    <h2>Cluster: AgriFood (1080x1080)</h2>
+    <div class="ad-row">
+
+      <div class="ad-square agrifood preview">
+        <div class="ad-content centered">
+          <span class="ad-badge">🌾 Precision Farming</span>
+          <div class="cluster-icon-large">🌾</div>
+          <h1 class="ad-headline" style="font-size: 44px; text-align: center;">Quanta acqua sprechi irrigando "a occhio"?</h1>
+          <div class="ad-stats" style="margin: 40px 0;">
+            <div class="ad-stat">
+              <div class="ad-stat-number">-50%</div>
+              <div class="ad-stat-label">Acqua</div>
+            </div>
+            <div class="ad-stat">
+              <div class="ad-stat-number">+15%</div>
+              <div class="ad-stat-label">Rese</div>
+            </div>
+          </div>
+          <div class="ad-cta">
+            Calcola il risparmio
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-logo">
+          <div class="ad-logo-text">Tech4You</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ad-group">
+    <h2>Cluster: Cultural Heritage (1080x1080)</h2>
+    <div class="ad-row">
+
+      <div class="ad-square cultural preview">
+        <div class="ad-content centered">
+          <span class="ad-badge">🏛️ Cultural Heritage</span>
+          <div class="cluster-icon-large">🏛️</div>
+          <h1 class="ad-headline" style="font-size: 44px; text-align: center;">Quanti visitatori perdi senza esperienza XR?</h1>
+          <div class="metric-big" style="padding: 24px 0;">
+            <div class="metric-big-number" style="font-size: 100px;">+40%</div>
+            <div class="metric-big-label" style="font-size: 20px;">permanenza visitatori</div>
+          </div>
+          <div class="ad-cta">
+            Richiedi demo XR
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-logo">
+          <div class="ad-logo-text">Tech4You</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ad-group">
+    <h2>Cluster: Health (1080x1080)</h2>
+    <div class="ad-row">
+
+      <div class="ad-square health preview">
+        <div class="ad-content centered">
+          <span class="ad-badge">🧬 Nutraceutica</span>
+          <div class="cluster-icon-large">🧬</div>
+          <h1 class="ad-headline" style="font-size: 40px; text-align: center;">I tuoi scarti contengono più valore del prodotto</h1>
+          <div class="ad-stats" style="margin: 40px 0;">
+            <div class="ad-stat">
+              <div class="ad-stat-number">-40%</div>
+              <div class="ad-stat-label">Costi MP</div>
+            </div>
+            <div class="ad-stat">
+              <div class="ad-stat-number">12</div>
+              <div class="ad-stat-label">Formulazioni</div>
+            </div>
+          </div>
+          <div class="ad-cta">
+            Scopri le opportunità
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-logo">
+          <div class="ad-logo-text">Tech4You</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================
+       EVENT PROMO
+       ======================================== -->
+  <div class="ad-group">
+    <h2>Event Promo (1080x1080)</h2>
+    <div class="ad-row">
+
+      <div class="ad-square primary preview">
+        <div class="ad-content centered">
+          <span class="ad-badge">📅 Save the date</span>
+          <h1 class="ad-headline" style="font-size: 48px; text-align: center;">Tech4You Climate Innovation Day</h1>
+          <div class="metric-big" style="padding: 32px 0;">
+            <div style="font-size: 28px; opacity: 0.8;">FEBBRAIO</div>
+            <div class="metric-big-number" style="font-size: 120px;">2026</div>
+            <div class="metric-big-label" style="font-size: 22px;">Milano Bicocca</div>
+          </div>
+          <div class="ad-cta">
+            Richiedi invito
+            <span class="ad-cta-arrow">→</span>
+          </div>
+        </div>
+        <div class="ad-logo">
+          <div class="ad-logo-text">Tech4You</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

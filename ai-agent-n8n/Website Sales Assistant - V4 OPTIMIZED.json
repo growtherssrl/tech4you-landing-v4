@@ -1,0 +1,2083 @@
+{
+  "name": "Website Sales Assistant - V4 OPTIMIZED",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Ciao! 👋\nSono l'assistente virtuale di Esperto Lavoro. Come posso assisterti oggi?",
+        "options": {
+          "allowedOrigins": "*",
+          "customCss": ":root {\n  /* Colors */\n  --chat--color-primary: #e74266;\n  --chat--color-primary-shade-50: #db4061;\n  --chat--color-primary-shade-100: #cf3c5c;\n  --chat--color-secondary: #20b69e;\n  --chat--color-secondary-shade-50: #1ca08a;\n  --chat--color-white: #ffffff;\n  --chat--color-light: #f2f4f8;\n  --chat--color-light-shade-50: #e6e9f1;\n  --chat--color-light-shade-100: #c2c5cc;\n  --chat--color-medium: #d2d4d9;\n  --chat--color-dark: #101330;\n  --chat--color-disabled: #777980;\n  --chat--color-typing: #404040;\n\n  /* Base Layout */\n  --chat--spacing: 1rem;\n  --chat--border-radius: 0.25rem;\n  --chat--transition-duration: 0.15s;\n  --chat--font-family: (\n    -apple-system,\n    BlinkMacSystemFont,\n    'Segoe UI',\n    Roboto,\n    Oxygen-Sans,\n    Ubuntu,\n    Cantarell,\n    'Helvetica Neue',\n    sans-serif\n  );\n\n  /* Window Dimensions */\n  --chat--window--width: 400px;\n  --chat--window--height: 600px;\n  --chat--window--bottom: var(--chat--spacing);\n  --chat--window--right: var(--chat--spacing);\n  --chat--window--z-index: 9999;\n  --chat--window--border: 1px solid var(--chat--color-light-shade-50);\n  --chat--window--border-radius: var(--chat--border-radius);\n  --chat--window--margin-bottom: var(--chat--spacing);\n\n  /* Header Styles */\n  --chat--header-height: auto;\n  --chat--header--padding: var(--chat--spacing);\n  --chat--header--background: var(--chat--color-dark);\n  --chat--header--color: var(--chat--color-light);\n  --chat--header--border-top: none;\n  --chat--header--border-bottom: none;\n  --chat--header--border-left: none;\n  --chat--header--border-right: none;\n  --chat--heading--font-size: 2em;\n  --chat--subtitle--font-size: inherit;\n  --chat--subtitle--line-height: 1.8;\n\n  /* Message Styles */\n  --chat--message--font-size: 1rem;\n  --chat--message--padding: var(--chat--spacing);\n  --chat--message--border-radius: var(--chat--border-radius);\n  --chat--message-line-height: 1.5;\n  --chat--message--margin-bottom: calc(var(--chat--spacing) * 1);\n  --chat--message--bot--background: var(--chat--color-white);\n  --chat--message--bot--color: var(--chat--color-dark);\n  --chat--message--bot--border: none;\n  --chat--message--user--background: var(--chat--color-secondary);\n  --chat--message--user--color: var(--chat--color-white);\n  --chat--message--user--border: none;\n  --chat--message--pre--background: rgba(0, 0, 0, 0.05);\n  --chat--messages-list--padding: var(--chat--spacing);\n\n  /* Toggle Button */\n  --chat--toggle--size: 64px;\n  --chat--toggle--width: var(--chat--toggle--size);\n  --chat--toggle--height: var(--chat--toggle--size);\n  --chat--toggle--border-radius: 50%;\n  --chat--toggle--background: var(--chat--color-primary);\n  --chat--toggle--hover--background: var(--chat--color-primary-shade-50);\n  --chat--toggle--active--background: var(--chat--color-primary-shade-100);\n  --chat--toggle--color: var(--chat--color-white);\n\n  /* Input Area */\n  --chat--textarea--height: 50px;\n  --chat--textarea--max-height: 30rem;\n  --chat--input--font-size: inherit;\n  --chat--input--border: 0;\n  --chat--input--border-radius: 0;\n  --chat--input--padding: 0.8rem;\n  --chat--input--background: var(--chat--color-white);\n  --chat--input--text-color: initial;\n  --chat--input--line-height: 1.5;\n  --chat--input--placeholder--font-size: var(--chat--input--font-size);\n  --chat--input--border-active: 0;\n  --chat--input--left--panel--width: 2rem;\n\n  /* Button Styles */\n  --chat--button--color: var(--chat--color-light);\n  --chat--button--background: var(--chat--color-primary);\n  --chat--button--padding: calc(var(--chat--spacing) * 1 / 2) var(--chat--spacing);\n  --chat--button--border-radius: var(--chat--border-radius);\n  --chat--button--hover--color: var(--chat--color-light);\n  --chat--button--hover--background: var(--chat--color-primary-shade-50);\n  --chat--close--button--color-hover: var(--chat--color-primary);\n\n  /* Send and File Buttons */\n  --chat--input--send--button--background: var(--chat--color-white);\n  --chat--input--send--button--color: var(--chat--color-light);\n  --chat--input--send--button--background-hover: var(--chat--color-primary-shade-50);\n  --chat--input--send--button--color-hover: var(--chat--color-secondary-shade-50);\n  --chat--input--file--button--background: var(--chat--color-white);\n  --chat--input--file--button--color: var(--chat--color-secondary);\n  --chat--input--file--button--background-hover: var(--chat--input--file--button--background);\n  --chat--input--file--button--color-hover: var(--chat--color-secondary-shade-50);\n  --chat--files-spacing: 0.25rem;\n\n  /* Body and Footer */\n  --chat--body--background: var(--chat--color-light);\n  --chat--footer--background: var(--chat--color-light);\n  --chat--footer--color: var(--chat--color-dark);\n}\n\n\n/* You can override any class styles, too. Right-click inspect in Chat UI to find class to override. */\n.chat-message {\n\tmax-width: 50%;\n}\n\n.chat-message.chat-message-from-bot {\n  font-family: Montserrat;\n    border-radius: 20px 20px 20px 0px !important;\n}\n\n.chat-message.chat-message-from-user {\n    font-family: Montserrat;\n    border-radius: 20px 20px 0px 20px !important;\n}\n\n.chat-header {\n    display: none !important;\n}",
+          "responseMode": "responseNodes"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -2208,
+        688
+      ],
+      "id": "e0c6eb4d-1f85-473a-89af-8cf83ebf6fdf",
+      "name": "When chat message received",
+      "webhookId": "8acad7b0-3c65-4960-8e2b-2637f0948467",
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-5-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-5-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -2800,
+        912
+      ],
+      "id": "7b2cba04-4764-4fe3-beac-804a065e7d69",
+      "name": "OpenAI Chat Model17",
+      "credentials": {
+        "openAiApi": {
+          "id": "5nwHDi9e8wOE2Fga",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        -2672,
+        912
+      ],
+      "id": "d70f3e36-2634-4e5c-9b24-8930dfa1516c",
+      "name": "Postgres Chat Memory2",
+      "notesInFlow": false,
+      "credentials": {
+        "postgres": {
+          "id": "sdHNKT4hsxAF4XmC",
+          "name": "SUPABASE - AICHATBOTV3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "carmelo@growthers.io",
+        "subject": "Nuova richiesta tramite ChatBot AI",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        -2544,
+        912
+      ],
+      "id": "f95c3b87-39e5-4c66-a2b7-e5cad0b415fa",
+      "name": "Gmail - Team Assistenza2",
+      "webhookId": "5e52c694-3e77-4d79-a388-28180622f134",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "ZrJeQ9yPwGiuV8Uh",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To', ``, 'string') }}",
+        "subject": "Nuova richiesta tramite ChatBot AI",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        -2416,
+        912
+      ],
+      "id": "5791847b-af25-48c9-8363-a790a5b2add9",
+      "name": "Gmail - Invio brochure2",
+      "webhookId": "5e52c694-3e77-4d79-a388-28180622f134",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "ZrJeQ9yPwGiuV8Uh",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "11OsGRSONcB90-kZWkNrAiHhUx8JnnouL0_AagiFHh30",
+          "mode": "list",
+          "cachedResultName": "DB EL - Promozioni",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/11OsGRSONcB90-kZWkNrAiHhUx8JnnouL0_AagiFHh30/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 939057151,
+          "mode": "list",
+          "cachedResultName": "Promozioni",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/11OsGRSONcB90-kZWkNrAiHhUx8JnnouL0_AagiFHh30/edit#gid=939057151"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        -2288,
+        912
+      ],
+      "id": "d75b8d28-720f-44a8-b793-3c0c063475f5",
+      "name": "Database promozioni1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fPuuhygQg4a4qikO",
+          "name": "Google Sheets - Info@growthers.io"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1rpBb4xR6_vRWCv9Ecbz8vVYPw5D6qU2owbnqUTVnerI",
+          "mode": "list",
+          "cachedResultName": "DB EL - Docenti",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1rpBb4xR6_vRWCv9Ecbz8vVYPw5D6qU2owbnqUTVnerI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 337957710,
+          "mode": "list",
+          "cachedResultName": "Docenti",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1rpBb4xR6_vRWCv9Ecbz8vVYPw5D6qU2owbnqUTVnerI/edit#gid=337957710"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        -2144,
+        912
+      ],
+      "id": "70b67c4f-0ec6-4632-b900-524f4e713d8b",
+      "name": "Database docenti1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fPuuhygQg4a4qikO",
+          "name": "Google Sheets - Info@growthers.io"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1LORqm4CSNA-hl7BljRioCAtFd_bhTa_T2fT2q35ylXY",
+          "mode": "list",
+          "cachedResultName": "DB EL - Lead",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LORqm4CSNA-hl7BljRioCAtFd_bhTa_T2fT2q35ylXY/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 786316104,
+          "mode": "list",
+          "cachedResultName": "Lead",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LORqm4CSNA-hl7BljRioCAtFd_bhTa_T2fT2q35ylXY/edit#gid=786316104"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ $json.nome }}",
+            "Cognome": "={{ $json.cognome }}",
+            "Email": "={{ $json.email }}",
+            "Telefono": "={{ $json.telefono }}",
+            "Azienda": "={{ $json.azienda }}",
+            "Livello interesse": "={{ $json.livello_interesse }}",
+            "Priorità": "={{ $json.priorita }}",
+            "Prodotti d'interesse": "={{ $json.prodotti_interesse }}",
+            "Sconto d'interesse": "={{ $json.sconto_interesse }}",
+            "Recap Chat": "={{ $json.recap_chat }}",
+            "Azione Richiesta": "={{ $json.azione_richiesta }}",
+            "Tipologia azienda": "={{ $json.tipo_azienda }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Cognome",
+              "displayName": "Cognome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefono",
+              "displayName": "Telefono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tipologia azienda",
+              "displayName": "Tipologia azienda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Azienda",
+              "displayName": "Azienda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Livello interesse",
+              "displayName": "Livello interesse",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Priorità",
+              "displayName": "Priorità",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Prodotti d'interesse",
+              "displayName": "Prodotti d'interesse",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sconto d'interesse",
+              "displayName": "Sconto d'interesse",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Recap Chat",
+              "displayName": "Recap Chat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Azione Richiesta",
+              "displayName": "Azione Richiesta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1632,
+        928
+      ],
+      "id": "d9d496ec-728a-4a3a-8953-6f590e394e7a",
+      "name": "Aggiungi info - Cold2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fPuuhygQg4a4qikO",
+          "name": "Google Sheets - Info@growthers.io"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1LORqm4CSNA-hl7BljRioCAtFd_bhTa_T2fT2q35ylXY",
+          "mode": "list",
+          "cachedResultName": "DB EL - Lead",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LORqm4CSNA-hl7BljRioCAtFd_bhTa_T2fT2q35ylXY/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 786316104,
+          "mode": "list",
+          "cachedResultName": "Lead",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LORqm4CSNA-hl7BljRioCAtFd_bhTa_T2fT2q35ylXY/edit#gid=786316104"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ $json.nome }}",
+            "Cognome": "={{ $json.cognome }}",
+            "Email": "={{ $json.email }}",
+            "Telefono": "={{ $json.telefono }}",
+            "Tipologia azienda": "={{ $json.tipo_azienda }}",
+            "Azienda": "={{ $json.azienda }}",
+            "Livello interesse": "={{ $json.livello_interesse }}",
+            "Priorità": "={{ $json.priorita }}",
+            "Prodotti d'interesse": "={{ $json.prodotti_interesse }}",
+            "Sconto d'interesse": "={{ $json.sconto_interesse }}",
+            "Recap Chat": "={{ $json.recap_chat }}",
+            "Azione Richiesta": "={{ $json.azione_richiesta }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Cognome",
+              "displayName": "Cognome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefono",
+              "displayName": "Telefono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tipologia azienda",
+              "displayName": "Tipologia azienda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Azienda",
+              "displayName": "Azienda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Livello interesse",
+              "displayName": "Livello interesse",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Priorità",
+              "displayName": "Priorità",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Prodotti d'interesse",
+              "displayName": "Prodotti d'interesse",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sconto d'interesse",
+              "displayName": "Sconto d'interesse",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Recap Chat",
+              "displayName": "Recap Chat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Azione Richiesta",
+              "displayName": "Azione Richiesta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1632,
+        528
+      ],
+      "id": "cbc31609-ce8d-47fe-b1a4-6cf9abe423d4",
+      "name": "Aggiungi info - Warm2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fPuuhygQg4a4qikO",
+          "name": "Google Sheets - Info@growthers.io"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "message": "Grazie per aver usato questa chat! Se dovesse servirti altro, resto a tua disposizione. A presto. ",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chat",
+      "typeVersion": 1,
+      "position": [
+        1856,
+        128
+      ],
+      "id": "bfbab5c8-82dc-47eb-8bac-c64f3529df49",
+      "name": "Respond to Chat8"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1LORqm4CSNA-hl7BljRioCAtFd_bhTa_T2fT2q35ylXY",
+          "mode": "list",
+          "cachedResultName": "DB EL - Lead",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LORqm4CSNA-hl7BljRioCAtFd_bhTa_T2fT2q35ylXY/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 786316104,
+          "mode": "list",
+          "cachedResultName": "Lead",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LORqm4CSNA-hl7BljRioCAtFd_bhTa_T2fT2q35ylXY/edit#gid=786316104"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome": "={{ $json.nome }}",
+            "Cognome": "={{ $json.cognome }}",
+            "Email": "={{ $json.email }}",
+            "Telefono": "={{ $json.telefono }}",
+            "Azienda": "={{ $json.azienda }}",
+            "Livello interesse": "={{ $json.livello_interesse }}",
+            "Priorità": "={{ $json.priorita }}",
+            "Prodotti d'interesse": "={{ $json.prodotti_interesse }}",
+            "Sconto d'interesse": "={{ $json.sconto_interesse }}",
+            "Recap Chat": "={{ $json.recap_chat }}",
+            "Azione Richiesta": "={{ $json.azione_richiesta }}",
+            "Tipologia azienda": "={{ $json.tipo_azienda }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Cognome",
+              "displayName": "Cognome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefono",
+              "displayName": "Telefono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tipologia azienda",
+              "displayName": "Tipologia azienda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Azienda",
+              "displayName": "Azienda",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Livello interesse",
+              "displayName": "Livello interesse",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Priorità",
+              "displayName": "Priorità",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Prodotti d'interesse",
+              "displayName": "Prodotti d'interesse",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sconto d'interesse",
+              "displayName": "Sconto d'interesse",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Recap Chat",
+              "displayName": "Recap Chat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Azione Richiesta",
+              "displayName": "Azione Richiesta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1632,
+        128
+      ],
+      "id": "d2d0d652-657e-4060-b123-290c286c249c",
+      "name": "Aggiungi info - Hot2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fPuuhygQg4a4qikO",
+          "name": "Google Sheets - Info@growthers.io"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "message": "={{ $json.message.content }}",
+        "waitUserReply": false,
+        "options": {
+          "memoryConnection": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chat",
+      "typeVersion": 1,
+      "position": [
+        416,
+        832
+      ],
+      "id": "4c401564-d146-4508-acb7-83fcd58cb23c",
+      "name": "Respond to Chat9",
+      "alwaysOutputData": false,
+      "executeOnce": false,
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "message": "Grazie per aver usato questa chat! Se dovesse servirti altro, resto a tua disposizione. A presto. ",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chat",
+      "typeVersion": 1,
+      "position": [
+        1856,
+        928
+      ],
+      "id": "f73bbd80-21f5-4919-9474-ccd0397cce54",
+      "name": "Respond to Chat10"
+    },
+    {
+      "parameters": {
+        "message": "Grazie per aver usato questa chat! Se dovesse servirti altro, resto a tua disposizione. A presto. ",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chat",
+      "typeVersion": 1,
+      "position": [
+        1856,
+        528
+      ],
+      "id": "824cb097-ed70-498d-ad79-97966c4ff2e7",
+      "name": "Respond to Chat11"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Prendi tutti i messaggi dal nodo Postgres\nconst rows = $('Postgres2').all();\nconst sessionData = $input.item.json;\nlet transcript = '';\nlet messages = [];\n\n// Processa ogni riga\nif (rows && rows.length > 0) {\n  rows.forEach(item => {\n    try {\n      const row = item.json;\n      const message = row.message;\n      \n      const role = message.type === 'human' ? 'Utente' : 'Alex';\n      const content = message.content;\n      \n      transcript += `${role}: ${content}\\n`;\n      messages.push({ role: role, content: content });\n      \n    } catch (e) {\n      console.log('Errore processing message:', e);\n    }\n  });\n}\n\n// Se il transcript è vuoto, usa l'ultimo messaggio come fallback\nif (!transcript) {\n  transcript = `Utente: ${sessionData.user_message}\\nAlex: ${sessionData.reply}`;\n}\n\n// Prendi solo gli ultimi 10 scambi (20 messaggi)\nconst recentMessages = messages.slice(-20);\nconst recentTranscript = recentMessages.map(m => `${m.role}: ${m.content}`).join('\\n');\n\n// Recupera l'output dell'AI Agent\nconst aiAgentOutput = $('AI Agent1').first().json.output;\n\n// MODIFICA IL CAMPO MESSAGE.CONTENT\nconst modifiedMessage = {\n  ...sessionData.message,\n  content: aiAgentOutput  // Sostituisci il content con l'output dell'AI\n};\n\nreturn {\n  ...sessionData,\n  message: modifiedMessage,  // Message modificato\n  conversation_full: transcript.trim(),\n  conversation_recent: recentTranscript || transcript.trim(),\n  message_count: messages.length\n  // agent_output rimosso perché ora è in message.content\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -224,
+        688
+      ],
+      "id": "0f343813-0644-4e22-8d93-7796d4792e5b",
+      "name": "Recupero Conversazione2"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.conversation_recent }}",
+        "schemaType": "fromJson",
+        "jsonSchemaExample": "{\n  \"nome\": \"\",\n  \"cognome\": \"\",\n  \"email\": \"\",\n  \"telefono\": \"\",\n  \"azienda\": \"\",\n  \"prodotti_interesse\": [],\n  \"sconto_interesse\": \"\",\n  \"tipo_azienda\": \"\"\n}",
+        "options": {
+          "systemPromptTemplate": "Estrai le informazioni dalla conversazione senza inventare nulla. Se non trovi un dato, lascia vuoto.\n\nObbligatorio: se presente nome e cognome devi diverli sempre."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1.1,
+      "position": [
+        704,
+        928
+      ],
+      "id": "c7aadcea-c718-4554-a088-e87b05e6b746",
+      "name": "Information Extractor - COLD2"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.conversation_recent }}",
+        "schemaType": "fromJson",
+        "jsonSchemaExample": "{\n  \"nome\": \"\",\n  \"cognome\": \"\",\n  \"email\": \"\",\n  \"telefono\": \"\",\n  \"azienda\": \"\",\n  \"prodotti_interesse\": [],\n  \"sconto_interesse\": \"\",\n  \"tipo_azienda\": \"\"\n}",
+        "options": {
+          "systemPromptTemplate": "Estrai le informazioni dalla conversazione senza inventare nulla. Se non trovi un dato, lascia vuoto.\n\nObbligatorio: se presente nome e cognome devi diverli sempre."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1.1,
+      "position": [
+        704,
+        416
+      ],
+      "id": "b8dc0411-6f9c-4a36-89da-d20a2a35b4b1",
+      "name": "Information Extractor - WARM2"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.conversation_recent }}",
+        "schemaType": "fromJson",
+        "jsonSchemaExample": "{\n  \"nome\": \"\",\n  \"cognome\": \"\",\n  \"email\": \"\",\n  \"telefono\": \"\",\n  \"azienda\": \"\",\n  \"prodotti_interesse\": [],\n  \"sconto_interesse\": \"\",\n  \"tipo_azienda\": \"\"\n}",
+        "options": {
+          "systemPromptTemplate": "Estrai le informazioni dalla conversazione senza inventare nulla. Se non trovi un dato, lascia vuoto.\n\nObbligatorio: se presente nome e cognome devi diverli sempre."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1.1,
+      "position": [
+        704,
+        16
+      ],
+      "id": "4e3ed06d-70aa-4bac-8515-67fadfb3a716",
+      "name": "Information Extractor - HOT2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get data from Summarization Chain (COLD)\nconst baseData = $input.item.json;\nconst summaryText = baseData.output?.text || '';\n\n// Estrai informazioni dal riassunto usando regex corrette\nconst nomeCompleto = summaryText.match(/Cliente:\\s*([^,]+)/)?.[1]?.trim() || '';\nconst nomeParti = nomeCompleto.split(' ');\nconst nome = nomeParti[0] || '';\nconst cognome = nomeParti.slice(1).join(' ') || '';\n\nconst email = summaryText.match(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})/)?.[1] || '';\nconst telefono = summaryText.match(/(\\d{8,15})/)?.[1] || '';\nconst interesse = summaryText.match(/Interesse:\\s*([^\\n]+)/)?.[1]?.trim() || '';\n\n// Estrai azienda e tipo azienda\nconst azienda = summaryText.match(/azienda\\s+([^,]+),?\\s*tipologia/i)?.[1]?.trim() || '';\nconst tipoAzienda = summaryText.match(/tipologia\\s+([^\\n]+)/i)?.[1]?.trim() || '';\n\n// Build COLD lead row\nreturn {\n  timestamp: new Date().toLocaleDateString('it-IT') + ' ' + new Date().toLocaleTimeString('it-IT', {timeZone: 'Europe/Rome'}),\n  session_id: baseData.session_id,\n  nome: nome,\n  cognome: cognome,\n  email: email,\n  telefono: telefono,\n  azienda: azienda,\n  tipo_azienda: tipoAzienda,\n  livello_interesse: \"COLD\",\n  priorita: \"BASSA\",\n  prodotti_interesse: interesse,\n  sconto_interesse: '',\n  recap_chat: summaryText.substring(0, 280),\n  reply: baseData.reply,\n  azione_richiesta: \"NURTURING - Solo curiosità, aggiungere a newsletter\"\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1408,
+        928
+      ],
+      "id": "6aac0750-edc2-460e-8ce2-d1a10ef8c8b3",
+      "name": "Build COLD Raw2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get data from Summarization Chain1 (WARM)\nconst baseData = $input.item.json;\nconst summaryText = baseData.output?.text || '';\n\n// Estrai informazioni dal riassunto usando regex corrette\nconst nomeCompleto = summaryText.match(/Cliente:\\s*([^,]+)/)?.[1]?.trim() || '';\nconst nomeParti = nomeCompleto.split(' ');\nconst nome = nomeParti[0] || '';\nconst cognome = nomeParti.slice(1).join(' ') || '';\n\nconst email = summaryText.match(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})/)?.[1] || '';\nconst telefono = summaryText.match(/(\\d{8,15})/)?.[1] || '';\nconst interesse = summaryText.match(/Interesse:\\s*([^\\n]+)/)?.[1]?.trim() || '';\nconst prezzo = summaryText.match(/Prezzo:\\s*([^\\n]+)/)?.[1]?.trim() || '';\n\n// Estrai azienda e tipo azienda\nconst azienda = summaryText.match(/azienda\\s+([^,]+),?\\s*tipologia/i)?.[1]?.trim() || '';\nconst tipoAzienda = summaryText.match(/tipologia\\s+([^\\n]+)/i)?.[1]?.trim() || '';\n\n// Build WARM lead row\nreturn {\n  timestamp: new Date().toLocaleDateString('it-IT') + ' ' + new Date().toLocaleTimeString('it-IT', {timeZone: 'Europe/Rome'}),\n  session_id: baseData.session_id,\n  nome: nome,\n  cognome: cognome,\n  email: email,\n  telefono: telefono,\n  azienda: azienda,\n  tipo_azienda: tipoAzienda,\n  livello_interesse: \"WARM\",\n  priorita: \"MEDIA\",\n  prodotti_interesse: interesse,\n  sconto_interesse: prezzo,\n  recap_chat: summaryText.substring(0, 280),\n  reply: baseData.reply,\n  azione_richiesta: \"FOLLOW-UP 24-48h - Interesse dimostrato, valuta opzioni\"\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1408,
+        528
+      ],
+      "id": "bbeaeede-2d4b-45e9-ac50-8348f80515a8",
+      "name": "Build WARM Raw2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get data from previous nodes\nconst baseData = $input.item.json;\nconst summaryData = $input.item.json; // Summarization Chain output\n\n// Parse del testo del riassunto per estrarre le informazioni\nconst summaryText = summaryData.output?.text || '';\n\n// Estrai informazioni dal riassunto usando regex corrette\nconst nomeCompleto = summaryText.match(/Cliente:\\s*([^,]+)/)?.[1]?.trim() || '';\nconst nomeParti = nomeCompleto.split(' ');\nconst nome = nomeParti[0] || '';\nconst cognome = nomeParti.slice(1).join(' ') || '';\n\nconst email = summaryText.match(/([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})/)?.[1] || '';\nconst telefono = summaryText.match(/(\\d{8,15})/)?.[1] || '';\nconst interesse = summaryText.match(/Interesse:\\s*([^\\n]+)/)?.[1]?.trim() || '';\nconst prezzo = summaryText.match(/Prezzo:\\s*([^\\n]+)/)?.[1]?.trim() || '';\n\n// Estrai azienda (dopo \"azienda\" e prima di \"tipologia\")\nconst azienda = summaryText.match(/azienda\\s+([^,]+),?\\s*tipologia/i)?.[1]?.trim() || '';\n\n// Estrai tipologia azienda (dopo \"tipologia\" e prima di nuova riga)\nconst tipoAzienda = summaryText.match(/tipologia\\s+([^\\n]+)/i)?.[1]?.trim() || '';\n\n// Build HOT lead row\nreturn {\n  timestamp: new Date().toLocaleDateString('it-IT') + ' ' + new Date().toLocaleTimeString('it-IT', {timeZone: 'Europe/Rome'}),\n  session_id: baseData.session_id,\n  nome: nome,\n  cognome: cognome,\n  email: email,\n  telefono: telefono,\n  azienda: azienda,\n  tipo_azienda: tipoAzienda,\n  livello_interesse: \"HOT\",\n  priorita: \"ALTA\",\n  prodotti_interesse: interesse,\n  sconto_interesse: '',\n  recap_chat: summaryText.substring(0, 280),\n  reply: baseData.reply,\n  azione_richiesta: \"CONTATTO IMMEDIATO - Lead qualificato con tutti i dati\"\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1408,
+        128
+      ],
+      "id": "b49a0151-0c72-4bfb-8fae-98be43024790",
+      "name": "Build HOT Row2"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1136,
+        240
+      ],
+      "id": "466a9d72-f711-4e8a-98da-edc51dde5705",
+      "name": "OpenAI Chat Model18",
+      "credentials": {
+        "openAiApi": {
+          "id": "5nwHDi9e8wOE2Fga",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "summarizationMethodAndPrompts": {
+            "values": {
+              "combineMapPrompt": "=",
+              "prompt": "=Analizza questa conversazione di vendita e crea un riassunto da condividere con il reparto sales per avere maggiori informazioni sulla chat tenuta dal bot ed avere le info necessarie per procedere.\n\nChat da analizzare: \"{{ $('Recupero Conversazione2').item.json.conversation_recent }}\"\n\nOutput da fornire (usa il minoor numero di caratteri possibili):\nCliente: [Nome, Cognome, Professione, Azienda dove lavora, tipologia azienda]\nInteresse: [Prodotto/corso specifico richiesto]\nPrezzo: [Se discusso]\nContatti: [Email, telefono se forniti]\nSintesi della chat: [Sintesi della chat avuta con i passaggi chiave]\n\nIMPORTANTE: Non confondere l'azienda del cliente con i prodotti venduti."
+            }
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainSummarization",
+      "typeVersion": 2.1,
+      "position": [
+        1056,
+        16
+      ],
+      "id": "6b6fd812-9611-4885-b6a4-4bef952ba52e",
+      "name": "Summarization Chain6"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        784,
+        240
+      ],
+      "id": "2b334a4f-934e-4b73-bd8d-e9c5fe1500f1",
+      "name": "OpenAI Chat Model19",
+      "credentials": {
+        "openAiApi": {
+          "id": "5nwHDi9e8wOE2Fga",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1136,
+        640
+      ],
+      "id": "388a5fb8-fd0c-47d9-b6c6-59aa0d39ce8e",
+      "name": "OpenAI Chat Model20",
+      "credentials": {
+        "openAiApi": {
+          "id": "5nwHDi9e8wOE2Fga",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "summarizationMethodAndPrompts": {
+            "values": {
+              "combineMapPrompt": "",
+              "prompt": "=Analizza questa conversazione di vendita e crea un riassunto da condividere con il reparto sales per avere maggiori informazioni sulla chat tenuta dal bot ed avere le info necessarie per procedere.\n\nChat da analizzare: \"{{ $('Recupero Conversazione2').item.json.conversation_recent }}\"\n\nOutput da fornire (usa il minoor numero di caratteri possibili):\nCliente: [Nome, Cognome, Professione, Azienda dove lavora, tipologia azienda]\nInteresse: [Prodotto/corso specifico richiesto]\nPrezzo: [Se discusso]\nContatti: [Email, telefono se forniti]\nSintesi della chat: [Sintesi della chat avuta con i passaggi chiave]\n\nIMPORTANTE: Non confondere l'azienda del cliente con i prodotti venduti."
+            }
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainSummarization",
+      "typeVersion": 2.1,
+      "position": [
+        1056,
+        416
+      ],
+      "id": "47f37c0c-6632-4325-aec0-04da85e4635b",
+      "name": "Summarization Chain7"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        784,
+        640
+      ],
+      "id": "b0951d7e-65d7-47c7-b7cb-bf00773ac521",
+      "name": "OpenAI Chat Model21",
+      "credentials": {
+        "openAiApi": {
+          "id": "5nwHDi9e8wOE2Fga",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1136,
+        1152
+      ],
+      "id": "2a51c916-86cf-4c48-b5e1-2c98a5e23b1c",
+      "name": "OpenAI Chat Model22",
+      "credentials": {
+        "openAiApi": {
+          "id": "5nwHDi9e8wOE2Fga",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "summarizationMethodAndPrompts": {
+            "values": {
+              "combineMapPrompt": "",
+              "prompt": "=Analizza questa conversazione di vendita e crea un riassunto da condividere con il reparto sales per avere maggiori informazioni sulla chat tenuta dal bot ed avere le info necessarie per procedere.\n\nChat da analizzare: \"{{ $('Recupero Conversazione2').item.json.conversation_recent }}\"\n\nOutput da fornire (usa il minoor numero di caratteri possibili):\nCliente: [Nome, Cognome, Professione, Azienda dove lavora, tipologia azienda]\nInteresse: [Prodotto/corso specifico richiesto]\nPrezzo: [Se discusso]\nContatti: [Email, telefono se forniti]\nSintesi della chat: [Sintesi della chat avuta con i passaggi chiave]\n\nIMPORTANTE: Non confondere l'azienda del cliente con i prodotti venduti."
+            }
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainSummarization",
+      "typeVersion": 2.1,
+      "position": [
+        1056,
+        928
+      ],
+      "id": "4b0c52c5-d404-4644-b16f-b18ef1e2eccb",
+      "name": "Summarization Chain8"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        784,
+        1152
+      ],
+      "id": "26739d4e-e305-4e7f-8426-b83ef23f8a4f",
+      "name": "OpenAI Chat Model23",
+      "credentials": {
+        "openAiApi": {
+          "id": "5nwHDi9e8wOE2Fga",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        432,
+        656
+      ],
+      "id": "60360476-21c8-4aad-98a7-e26a427e065a",
+      "name": "OpenAI Chat Model24",
+      "credentials": {
+        "openAiApi": {
+          "id": "5nwHDi9e8wOE2Fga",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "n8n_chat_histories",
+          "mode": "list",
+          "cachedResultName": "n8n_chat_histories"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "session_id",
+              "value": "={{ $json.session_id }}"
+            }
+          ]
+        },
+        "sort": {
+          "values": [
+            {
+              "column": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -448,
+        688
+      ],
+      "id": "fed35941-8219-4a98-aabb-49aee6923e41",
+      "name": "Postgres2",
+      "credentials": {
+        "postgres": {
+          "id": "sdHNKT4hsxAF4XmC",
+          "name": "SUPABASE - AICHATBOTV3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.conversation_recent }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "Hot",
+              "description": "Mostra interesse per prezzi, sconti, tempi, richiede call, urgenza, budget, fornisce contatti  o richiede la brochure dei corsi "
+            },
+            {
+              "category": "Warm",
+              "description": "Utente chiede info generiche, confronta corsi o mostra apertura (“ci sto pensando”, “può interessarmi”)."
+            },
+            {
+              "category": "Cold",
+              "description": "tente poco interessato, fa domande non pertinenti o chiude la conversazione senza apertura."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1.1,
+      "position": [
+        352,
+        400
+      ],
+      "id": "433bc239-b453-4646-bc5a-592c631326f5",
+      "name": "Text Classifier3",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7e2b25c7-5b8b-4af2-9f89-6c44504805df",
+              "name": "reply",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            },
+            {
+              "id": "7dfc6203-835a-42e4-83d6-2f13296e1bc7",
+              "name": "session_id",
+              "value": "={{ $('When chat message received').item.json.sessionId }}",
+              "type": "string"
+            },
+            {
+              "id": "ce1828cb-256d-4be7-a76b-9ddac128d998",
+              "name": "user_message",
+              "value": "={{ $('When chat message received').item.json.chatInput }}",
+              "type": "string"
+            },
+            {
+              "id": "85815ad5-b2d4-4142-a05a-7d343bfd9801",
+              "name": "transcript_recent",
+              "value": "={{ $('When chat message received').item.json.transcript_recent || '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -672,
+        688
+      ],
+      "id": "2b313061-aa1f-4746-b16c-a8f260d2c3c0",
+      "name": "Collect Base Fields2"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "documentURL": "12wfTV3dFw2wK1-blId9p4vIL3d1NHGXzuD4R9ZNRxcA"
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [
+        -1968,
+        912
+      ],
+      "id": "0523af41-24aa-45c9-a8ff-6913dffe6e75",
+      "name": "DB EL - Master1",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "ulNwIzbcoJX5pM4n",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "documentURL": "19eGm6AID-rnigDNFglq6oEmngw12zJ9W69LbrD0VxZE"
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [
+        -1808,
+        912
+      ],
+      "id": "9081dbb8-cd2f-4ca9-9718-866d49ab0235",
+      "name": "DB EL - Webinar ",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "ulNwIzbcoJX5pM4n",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputText": "={{ $json.conversation_recent }}",
+        "categories": {
+          "categories": [
+            {
+              "category": "chat_chiusa",
+              "description": "L'utente ha ricevuto le informazioni di cui necessitava e non ha bisogno di maggiori informazioni"
+            },
+            {
+              "category": "chat_aperta",
+              "description": "La chat non sembra ancora terminata e può continuare, l'utente ha ancora bisogno di informazioni"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        688
+      ],
+      "id": "504cd62f-4fa1-4644-b2de-009e14659c40",
+      "name": "Text Classifier4"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        64,
+        912
+      ],
+      "id": "105083bc-a2c9-41a6-9d48-6878d9fa8366",
+      "name": "OpenAI Chat Model25",
+      "credentials": {
+        "openAiApi": {
+          "id": "5nwHDi9e8wOE2Fga",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "=<agent_config>\n<meta>\n  <company>Esperto Lavoro</company>\n  <role>Assistente consulenziale formazione HR e diritto lavoro</role>\n  <current_date>{{$now.format('dd/LL/yyyy')}}</current_date>\n</meta>\n\n<!-- PRINCIPI CORE -->\n<core_principles>\n  1. Valore prima di dati personali\n  2. Tono professionale, mai aggressivo\n  3. Max 3 prodotti per risposta con CTA chiara\n  4. Eventi passati (Data <= oggi) mai mostrati\n  5. Mai inventare dati non in database\n  6. Sempre proporre upgrade quando conviene\n</core_principles>\n\n<!-- DATABASE -->\n<databases>\n  <products>\n    Abbonamenti_DB, Membership_DB, Card_DB, Formazione_personalizzata_DB, \n    Consulenza_Legale_DB, Master_DB, Webinar_Live_DB, Webinar_on-demand_DB\n  </products>\n  \n  <enrichment optional=\"true\">\n    - DB_EL_-_Webinar, DB_EL_-_Master1: Descrizioni estese (match by nome prodotto)\n    - Database_promozioni: Filtra per data validità\n    - Database_docenti1: Approfondimenti docenti se richiesto\n  </enrichment>\n  \n  <tools>\n    - Gmail_-_Invio_brochure2: Quando link brochure valido\n    - Gmail_-_Team_Assistenza2: Richieste custom, escalation\n  </tools>\n</databases>\n\n<!-- COLONNE DB PRODOTTI -->\n<db_structure>\n  Nome prodotto | Tipologia prodotto | Prezzo di listino (€) | Data evento | \n  Descrizione del prodotto | Durata | Docente | Documento Scaricabile\n</db_structure>\n\n<!-- WORKFLOW -->\n<workflow>\n  <step_1_routing>\n    - Formazione continua → Abbonamenti_DB + Membership_DB\n    - Evento singolo → Webinar_Live_DB + Webinar_on-demand_DB + Master_DB\n    - Team (3+) → Card_DB + Formazione_personalizzata_DB\n    - Caso legale → Consulenza_Legale_DB\n    - Panoramica → Webinar_Live_DB + Webinar_on-demand_DB\n  </step_1_routing>\n  \n  <step_2_selection>\n    1. Query database pertinenti\n    \n    2. FILTRO DATE OBBLIGATORIO per Webinar_Live_DB e Master_DB:\n       DEVI scartare TUTTI i risultati con \"Data evento\" <= {{$now.format('dd/LL/yyyy')}}\n       \n       Processo:\n       a) Leggi campo \"Data evento\" di OGNI prodotto\n       b) SE \"Data evento\" = \"N/A\" → MANTIENI (on-demand)\n       c) SE \"Data evento\" > {{$now.format('dd/LL/yyyy')}} → MANTIENI (evento futuro)\n       d) SE \"Data evento\" <= {{$now.format('dd/LL/yyyy')}} → ELIMINA IMMEDIATAMENTE (evento passato o oggi)\n       \n       Esempi applicazione (se oggi fosse 29/10/2025):\n       - Data evento: 28/10/2025 → SCARTA ✗ (passato)\n       - Data evento: 29/10/2025 → SCARTA ✗ (oggi)\n       - Data evento: 30/10/2025 → MANTIENI ✓ (futuro)\n       - Data evento: 11/11/2025 → MANTIENI ✓ (futuro)\n       - Data evento: N/A → MANTIENI ✓ (on-demand)\n    \n    3. Ordina prodotti rimanenti per prezzo ASC\n    \n    4. Seleziona top 2-3 prodotti\n    \n    5. Arricchisci con DB_EL se \"Descrizione\" lo indica\n    \n    6. Verifica Database_promozioni\n  </step_2_selection>\n  \n  <step_3_upsell>\n    SE utente interessato a prodotto prezzo P:\n    1. Query stesso DB, ordina per prezzo\n    2. Trova prodotti prezzo > P\n    3. Calcola rapporto valore/prezzo\n    4. SE upgrade conveniente → proponi con calcolo risparmio\n  </step_3_upsell>\n</workflow>\n\n<!-- PROMOZIONI -->\n<promotions>\n  DOPO selezione prodotti:\n  1. Query Database_promozioni\n  2. Filtra: Data_inizio <= {{$now.format('dd/LL/yyyy')}} <= Data_fine\n  3. Match con prodotti selezionati\n  4. Mostra prezzo scontato: \"X€ + IVA (anziché Y€) - Promo fino al [data]\"\n</promotions>\n\n<!-- ENRICHMENT -->\n<enrichment>\n  SE \"Descrizione del prodotto\" contiene \"DB EL - Webinar\" o \"DB EL - Master1\":\n  1. Query DB indicato con nome prodotto (ignora \"WEBINAR:\" / \"MASTER:\")\n  2. Match parziale OK\n  3. SE trovato: usa descrizione estesa\n  4. SE non trovato: procedi con dati base (non segnalare)\n</enrichment>\n\n<!-- UPSELL DINAMICO -->\n<upsell_logic>\n  <same_type>\n    Utente interessato a prodotto X (prezzo P, benefici B):\n    1. Query stesso DB, ordina per prezzo ASC\n    2. Trova prodotti prezzo > P\n    3. Calcola per ognuno:\n       - Differenza €: ΔP = P2 - P\n       - Benefici extra: ΔB = B2 - B\n       - Costo/beneficio: P/B vs P2/B2\n    4. SE P2/B2 < P/B → proponi upgrade\n    \n    Template: \"Con [ΔP]€ in più ottieni [ΔB] e risparmi sul costo unitario\"\n  </same_type>\n  \n  <cross_type>\n    - Webinar/Master singolo → Abbonamenti\n    - Abbonamento top → Membership (stesso prezzo + sconto 10% consulenza)\n    - Consulenza ripetuta → Membership\n    - Team 1-2 → Card\n    - Team 5+ → Formazione personalizzata\n  </cross_type>\n  \n  <value_framing>\n    Prezzi annuali sempre anche in mensile/giornaliero:\n    [P]/12 = X€/mese, [P]/365 = Y€/giorno\n  </value_framing>\n</upsell_logic>\n\n<!-- CONVERSAZIONE -->\n<conversation>\n  <opening>\n    \"Con chi ho il piacere di parlare?\"\n    Se non risponde o fa domanda: procedi senza insistere\n  </opening>\n  \n  <discovery>\n    Max 1 domanda per messaggio:\n    - \"Evento singolo o formazione continua?\"\n    - \"Per te o per il team?\"\n    - \"Tema specifico o panoramica?\"\n  </discovery>\n  \n  <memory>\n    Ricorda: nome, preferenze, budget, num team, temi interesse, obiezioni\n  </memory>\n  \n  <data_request>\n    Chiedi email/telefono SOLO per azioni specifiche.\n    Sempre con motivo: \"Per inviarti [X], che email uso?\"\n  </data_request>\n</conversation>\n\n<!-- OUTPUT -->\n<output_format>\n  <structure>\n    [Intro 1 riga]\n    \n    1. [Nome Prodotto DB]\n       [Prezzo] | [Data/Durata]\n       [Descrizione max 2 righe]\n    \n    2. [Nome Prodotto DB]\n       [Prezzo] | [Data/Durata]\n       [Descrizione max 2 righe]\n    \n    [Upgrade se pertinente - max 2 righe]\n    [CTA]\n  </structure>\n  \n  <normalization>\n    Prezzi: \"€228 + IVA\" → \"228€ + IVA\" | \"N/A\" → \"Su preventivo - contatta team\"\n    Date: \"11/11/2025\" → \"Data: 11/11/2025\" | \"N/A\" → \"Disponibile on-demand\"\n    Liste: SEMPRE 1. 2. 3. (MAI * o -)\n    Limiti: Max 3 prodotti, 2 righe descrizione\n  </normalization>\n</output_format>\n\n<!-- OBIEZIONI -->\n<objections>\n  <framework>\n    1. Riconosci senza dire \"no\"\n    2. Reframing valore vs prezzo\n    3. Offri 2 alternative\n    4. Bridge: \"Capisco... E proprio per questo...\"\n  </framework>\n  \n  <key_scenarios>\n    <free_trial>\n      \"Non abbiamo trial gratuiti, ma:\n      1. [Webinar entry dal DB] - [Prezzo] per testare qualità\n      2. [Abbonamento entry DB] - [Prezzo]/anno = [P/12]€/mese\n      Quale per iniziare?\"\n    </free_trial>\n    \n    <too_expensive>\n      \"Analizziamo:\n      [Prodotto]: [P]/anno = [P/12]€/mese = [P/365]€/giorno\n      [Calcolo valore: X webinar/anno = Y€/webinar vs Z€ singolo]\n      \n      Alternativa: [Prodotto entry DB] - [Prezzo]\n      Quale si adatta meglio?\"\n    </too_expensive>\n    \n    <need_time>\n      \"Certamente. Ti invio brochure dettagliata. Che email uso?\"\n      [Usa Gmail tools]\n    </need_time>\n  </key_scenarios>\n</objections>\n\n<!-- ERRORI -->\n<errors>\n  - Nessun evento futuro dopo filtro → proponi on-demand + abbonamenti\n  - DB vuoto → \"Ti metto in contatto con consulente. Che email?\" + Gmail_Team_Assistenza2\n  - Link brochure mancante → Gmail_Team_Assistenza2\n  - DB_EL no match → procedi con dati base (non segnalare)\n</errors>\n\n<!-- ESEMPIO PRATICO FILTRO DATE -->\n<example_date_filtering>\n  <scenario>Utente chiede \"prossimi webinar live\" in data 29/10/2025</scenario>\n  \n  <step_by_step>\n    1. Query Webinar_Live_DB → Ritorna 6 webinar\n    \n    2. Applico filtro OBBLIGATORIO (oggi = {{$now.format('dd/LL/yyyy')}} = 29/10/2025):\n       Webinar A: Data evento = 15/10/2025 → 15/10/2025 <= 29/10/2025 → SCARTO ✗\n       Webinar B: Data evento = 28/10/2025 → 28/10/2025 <= 29/10/2025 → SCARTO ✗\n       Webinar C: Data evento = 29/10/2025 → 29/10/2025 <= 29/10/2025 → SCARTO ✗\n       Webinar D: Data evento = 11/11/2025 → 11/11/2025 > 29/10/2025 → MANTENGO ✓\n       Webinar E: Data evento = 13/11/2025 → 13/11/2025 > 29/10/2025 → MANTENGO ✓\n       Webinar F: Data evento = 25/11/2025 → 25/11/2025 > 29/10/2025 → MANTENGO ✓\n    \n    3. Eventi validi: D, E, F (3 webinar futuri)\n    \n    4. Ordino per prezzo, seleziono top 2\n    \n    5. Presento SOLO webinar D ed E all'utente\n  </step_by_step>\n  \n  <critical_note>\n    SE dopo filtro NON rimangono eventi futuri:\n    → Proponi webinar on-demand + abbonamenti (NON mostrare eventi passati)\n  </critical_note>\n</example_date_filtering>\n\n<!-- CHECKLIST PRE-RISPOSTA -->\n<checklist>\n  ☑ DB corretto per tipologia?\n  ☑ Eventi live: TUTTI con data <= {{$now.format('dd/LL/yyyy')}} SCARTATI?\n  ☑ Prodotti ordinati per prezzo?\n  ☑ Database_promozioni verificato?\n  ☑ Prezzi/date normalizzati?\n  ☑ Max 3 prodotti?\n  ☑ Upgrade calcolato?\n  ☑ CTA presente?\n  ☑ Nessun hard-coding nomi/prezzi?\n</checklist>\n\n<!-- REGOLE CRITICHE -->\n<critical_rules>\n  1. MAI hard-codare nomi prodotti/prezzi - SOLO da database\n  2. MAI MAI MAI mostrare eventi con Data evento <= {{$now.format('dd/LL/yyyy')}}\n  3. SEMPRE verificare Database_promozioni se utente interessato\n  4. SEMPRE calcolare upgrade ordinando per prezzo\n  5. Enrichment DB_EL opzionale, no match = no problem\n  6. Link brochure mancante = Gmail_Team_Assistenza2\n  7. Tono professionale ma caldo, mai pushy\n  8. FILTRO DATE è OBBLIGATORIO per ogni query a Webinar_Live_DB e Master_DB\n</critical_rules>\n\n</agent_config>"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        -1536,
+        688
+      ],
+      "id": "764e9ca3-6613-41f2-82d2-fa159a7adf9b",
+      "name": "AI Agent1",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw",
+          "mode": "list",
+          "cachedResultName": "DB EL - Prodotti - Singoli prodotti ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Abbonamenti",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        -1648,
+        912
+      ],
+      "id": "3a5d9e12-17f7-4112-afb6-ce79c790ea25",
+      "name": "Abbonamenti DB",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fPuuhygQg4a4qikO",
+          "name": "Google Sheets - Info@growthers.io"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw",
+          "mode": "list",
+          "cachedResultName": "DB EL - Prodotti - Singoli prodotti ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 937598194,
+          "mode": "list",
+          "cachedResultName": "Membership",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw/edit#gid=937598194"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        -1488,
+        912
+      ],
+      "id": "e22678e7-08c8-45b5-b269-cb7b9025a8cb",
+      "name": "Membership DB",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fPuuhygQg4a4qikO",
+          "name": "Google Sheets - Info@growthers.io"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw",
+          "mode": "list",
+          "cachedResultName": "DB EL - Prodotti - Singoli prodotti ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 527573734,
+          "mode": "list",
+          "cachedResultName": "Formazione personalizzata",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw/edit#gid=527573734"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        -1312,
+        912
+      ],
+      "id": "9cbf28e3-f686-4939-85e9-59cc4759e4d3",
+      "name": "Formazione personalizzata DB",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fPuuhygQg4a4qikO",
+          "name": "Google Sheets - Info@growthers.io"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw",
+          "mode": "list",
+          "cachedResultName": "DB EL - Prodotti - Singoli prodotti ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 527573734,
+          "mode": "list",
+          "cachedResultName": "Formazione personalizzata",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw/edit#gid=527573734"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        -1168,
+        912
+      ],
+      "id": "8f67db81-a09a-4201-a88c-69c72d5a0510",
+      "name": "Card DB",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fPuuhygQg4a4qikO",
+          "name": "Google Sheets - Info@growthers.io"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw",
+          "mode": "list",
+          "cachedResultName": "DB EL - Prodotti - Singoli prodotti ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1169952589,
+          "mode": "list",
+          "cachedResultName": "Consulenza Legale",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw/edit#gid=1169952589"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        -1008,
+        912
+      ],
+      "id": "4e0ea7b5-1ef2-4613-a203-a32ee2f97de3",
+      "name": "Consulenza Legale DB",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fPuuhygQg4a4qikO",
+          "name": "Google Sheets - Info@growthers.io"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw",
+          "mode": "list",
+          "cachedResultName": "DB EL - Prodotti - Singoli prodotti ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 110108988,
+          "mode": "list",
+          "cachedResultName": "Master",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw/edit#gid=110108988"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        -848,
+        912
+      ],
+      "id": "38aa9df5-dce1-43fa-b12c-544a7173189d",
+      "name": "Master DB",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fPuuhygQg4a4qikO",
+          "name": "Google Sheets - Info@growthers.io"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw",
+          "mode": "list",
+          "cachedResultName": "DB EL - Prodotti - Singoli prodotti ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 638147040,
+          "mode": "list",
+          "cachedResultName": "Webinar on-demand",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw/edit#gid=638147040"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        -688,
+        912
+      ],
+      "id": "f45c629d-45d1-4045-99d6-df3d0419a065",
+      "name": "Webinar on-demand DB",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fPuuhygQg4a4qikO",
+          "name": "Google Sheets - Info@growthers.io"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw",
+          "mode": "list",
+          "cachedResultName": "DB EL - Prodotti - Singoli prodotti ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1276953637,
+          "mode": "list",
+          "cachedResultName": "Webinar Live",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/15eMY8l_TkVxjtVtftzde61y9fJ6Hrfa1YC71IvAUSdw/edit#gid=1276953637"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.6,
+      "position": [
+        -496,
+        912
+      ],
+      "id": "ef4d0a74-a6d3-4185-8c71-789a6428c409",
+      "name": "Webinar Live DB",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fPuuhygQg4a4qikO",
+          "name": "Google Sheets - Info@growthers.io"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model17": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory2": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail - Team Assistenza2": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail - Invio brochure2": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Database promozioni1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Database docenti1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggiungi info - Cold2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Chat10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggiungi info - Warm2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Chat11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggiungi info - Hot2": {
+      "main": [
+        [
+          {
+            "node": "Respond to Chat8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recupero Conversazione2": {
+      "main": [
+        [
+          {
+            "node": "Text Classifier4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor - COLD2": {
+      "main": [
+        [
+          {
+            "node": "Summarization Chain8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor - WARM2": {
+      "main": [
+        [
+          {
+            "node": "Summarization Chain7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Information Extractor - HOT2": {
+      "main": [
+        [
+          {
+            "node": "Summarization Chain6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build COLD Raw2": {
+      "main": [
+        [
+          {
+            "node": "Aggiungi info - Cold2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build WARM Raw2": {
+      "main": [
+        [
+          {
+            "node": "Aggiungi info - Warm2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build HOT Row2": {
+      "main": [
+        [
+          {
+            "node": "Aggiungi info - Hot2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model18": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Summarization Chain6",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarization Chain6": {
+      "main": [
+        [
+          {
+            "node": "Build HOT Row2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model19": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor - HOT2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model20": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Summarization Chain7",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarization Chain7": {
+      "main": [
+        [
+          {
+            "node": "Build WARM Raw2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model21": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor - WARM2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model22": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Summarization Chain8",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarization Chain8": {
+      "main": [
+        [
+          {
+            "node": "Build COLD Raw2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model23": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor - COLD2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model24": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Text Classifier3",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres2": {
+      "main": [
+        [
+          {
+            "node": "Recupero Conversazione2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Classifier3": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor - HOT2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Information Extractor - WARM2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Information Extractor - COLD2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Collect Base Fields2": {
+      "main": [
+        [
+          {
+            "node": "Postgres2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DB EL - Master1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DB EL - Webinar ": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Classifier4": {
+      "main": [
+        [
+          {
+            "node": "Text Classifier3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Chat9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model25": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Text Classifier4",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "Collect Base Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Abbonamenti DB": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Membership DB": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formazione personalizzata DB": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Card DB": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consulenza Legale DB": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Master DB": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webinar on-demand DB": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webinar Live DB": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "bc21ebd6-c375-45de-a219-ff541dd5fdee",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "c233d163f5868f4bc3ea70f106220986e764ec7f3ce7d142eb0adb3f41e2bc64"
+  },
+  "id": "vajtqJcxupb43pPu",
+  "tags": [
+    {
+      "updatedAt": "2025-10-29T11:09:35.780Z",
+      "createdAt": "2025-10-29T11:09:35.780Z",
+      "id": "0R7oje3Fv1iQF6sp",
+      "name": "Production"
+    },
+    {
+      "updatedAt": "2025-10-29T11:09:35.788Z",
+      "createdAt": "2025-10-29T11:09:35.788Z",
+      "id": "5OPd9PzzhCjYZ8VB",
+      "name": "Optimized"
+    }
+  ]
+}

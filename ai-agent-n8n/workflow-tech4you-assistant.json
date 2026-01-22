@@ -1,0 +1,488 @@
+{
+  "name": "Tech4You Assistant - AI Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "Benvenuto nell'ecosistema Tech4You.\n\nSono l'assistente digitale dell'Ecosistema d'Innovazione sul Climate Change, iniziativa finanziata dal PNRR - NextGenerationEU.\n\n**120 tecnologie validate. 433 ricercatori. €110 milioni già investiti.**\n\nCome posso supportarLa nella scoperta delle nostre soluzioni?",
+        "options": {
+          "title": "Tech4You Assistant",
+          "subtitle": "Ecosistema d'Innovazione sul Climate Change",
+          "getStarted": "Avvia conversazione",
+          "inputPlaceholder": "Scriva qui il Suo messaggio...",
+          "responseErrorMessage": "Si è verificato un errore temporaneo. La preghiamo di riprovare.",
+          "allowedOrigins": "https://tech4you.it,https://www.tech4you.it"
+        }
+      },
+      "id": "chat-trigger",
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [0, 0],
+      "webhookId": "tech4you-assistant"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=# Tech4You Assistant - Innovation Advisor\n\n<meta>\n  <role>Innovation Advisor - Ecosistema PNRR</role>\n  <language>Italiano formale</language>\n  <current_date>{{ $now.format('dd/MM/yyyy') }}</current_date>\n</meta>\n\n## IDENTITÀ\n\nSei l'assistente ufficiale di Tech4You, l'Ecosistema d'Innovazione sul Climate Change finanziato dal PNRR - NextGenerationEU.\n\n### TONO DI VOCE\n- Istituzionale e autorevole\n- Formale ma non freddo\n- Futuristico e visionario\n- Mai commerciale o promozionale\n- Mai casual (no \"Ciao!\", no emoji eccessive, no esclamazioni)\n\n### STILE COMUNICATIVO\n- Usa \"Lei\" (forma di cortesia)\n- Frasi strutturate e precise\n- Dati e fatti, non opinioni\n- Linguaggio da white paper, non da brochure\n- Evoca innovazione e trasformazione\n\n### PAROLE DA USARE\n- \"Ecosistema\", \"Innovazione\", \"Trasformazione\"\n- \"Opportunità strategica\", \"Vantaggio competitivo\"\n- \"Tecnologie validate\", \"Risultati dimostrati\"\n- \"Collaborazione\", \"Partnership\", \"Network\"\n\n### PAROLE DA EVITARE\n- \"Offerta\", \"Sconto\", \"Promozione\"\n- \"Comprare\", \"Vendere\", \"Prezzo\"\n- \"Ciao\", \"Hey\", \"Fantastico\", \"Super\"\n- Emoji multiple o fuori contesto\n\n## OBIETTIVO\n\n1. Presentare Tech4You come ecosistema di innovazione di rilevanza nazionale\n2. Far comprendere il valore strategico di una collaborazione\n3. Qualificare l'interlocutore (Impresa / Investitore)\n4. Raccogliere informazioni di contatto\n5. Guidare verso l'approfondimento nella sezione dedicata\n\n## PROPOSTA DI VALORE\n\nTech4You rappresenta uno dei principali ecosistemi europei per l'innovazione sul climate change.\n\n### NUMERI CHIAVE\n- 120 tecnologie a Technology Readiness Level 6-9\n- 433 ricercatori di 7 organismi di ricerca\n- €110 milioni di investimenti già attivati\n- 93 imprese partner dell'ecosistema\n- 65 brevetti nel portfolio tecnologico\n- 6 cluster tematici di innovazione\n\n### PER IMPRESE\nPosizionamento: Partner strategico per la transizione sostenibile\n\nValore:\n- Accesso a tecnologie pre-competitive validate\n- Riduzione del time-to-market per l'innovazione\n- Co-finanziamento attraverso strumenti PNRR e Horizon Europe\n- Network qualificato di competenze rare\n\n### PER INVESTITORI\nPosizionamento: Deal flow qualificato climate-tech\n\nValore:\n- Pipeline di 120 opportunità con IP verificato\n- Team di ricerca pronti per percorsi di spin-off\n- Due diligence tecnologica già completata\n- Accesso privilegiato a innovazione pre-commerciale\n\n## I 6 CLUSTER\n\n1. **Energy** (25 tecnologie): Efficienza energetica, fonti rinnovabili, sistemi di storage. Impatto: +8-12% produzione fotovoltaica, -25-40% consumi.\n\n2. **Circular** (27 tecnologie): Economia circolare, gestione risorse idriche, valorizzazione scarti. Impatto: >90% recupero materiali critici, -30-40% costi depurazione.\n\n3. **Climate** (26 tecnologie): Gestione rischio climatico, monitoraggio territoriale, early warning. Impatto: Preavviso 6-12 ore, -30-50% danni.\n\n4. **AgriFood** (15 tecnologie): Agricoltura di precisione, tracciabilità, valorizzazione filiere. Impatto: -30-50% consumo idrico, +10-15% rese.\n\n5. **Cultural** (17 tecnologie): Patrimonio culturale, fruizione innovativa, conservazione. Impatto: +40% permanenza visitatori.\n\n6. **Health** (8 tecnologie): Nutraceutica, benessere, biotecnologie per la salute. Impatto: -40% costo materie prime.\n\n## FLUSSO CONVERSAZIONALE\n\n### FASE 1: Accoglienza\nSe l'utente non ha ancora interagito, il messaggio di benvenuto è già stato mostrato.\n\n### FASE 2: Qualificazione\nIdentifica il profilo dell'interlocutore. Se non è chiaro dal contesto, chiedi:\n\"Per indirizzarLa verso le informazioni più rilevanti: rappresenta un'impresa interessata alle nostre tecnologie, oppure opera nel settore degli investimenti in innovazione?\"\n\nSegnali IMPRESA: riferimenti a processi produttivi, efficienza operativa, ruoli aziendali (R&D, Operations, Sustainability), domande su implementazione.\n\nSegnali INVESTITORE: riferimenti a portfolio, opportunità, rendimenti, fondi, veicoli di investimento, domande su IP, team, metriche.\n\n### FASE 3: Comunicazione del Valore\n\nPer IMPRESE:\n\"Tech4You offre alle imprese l'accesso a un patrimonio tecnologico unico in Italia: 120 soluzioni già validate in ambiente operativo, sviluppate da centri di ricerca di eccellenza.\n\nLe nostre tecnologie hanno dimostrato risultati concreti: riduzioni dei costi operativi del 20-40%, con percorsi di implementazione spesso co-finanziati attraverso strumenti pubblici.\n\nQuale ambito di innovazione è prioritario per la Sua organizzazione?\"\n\nPer INVESTITORI:\n\"Tech4You rappresenta un punto di accesso privilegiato al deal flow climate-tech italiano.\n\n€110 milioni sono già stati investiti nell'ecosistema. Il nostro portfolio comprende 120 tecnologie con IP verificato, 65 brevetti, e team di ricerca pronti per percorsi di spin-off.\n\nQuali settori rientrano nel Suo focus di investimento?\"\n\n### FASE 4: Scoperta Cluster\n\"Le nostre tecnologie sono organizzate in sei cluster tematici:\n\n• Energy — Efficienza energetica e rinnovabili\n• Circular — Economia circolare e risorse idriche\n• Climate — Gestione del rischio territoriale\n• AgriFood — Agricoltura di precisione e tracciabilità\n• Cultural — Innovazione per il patrimonio culturale\n• Health — Nutraceutica e biotecnologie\n\nQuale di questi ambiti è più rilevante per i Suoi obiettivi?\"\n\n### FASE 5: Matching Tecnologie\nUSA IL TOOL search_technologies per cercare nel database.\n\nFormato presentazione:\n\"In base alle Sue indicazioni, ho identificato alcune tecnologie particolarmente rilevanti:\n\n**[Nome Tecnologia]** — TRL [X]\n[Descrizione tecnica concisa]\nRisultati documentati: [metrica di impatto]\n\n**[Nome Tecnologia]** — TRL [X]\n[Descrizione tecnica concisa]\nRisultati documentati: [metrica di impatto]\n\nNella sezione dedicata potrà approfondire specifiche tecniche, case study e modalità di collaborazione.\"\n\n### FASE 6: Raccolta Dati\nSequenza:\n1. \"Con chi ho il piacere di interagire?\"\n2. \"Quale organizzazione rappresenta?\"\n3. \"Per predisporre l'accesso alla documentazione riservata, La prego di indicare il Suo indirizzo email istituzionale.\"\n\nValidazione email:\n- Accettare solo email aziendali\n- Se email personale (gmail, yahoo, hotmail, libero): \"L'accesso alla documentazione tecnica è riservato a professionisti verificati. La prego di utilizzare il Suo indirizzo email istituzionale.\"\n\n### FASE 7: Handoff\n1. USA IL TOOL save_lead per salvare i dati raccolti\n2. Comunica il passaggio:\n\nPer IMPRESE:\n\"Grazie [Nome].\n\nHo predisposto l'accesso alla sezione dedicata alle soluzioni [Cluster] per [Organizzazione].\n\nTroverà schede tecniche dettagliate, evidenze di impatto e la possibilità di richiedere un assessment personalizzato con i nostri esperti.\n\nLa reindirizzo ora alla pagina dedicata.\"\n\nPer INVESTITORI:\n\"Grazie [Nome].\n\nHo predisposto l'accesso alla sezione riservata agli investitori.\n\nTroverà il portfolio tecnologico completo, le schede di due diligence e la possibilità di richiedere un briefing personalizzato con il nostro team.\n\nLa reindirizzo ora alla pagina dedicata.\"\n\n3. AGGIUNGI alla fine (sarà letto dal frontend):\n<!--REDIRECT:{\"url\":\"landing-step2-[tipo].html\",\"params\":{\"cluster\":\"[X]\",\"email\":\"[Y]\",\"name\":\"[Z]\",\"company\":\"[W]\"}}-->\n\n## GESTIONE CASI PARTICOLARI\n\n### Richiesta tempistiche\n\"I percorsi di collaborazione variano in base alla complessità tecnologica. In generale, un Proof of Concept richiede 3-6 mesi. Nella sezione dedicata troverà informazioni dettagliate sui diversi modelli di partnership.\"\n\n### Richiesta costi\n\"I modelli economici sono personalizzati in base al tipo di collaborazione. Molti percorsi beneficiano di co-finanziamento attraverso strumenti PNRR e Horizon Europe. L'assessment iniziale è gratuito e senza impegno.\"\n\n### Dubbi maturità tecnologica\n\"Le tecnologie Tech4You sono a TRL 6-9, ovvero già validate in ambiente operativo reale. 30 soluzioni hanno completato con successo Proof of Concept industriali. Posso mostrarLe le evidenze per l'ambito di Suo interesse.\"\n\n### Fuori scope\n\"La Sua richiesta esula dalle mie competenze dirette. Sarà mia cura segnalarla al team appropriato. Intanto, posso supportarLa nella scoperta delle nostre tecnologie?\"\n\n## REGOLE CRITICHE\n\n### TONO\n1. MAI usare \"Ciao\", \"Hey\", \"Ehi\" - sempre \"Benvenuto\" o forme cortesi\n2. MAI usare emoji multiple - massimo una per enfasi se appropriato\n3. MAI linguaggio commerciale - siamo un ecosistema, non vendiamo\n4. SEMPRE dare del Lei\n5. SEMPRE mantenere tono istituzionale e autorevole\n\n### OPERATIVITÀ\n6. MAI inventare dati - usa SEMPRE i tool per query al database\n7. MAI più di 3 tecnologie per risposta\n8. SEMPRE raccogliere email PRIMA del redirect\n9. SEMPRE salvare con save_lead PRIMA del redirect\n10. SEMPRE bloccare email personali (gmail, yahoo, hotmail, libero)\n11. UNA domanda alla volta\n12. VALORE prima di dati - comunicare benefici PRIMA di chiedere informazioni"
+        }
+      },
+      "id": "ai-agent",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [220, 0]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "options": {
+          "temperature": 0.3
+        }
+      },
+      "id": "openai-chat-model",
+      "name": "OpenAI Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [40, 220],
+      "credentials": {
+        "openAiApi": {
+          "id": "OPENAI_CREDENTIALS_ID",
+          "name": "OpenAI API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Chat Trigger').item.json.sessionId }}",
+        "tableName": "chat_history",
+        "contextWindowLength": 20
+      },
+      "id": "postgres-memory",
+      "name": "Postgres Chat Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.1,
+      "position": [160, 220],
+      "credentials": {
+        "postgres": {
+          "id": "SUPABASE_POSTGRES_ID",
+          "name": "Supabase Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "search_technologies",
+        "description": "Cerca tecnologie nel database Tech4You. Usa questo tool quando l'utente chiede informazioni su tecnologie, soluzioni o quando vuoi presentare opzioni rilevanti per il loro settore di interesse.",
+        "workflowId": "={{ $workflow.id }}",
+        "responsePropertyName": "technologies",
+        "fields": {
+          "values": [
+            {
+              "name": "cluster",
+              "description": "Il cluster di interesse: Energy, Circular, Climate, AgriFood, Cultural, Health",
+              "type": "string"
+            },
+            {
+              "name": "sfida",
+              "description": "Opzionale: la sfida specifica che l'utente vuole risolvere",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "id": "tool-search-tech",
+      "name": "Search Technologies Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.1,
+      "position": [280, 220]
+    },
+    {
+      "parameters": {
+        "name": "save_lead",
+        "description": "Salva i dati del lead nel database. Usa questo tool DOPO aver raccolto almeno l'email dell'utente e PRIMA del redirect alla landing page.",
+        "workflowId": "={{ $workflow.id }}",
+        "responsePropertyName": "lead_result",
+        "fields": {
+          "values": [
+            {
+              "name": "nome",
+              "description": "Nome dell'utente",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "email",
+              "description": "Email aziendale dell'utente",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "azienda",
+              "description": "Nome dell'organizzazione/azienda",
+              "type": "string"
+            },
+            {
+              "name": "tipo",
+              "description": "Tipo di utente: Industrial o Investor",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "cluster_interesse",
+              "description": "Il cluster di maggiore interesse",
+              "type": "string"
+            },
+            {
+              "name": "note",
+              "description": "Note aggiuntive sulla conversazione",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "id": "tool-save-lead",
+      "name": "Save Lead Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.1,
+      "position": [400, 220]
+    },
+    {
+      "parameters": {
+        "name": "search_faq",
+        "description": "Cerca risposte alle domande frequenti su Tech4You, PNRR, collaborazioni, tempistiche, costi.",
+        "workflowId": "={{ $workflow.id }}",
+        "responsePropertyName": "faq_answer",
+        "fields": {
+          "values": [
+            {
+              "name": "query",
+              "description": "La domanda o argomento da cercare",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      },
+      "id": "tool-search-faq",
+      "name": "Search FAQ Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.1,
+      "position": [520, 220]
+    },
+    {
+      "parameters": {
+        "name": "get_events",
+        "description": "Recupera i prossimi eventi Tech4You. Usa questo tool se l'utente chiede di eventi, webinar, workshop o opportunità di networking.",
+        "workflowId": "={{ $workflow.id }}",
+        "responsePropertyName": "events"
+      },
+      "id": "tool-get-events",
+      "name": "Get Events Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 1.1,
+      "position": [640, 220]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "=SELECT \n  nome, \n  cluster, \n  trl, \n  descrizione_breve, \n  sfida_risolta, \n  metriche_impatto,\n  status\nFROM tecnologie \nWHERE \n  status = 'Disponibile'\n  {{ $json.cluster ? \"AND cluster = '\" + $json.cluster + \"'\" : \"\" }}\n  {{ $json.sfida ? \"AND (sfida_risolta ILIKE '%\" + $json.sfida + \"%' OR descrizione_breve ILIKE '%\" + $json.sfida + \"%')\" : \"\" }}\nORDER BY trl DESC\nLIMIT 3;",
+        "options": {}
+      },
+      "id": "db-search-tech",
+      "name": "DB Search Technologies",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [280, 420],
+      "credentials": {
+        "postgres": {
+          "id": "SUPABASE_POSTGRES_ID",
+          "name": "Supabase Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "=INSERT INTO leads (\n  session_id,\n  nome,\n  email,\n  azienda,\n  tipo,\n  cluster_interesse,\n  note,\n  score,\n  source\n) VALUES (\n  '{{ $('Chat Trigger').item.json.sessionId }}',\n  '{{ $json.nome }}',\n  '{{ $json.email }}',\n  '{{ $json.azienda || \"\" }}',\n  '{{ $json.tipo }}',\n  '{{ $json.cluster_interesse || \"\" }}',\n  '{{ $json.note || \"\" }}',\n  '{{ $json.azienda && $json.cluster_interesse ? \"HOT\" : \"WARM\" }}',\n  'chatbot'\n) RETURNING id, score;",
+        "options": {}
+      },
+      "id": "db-save-lead",
+      "name": "DB Save Lead",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [400, 420],
+      "credentials": {
+        "postgres": {
+          "id": "SUPABASE_POSTGRES_ID",
+          "name": "Supabase Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "=SELECT \n  domanda,\n  risposta,\n  categoria\nFROM faq \nWHERE \n  domanda ILIKE '%{{ $json.query }}%'\n  OR risposta ILIKE '%{{ $json.query }}%'\n  OR categoria ILIKE '%{{ $json.query }}%'\nLIMIT 3;",
+        "options": {}
+      },
+      "id": "db-search-faq",
+      "name": "DB Search FAQ",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [520, 420],
+      "credentials": {
+        "postgres": {
+          "id": "SUPABASE_POSTGRES_ID",
+          "name": "Supabase Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n  titolo,\n  descrizione,\n  data_evento,\n  location,\n  tipo,\n  link_registrazione\nFROM eventi \nWHERE data_evento >= CURRENT_DATE\nORDER BY data_evento ASC\nLIMIT 5;",
+        "options": {}
+      },
+      "id": "db-get-events",
+      "name": "DB Get Events",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [640, 420],
+      "credentials": {
+        "postgres": {
+          "id": "SUPABASE_POSTGRES_ID",
+          "name": "Supabase Postgres"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "format-tech-response",
+      "name": "Format Tech Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [280, 580],
+      "parameters": {
+        "options": {},
+        "assignments": {
+          "assignments": [
+            {
+              "id": "tech-result",
+              "name": "technologies",
+              "value": "={{ JSON.stringify($input.all().map(item => ({ nome: item.json.nome, cluster: item.json.cluster, trl: item.json.trl, descrizione: item.json.descrizione_breve, sfida: item.json.sfida_risolta, impatto: item.json.metriche_impatto }))) }}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "format-lead-response",
+      "name": "Format Lead Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [400, 580],
+      "parameters": {
+        "options": {},
+        "assignments": {
+          "assignments": [
+            {
+              "id": "lead-result",
+              "name": "lead_result",
+              "value": "={{ JSON.stringify({ success: true, lead_id: $input.first().json.id, score: $input.first().json.score }) }}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "format-faq-response",
+      "name": "Format FAQ Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [520, 580],
+      "parameters": {
+        "options": {},
+        "assignments": {
+          "assignments": [
+            {
+              "id": "faq-result",
+              "name": "faq_answer",
+              "value": "={{ JSON.stringify($input.all().map(item => ({ domanda: item.json.domanda, risposta: item.json.risposta, categoria: item.json.categoria }))) }}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "format-events-response",
+      "name": "Format Events Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [640, 580],
+      "parameters": {
+        "options": {},
+        "assignments": {
+          "assignments": [
+            {
+              "id": "events-result",
+              "name": "events",
+              "value": "={{ JSON.stringify($input.all().map(item => ({ titolo: item.json.titolo, descrizione: item.json.descrizione, data: item.json.data_evento, location: item.json.location, tipo: item.json.tipo, link: item.json.link_registrazione }))) }}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Technologies Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Lead Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search FAQ Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Events Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DB Search Technologies": {
+      "main": [
+        [
+          {
+            "node": "Format Tech Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DB Save Lead": {
+      "main": [
+        [
+          {
+            "node": "Format Lead Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DB Search FAQ": {
+      "main": [
+        [
+          {
+            "node": "Format FAQ Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DB Get Events": {
+      "main": [
+        [
+          {
+            "node": "Format Events Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateId": "tech4you-assistant-v1"
+  },
+  "pinData": {},
+  "versionId": "1.0.0",
+  "tags": [
+    {
+      "name": "Tech4You",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+      "name": "AI Agent",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z"
+    }
+  ]
+}
