@@ -36,7 +36,7 @@
             <span class="hero-badge animate-fade-in-up delay-1">Ecosistema PNRR - NextGenerationEU</span>
             <h1 class="animate-fade-in-up delay-2">Benvenuto nel mondo <span class="highlight">Tech4You</span></h1>
             <p class="hero-subtitle animate-fade-in-up delay-3">
-              4 anni di ricerca. 110M investiti. 120 tecnologie climate tech pronte per il mercato.
+              4 anni di ricerca. 120 tecnologie climate tech pronte per il mercato.
             </p>
             <p class="hero-description animate-fade-in-up delay-4">
               Un ecosistema di <strong>7 Organismi di Ricerca</strong> del Mezzogiorno in un unico interlocutore.
@@ -199,7 +199,7 @@
             <p class="text-muted" id="tech-section-subtitle">Caricamento...</p>
           </div>
 
-          <!-- TRL Filters + Back Button -->
+          <!-- Type Filters + Back Button -->
           <div class="tech-toolbar">
             <button class="btn btn-ghost btn-back-inline" onclick="goToStep(2)">
               <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -207,12 +207,11 @@
               </svg>
               Cambia cluster
             </button>
-            <div class="trl-filters">
-              <button class="trl-filter active" data-trl="all">Tutti i TRL</button>
-              <button class="trl-filter" data-trl="9">TRL 9</button>
-              <button class="trl-filter" data-trl="8">TRL 8</button>
-              <button class="trl-filter" data-trl="7">TRL 7</button>
-              <button class="trl-filter" data-trl="6">TRL 6</button>
+            <div class="type-filters">
+              <button class="type-filter active" data-type="all">Tutti</button>
+              <button class="type-filter" data-type="software">Software</button>
+              <button class="type-filter" data-type="physical">Hardware</button>
+              <button class="type-filter" data-type="hybrid">Ibridi</button>
             </div>
           </div>
 
@@ -428,7 +427,7 @@
       clusterCounts: {},
       formData: {},
       sessionId: generateUUID(),
-      currentTrlFilter: 'all'
+      currentTypeFilter: 'all'
     };
 
     // ==========================================
@@ -643,8 +642,8 @@
         `${tecnologie.length} soluzioni pronte per test e trasferimento | ${clusterInfo.fullName}`;
 
       let filteredTech = tecnologie;
-      if (state.currentTrlFilter !== 'all') {
-        filteredTech = tecnologie.filter(t => t.trl == state.currentTrlFilter);
+      if (state.currentTypeFilter !== 'all') {
+        filteredTech = tecnologie.filter(t => getTechTypeCategory(t.tipo_dimostratore) === state.currentTypeFilter);
       }
 
       // Store for click handling
@@ -654,7 +653,7 @@
         container.innerHTML = `
           <div class="empty-state">
             <p>Nessuna tecnologia disponibile per questo filtro.</p>
-            <button class="btn btn-ghost" onclick="filterByTrl('all')">Mostra tutte</button>
+            <button class="btn btn-ghost" onclick="filterByType('all')">Mostra tutte</button>
           </div>
         `;
         return;
@@ -668,6 +667,25 @@
 
       // Add click handlers via event delegation
       document.getElementById('tech-grid').addEventListener('click', handleTechCardClick);
+    }
+
+    // Categorize technology type for filtering
+    function getTechTypeCategory(tipo) {
+      if (!tipo) return 'other';
+      const t = tipo.toLowerCase();
+      // Hybrid: contains both physical and software
+      if ((t.includes('physical') && t.includes('software')) || t.includes('and')) {
+        return 'hybrid';
+      }
+      // Software: platforms, apps, algorithms, web
+      if (t.includes('software') || t.includes('platform') || t.includes('algorithm') || t.includes('app') || t.includes('web')) {
+        return 'software';
+      }
+      // Physical: demonstrators, stations, systems
+      if (t.includes('physical') || t.includes('demonstrator') || t.includes('station') || t.includes('system')) {
+        return 'physical';
+      }
+      return 'other';
     }
 
     function handleTechCardClick(e) {
@@ -900,11 +918,11 @@
       }, 400);
     }
 
-    function filterByTrl(trl) {
-      state.currentTrlFilter = trl;
+    function filterByType(type) {
+      state.currentTypeFilter = type;
 
-      document.querySelectorAll('.trl-filter').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.trl === trl);
+      document.querySelectorAll('.type-filter').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.type === type);
       });
 
       if (state.selectedCluster && state.tecnologieCache[state.selectedCluster]) {
@@ -1019,10 +1037,10 @@
         });
       });
 
-      // TRL filter handlers
-      document.querySelectorAll('.trl-filter').forEach(btn => {
+      // Type filter handlers
+      document.querySelectorAll('.type-filter').forEach(btn => {
         btn.addEventListener('click', function() {
-          filterByTrl(this.dataset.trl);
+          filterByType(this.dataset.type);
         });
       });
 

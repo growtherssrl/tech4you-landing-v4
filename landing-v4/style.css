@@ -684,7 +684,7 @@ p { font-size: var(--text-base); }
   flex-shrink: 0;
 }
 
-.trl-filters {
+.type-filters {
   display: flex;
   justify-content: center;
   gap: var(--space-xs);
@@ -692,7 +692,7 @@ p { font-size: var(--text-base); }
   flex: 1;
 }
 
-.trl-filter {
+.type-filter {
   padding: clamp(8px, 1.5vw, 12px) clamp(12px, 2vw, 18px);
   background: var(--light);
   border: 2px solid var(--border);
@@ -703,12 +703,12 @@ p { font-size: var(--text-base); }
   transition: all var(--transition-fast);
 }
 
-.trl-filter:hover {
+.type-filter:hover {
   border-color: var(--primary);
   color: var(--primary);
 }
 
-.trl-filter.active {
+.type-filter.active {
   background: var(--primary);
   border-color: var(--primary);
   color: var(--white);
@@ -1470,7 +1470,7 @@ p { font-size: var(--text-base); }
     padding: 0 var(--space-sm);
   }
 
-  .trl-filters {
+  .type-filters {
     padding: 0 var(--space-sm);
   }
 
@@ -1524,7 +1524,7 @@ p { font-size: var(--text-base); }
     justify-content: center;
   }
 
-  .trl-filters {
+  .type-filters {
     justify-content: center;
   }
 
@@ -1559,11 +1559,11 @@ p { font-size: var(--text-base); }
     font-size: var(--text-base);
   }
 
-  .trl-filters {
+  .type-filters {
     gap: var(--space-xs);
   }
 
-  .trl-filter {
+  .type-filter {
     padding: var(--space-xs) var(--space-sm);
     font-size: var(--text-xs);
   }
