@@ -832,13 +832,20 @@
           <div class="tech-detail-section animate-fade-in-up delay-4">
             <h3>Mercati Target</h3>
             <div class="market-targets-grid">
-              ${tech.market_targets.map(target => `
+              ${(typeof tech.market_targets === 'string' ? JSON.parse(tech.market_targets) : tech.market_targets).map(target => `
                 <div class="market-target-card">
+                  <span class="market-icon">&#127919;</span>
                   <span class="market-segment">${target.segment}</span>
-                  <span class="market-desc">${target.description}</span>
                 </div>
               `).join('')}
             </div>
+          </div>
+          ` : ''}
+
+          ${tech.impatti_previsti ? `
+          <div class="tech-detail-section animate-fade-in-up delay-4">
+            <h3>Risultati e Impatti</h3>
+            <p class="tech-impatti">${tech.impatti_previsti}</p>
           </div>
           ` : ''}
 

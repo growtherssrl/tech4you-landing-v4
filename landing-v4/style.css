@@ -1179,14 +1179,20 @@ p { font-size: var(--text-base); }
   border-radius: var(--radius-md);
   padding: var(--space-md);
   display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-sm);
   transition: var(--transition-fast);
 }
 
 .market-target-card:hover {
   border-color: var(--primary);
   box-shadow: var(--shadow-md);
+}
+
+.market-icon {
+  font-size: 1.5rem;
+  opacity: 0.8;
 }
 
 .market-segment {
@@ -1199,6 +1205,16 @@ p { font-size: var(--text-base); }
   font-size: var(--text-sm);
   color: #666;
   line-height: 1.5;
+}
+
+/* Impatti Section */
+.tech-impatti {
+  color: var(--gray);
+  line-height: 1.7;
+  background: rgba(0, 152, 187, 0.05);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--primary);
 }
 
 /* Tech Tags Section */
