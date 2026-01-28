@@ -1225,6 +1225,10 @@ p { font-size: var(--text-base); }
   margin-top: var(--space-lg);
   padding-top: var(--space-md);
   border-top: 1px solid var(--border);
+  justify-content: center;
+  max-width: min(800px, 100%);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tech-tag {
@@ -1310,7 +1314,7 @@ p { font-size: var(--text-base); }
   display: flex;
   align-items: flex-start;
   gap: var(--space-sm);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
   font-size: var(--text-base);
   line-height: 1.5;
 }
