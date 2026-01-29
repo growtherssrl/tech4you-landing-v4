@@ -1571,3 +1571,326 @@ p { font-size: var(--text-base); }
     font-size: var(--text-xs);
   }
 }
+
+/* ========================================
+   STEP LOGO (All Steps)
+   ======================================== */
+.step-logo {
+  height: 60px;
+  display: block;
+  margin: 0 auto var(--space-md) auto;
+}
+
+.step-logo-light {
+  filter: brightness(0) invert(1);
+}
+
+/* ========================================
+   STEP 3 - TECH SECTION WITH SIDEBAR
+   ======================================== */
+
+/* Wrapper principale con sidebar */
+.tech-section-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 95%;
+  margin: 0 auto;
+  gap: var(--space-lg);
+  padding: 0 var(--space-md);
+}
+
+/* Desktop: container card tecnologie 80% */
+@media (min-width: 993px) {
+  .tech-section-wrapper {
+    max-width: 95%;
+  }
+
+  .tech-main-content {
+    flex: 1;
+    max-width: 80%;
+  }
+
+  .filters-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+  }
+}
+
+/* ========================================
+   SIDEBAR FILTRI - DESKTOP
+   ======================================== */
+.filters-sidebar {
+  position: sticky;
+  top: var(--space-lg);
+  height: fit-content;
+  max-height: calc(100vh - var(--space-xl) * 2);
+  overflow-y: auto;
+}
+
+.filters-sidebar-content {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.filters-title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--primary);
+}
+
+.filter-group {
+  margin-bottom: var(--space-md);
+}
+
+.filter-group:last-of-type {
+  margin-bottom: var(--space-lg);
+}
+
+.filter-group-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--dark-soft);
+  margin-bottom: var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.filter-options-scrollable {
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: var(--space-xs);
+}
+
+/* Custom scrollbar per filter options */
+.filter-options-scrollable::-webkit-scrollbar {
+  width: 4px;
+}
+
+.filter-options-scrollable::-webkit-scrollbar-track {
+  background: var(--light);
+  border-radius: 2px;
+}
+
+.filter-options-scrollable::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.filter-options-scrollable::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Filter Chip */
+.filter-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--dark-soft);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: left;
+  width: 100%;
+}
+
+.filter-chip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(0, 152, 187, 0.05);
+}
+
+.filter-chip.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+}
+
+.filter-chip .chip-count {
+  font-size: var(--text-xs);
+  opacity: 0.7;
+  margin-left: var(--space-xs);
+}
+
+.filter-chip.active .chip-count {
+  opacity: 1;
+}
+
+.filter-loading,
+.filter-empty {
+  font-size: var(--text-sm);
+  color: var(--dark-soft);
+  font-style: italic;
+  padding: var(--space-sm) 0;
+}
+
+/* Reset button */
+.btn-reset-filters {
+  width: 100%;
+  margin-top: var(--space-sm);
+}
+
+/* Tech count display */
+.tech-count-display {
+  font-size: var(--text-sm);
+  color: var(--dark-soft);
+  font-weight: 500;
+}
+
+/* Hide mobile filters on desktop */
+.mobile-filters-bar,
+.mobile-filter-panel {
+  display: none;
+}
+
+/* ========================================
+   MOBILE FILTERS - STICKY BAR + CAROUSEL
+   ======================================== */
+@media (max-width: 992px) {
+  .tech-section-wrapper {
+    flex-direction: column;
+    max-width: 95%;
+    padding: 0;
+  }
+
+  .tech-main-content {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* Hide desktop sidebar on mobile */
+  .filters-sidebar {
+    display: none;
+  }
+
+  /* Show mobile filters */
+  .mobile-filters-bar {
+    display: flex;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .mobile-filters-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Mobile Filter Toggle Button */
+  .mobile-filter-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--dark-soft);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .mobile-filter-toggle:hover,
+  .mobile-filter-toggle.active {
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .mobile-filter-toggle.has-selection {
+    background: rgba(0, 152, 187, 0.1);
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+  .filter-toggle-count {
+    display: none;
+    background: var(--primary);
+    color: var(--white);
+    font-size: var(--text-xs);
+    padding: 2px 6px;
+    border-radius: var(--radius-xl);
+    font-weight: 600;
+  }
+
+  .mobile-filter-toggle.has-selection .filter-toggle-count {
+    display: inline-block;
+  }
+
+  .filter-toggle-icon {
+    transition: transform var(--transition-fast);
+  }
+
+  .mobile-filter-toggle.active .filter-toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Mobile Filter Panel (Expanded Carousel) */
+  .mobile-filter-panel {
+    display: none;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: var(--space-sm) 0;
+    position: sticky;
+    top: 52px;
+    z-index: 99;
+    box-shadow: var(--shadow-md);
+  }
+
+  .mobile-filter-panel.active {
+    display: block;
+  }
+
+  /* Horizontal Carousel */
+  .mobile-filter-carousel {
+    display: flex;
+    gap: var(--space-xs);
+    padding: 0 var(--space-md);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .mobile-filter-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-filter-carousel .filter-chip {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-xl);
+    width: auto;
+  }
+
+  /* Adjust tech toolbar for mobile */
+  .tech-toolbar {
+    padding: var(--space-sm) var(--space-md);
+  }
+}

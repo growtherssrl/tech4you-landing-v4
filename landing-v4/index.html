@@ -77,8 +77,9 @@
       <div class="step-fullpage">
         <div class="container">
           <div class="step-header">
-            <h2 class="animate-fade-in-up">Quali aree vuoi esplorare?</h2>
-            <p class="text-muted animate-fade-in-up delay-1">Seleziona il cluster tecnologico di tuo interesse</p>
+            <img src="images/logo-t4y-1.png" alt="Tech4You" class="step-logo animate-fade-in-up">
+            <h2 class="animate-fade-in-up delay-1">Quali aree vuoi esplorare?</h2>
+            <p class="text-muted animate-fade-in-up delay-2">Seleziona il cluster tecnologico di tuo interesse</p>
           </div>
 
           <div class="clusters-grid">
@@ -177,38 +178,111 @@
       <div class="step-fullpage">
         <div class="container">
           <div class="step-header">
-            <h2 id="tech-section-title">Tecnologie</h2>
-            <p class="text-muted" id="tech-section-subtitle">Caricamento...</p>
+            <img src="images/logo-t4y-1.png" alt="Tech4You" class="step-logo animate-fade-in-up">
+            <h2 id="tech-section-title" class="animate-fade-in-up delay-1">Tecnologie</h2>
+            <p class="text-muted animate-fade-in-up delay-2" id="tech-section-subtitle">Caricamento...</p>
           </div>
+        </div>
 
-          <!-- Type Filters + Back Button -->
-          <div class="tech-toolbar">
-            <button class="btn btn-ghost btn-back-inline" onclick="goToStep(2)">
-              Cambia cluster
-            </button>
-            <div class="type-filters">
-              <button class="type-filter active" data-type="all">Tutti</button>
-              <button class="type-filter" data-type="software">Software</button>
-              <button class="type-filter" data-type="physical">Hardware</button>
-              <button class="type-filter" data-type="hybrid">Ibridi</button>
+        <!-- Tech Section con Sidebar -->
+        <div class="tech-section-wrapper">
+          <!-- Sidebar Filtri (Desktop) -->
+          <aside class="filters-sidebar" id="filters-sidebar">
+            <div class="filters-sidebar-content">
+              <h3 class="filters-title">Filtra tecnologie</h3>
+
+              <!-- Filtro Tipo -->
+              <div class="filter-group">
+                <h4 class="filter-group-title">Tipo</h4>
+                <div class="filter-options" id="filter-type-options">
+                  <button class="filter-chip active" data-filter="type" data-value="all">Tutti</button>
+                  <button class="filter-chip" data-filter="type" data-value="software">Software</button>
+                  <button class="filter-chip" data-filter="type" data-value="physical">Hardware</button>
+                  <button class="filter-chip" data-filter="type" data-value="hybrid">Ibridi</button>
+                </div>
+              </div>
+
+              <!-- Filtro Mercati Target -->
+              <div class="filter-group">
+                <h4 class="filter-group-title">Mercati Target</h4>
+                <div class="filter-options filter-options-scrollable" id="filter-market-options">
+                  <span class="filter-loading">Caricamento...</span>
+                </div>
+              </div>
+
+              <!-- Filtro Tags -->
+              <div class="filter-group">
+                <h4 class="filter-group-title">Tags</h4>
+                <div class="filter-options filter-options-scrollable" id="filter-tags-options">
+                  <span class="filter-loading">Caricamento...</span>
+                </div>
+              </div>
+
+              <!-- Reset Filtri -->
+              <button class="btn btn-ghost btn-sm btn-reset-filters" id="btn-reset-filters">
+                Resetta filtri
+              </button>
             </div>
-          </div>
+          </aside>
 
-          <!-- Tech Grid Container -->
-          <div id="tech-container">
-            <div class="loading-state">
-              <div class="spinner"></div>
-              <p>Caricamento tecnologie...</p>
+          <!-- Main Content -->
+          <div class="tech-main-content">
+            <!-- Mobile Filters Bar (Sticky) -->
+            <div class="mobile-filters-bar" id="mobile-filters-bar">
+              <button class="mobile-filter-toggle" data-filter="type" id="mobile-filter-type">
+                <span class="filter-toggle-label">Tipo</span>
+                <span class="filter-toggle-count" id="type-count"></span>
+                <svg class="filter-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <button class="mobile-filter-toggle" data-filter="market" id="mobile-filter-market">
+                <span class="filter-toggle-label">Mercati</span>
+                <span class="filter-toggle-count" id="market-count"></span>
+                <svg class="filter-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+              <button class="mobile-filter-toggle" data-filter="tags" id="mobile-filter-tags">
+                <span class="filter-toggle-label">Tags</span>
+                <span class="filter-toggle-count" id="tags-count"></span>
+                <svg class="filter-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
             </div>
-          </div>
 
-          <div class="step-navigation">
-            <button class="btn btn-ghost" onclick="goToStep(2)">
-              Cambia cluster
-            </button>
-            <button class="btn btn-accent btn-lg" onclick="goToStep(4)">
-              Continua
-            </button>
+            <!-- Mobile Filter Expanded Panel -->
+            <div class="mobile-filter-panel" id="mobile-filter-panel">
+              <div class="mobile-filter-carousel" id="mobile-filter-carousel">
+                <!-- Popolato dinamicamente quando si espande -->
+              </div>
+            </div>
+
+            <!-- Tech Toolbar -->
+            <div class="tech-toolbar">
+              <button class="btn btn-ghost btn-back-inline" onclick="goToStep(2)">
+                Cambia cluster
+              </button>
+              <span class="tech-count-display" id="tech-count-display">-- tecnologie</span>
+            </div>
+
+            <!-- Tech Grid Container -->
+            <div id="tech-container">
+              <div class="loading-state">
+                <div class="spinner"></div>
+                <p>Caricamento tecnologie...</p>
+              </div>
+            </div>
+
+            <div class="step-navigation">
+              <button class="btn btn-ghost" onclick="goToStep(2)">
+                Cambia cluster
+              </button>
+              <button class="btn btn-accent btn-lg" onclick="goToStep(4)">
+                Continua
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -222,6 +296,7 @@
         <!-- Option A - Book Call (Prominent) -->
         <div class="decision-option option-a">
           <div class="decision-content">
+            <img src="images/logo-t4y-1.png" alt="Tech4You" class="step-logo step-logo-light">
             <h2>Vuoi approfondire come queste tecnologie possono creare valore per la tua azienda?</h2>
             <ul class="decision-benefits">
               <li>
@@ -261,8 +336,9 @@
         <div class="container">
           <div class="form-wrapper">
             <div class="form-header">
-              <h2 class="animate-fade-in-up">Inizia il tuo Assessment e avvia un dialogo con le nostre strutture scientifiche</h2>
-              <p class="text-muted animate-fade-in-up delay-1">30 minuti per capire come la tua azienda puo trarre il massimo da 3 anni di ricerca e 128 tecnologie.</p>
+              <img src="images/logo-t4y-1.png" alt="Tech4You" class="step-logo animate-fade-in-up">
+              <h2 class="animate-fade-in-up delay-1">Inizia il tuo Assessment e avvia un dialogo con le nostre strutture scientifiche</h2>
+              <p class="text-muted animate-fade-in-up delay-2">30 minuti per capire come la tua azienda puo trarre il massimo da 3 anni di ricerca e 128 tecnologie.</p>
             </div>
 
             <div class="form-card animate-fade-in-up delay-2">
@@ -387,7 +463,18 @@
       clusterCounts: {},
       formData: {},
       sessionId: generateUUID(),
-      currentTypeFilter: 'all'
+      currentTypeFilter: 'all',
+      // Filtri multipli
+      filters: {
+        type: 'all',
+        markets: [],
+        tags: []
+      },
+      // Cache filtri estratti
+      availableFilters: {
+        markets: [],
+        tags: []
+      }
     };
 
     // ==========================================
@@ -559,8 +646,14 @@
     async function loadTecnologie(cluster) {
       showLoading(true);
 
+      // Reset filtri quando cambia cluster
+      state.filters = { type: 'all', markets: [], tags: [] };
+      closeMobileFilterPanel();
+
       if (state.tecnologieCache[cluster]) {
-        renderTecnologie(state.tecnologieCache[cluster]);
+        extractFiltersFromTecnologie(state.tecnologieCache[cluster]);
+        populateFilterOptions();
+        applyFilters();
         showLoading(false);
         return;
       }
@@ -580,7 +673,11 @@
       }
 
       state.tecnologieCache[cluster] = data || [];
-      renderTecnologie(state.tecnologieCache[cluster]);
+
+      // Estrai filtri dinamici e popola sidebar
+      extractFiltersFromTecnologie(state.tecnologieCache[cluster]);
+      populateFilterOptions();
+      applyFilters();
       showLoading(false);
     }
 
@@ -864,16 +961,365 @@
       }, 400);
     }
 
-    function filterByType(type) {
-      state.currentTypeFilter = type;
+    // ==========================================
+    // FILTRI DINAMICI - ESTRAZIONE E GESTIONE
+    // ==========================================
 
-      document.querySelectorAll('.type-filter').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.type === type);
+    /**
+     * Estrae i valori unici di market_targets e tags dalle tecnologie caricate
+     */
+    function extractFiltersFromTecnologie(tecnologie) {
+      const marketsSet = new Set();
+      const tagsSet = new Set();
+
+      tecnologie.forEach(tech => {
+        // Estrai market_targets
+        if (tech.market_targets) {
+          let marketTargets = tech.market_targets;
+          if (typeof marketTargets === 'string') {
+            try { marketTargets = JSON.parse(marketTargets); } catch (e) { return; }
+          }
+          if (Array.isArray(marketTargets)) {
+            marketTargets.forEach(target => {
+              if (target && target.segment) {
+                marketsSet.add(target.segment);
+              }
+            });
+          }
+        }
+
+        // Estrai tags
+        if (tech.tags && Array.isArray(tech.tags)) {
+          tech.tags.forEach(tag => {
+            if (tag && typeof tag === 'string') {
+              tagsSet.add(tag);
+            }
+          });
+        }
       });
 
-      if (state.selectedCluster && state.tecnologieCache[state.selectedCluster]) {
-        renderTecnologie(state.tecnologieCache[state.selectedCluster]);
+      state.availableFilters.markets = Array.from(marketsSet).sort();
+      state.availableFilters.tags = Array.from(tagsSet).sort();
+    }
+
+    /**
+     * Popola le opzioni filtro nella sidebar desktop
+     */
+    function populateFilterOptions() {
+      const { markets, tags } = state.availableFilters;
+      const tecnologie = state.tecnologieCache[state.selectedCluster] || [];
+
+      // Popola Mercati
+      const marketContainer = document.getElementById('filter-market-options');
+      if (marketContainer) {
+        if (markets.length === 0) {
+          marketContainer.innerHTML = '<span class="filter-empty">Nessun mercato disponibile</span>';
+        } else {
+          marketContainer.innerHTML = markets.map(market => {
+            const count = countTechByMarket(tecnologie, market);
+            const isActive = state.filters.markets.includes(market);
+            return `
+              <button class="filter-chip ${isActive ? 'active' : ''}"
+                      data-filter="market"
+                      data-value="${market}">
+                ${market}
+                <span class="chip-count">(${count})</span>
+              </button>
+            `;
+          }).join('');
+        }
       }
+
+      // Popola Tags
+      const tagsContainer = document.getElementById('filter-tags-options');
+      if (tagsContainer) {
+        if (tags.length === 0) {
+          tagsContainer.innerHTML = '<span class="filter-empty">Nessun tag disponibile</span>';
+        } else {
+          tagsContainer.innerHTML = tags.map(tag => {
+            const count = countTechByTag(tecnologie, tag);
+            const isActive = state.filters.tags.includes(tag);
+            return `
+              <button class="filter-chip ${isActive ? 'active' : ''}"
+                      data-filter="tags"
+                      data-value="${tag}">
+                ${tag}
+                <span class="chip-count">(${count})</span>
+              </button>
+            `;
+          }).join('');
+        }
+      }
+
+      // Aggiungi event listeners a tutti i filter chips
+      document.querySelectorAll('.filter-chip[data-filter]').forEach(chip => {
+        chip.addEventListener('click', handleFilterClick);
+      });
+    }
+
+    function countTechByMarket(tecnologie, market) {
+      return tecnologie.filter(tech => {
+        if (!tech.market_targets) return false;
+        let targets = tech.market_targets;
+        if (typeof targets === 'string') {
+          try { targets = JSON.parse(targets); } catch { return false; }
+        }
+        return Array.isArray(targets) && targets.some(t => t.segment === market);
+      }).length;
+    }
+
+    function countTechByTag(tecnologie, tag) {
+      return tecnologie.filter(tech => {
+        return tech.tags && Array.isArray(tech.tags) && tech.tags.includes(tag);
+      }).length;
+    }
+
+    /**
+     * Gestisce click sui filtri
+     */
+    function handleFilterClick(e) {
+      const chip = e.currentTarget;
+      const filterType = chip.dataset.filter;
+      const value = chip.dataset.value;
+
+      if (filterType === 'type') {
+        state.filters.type = value;
+        document.querySelectorAll('.filter-chip[data-filter="type"]').forEach(c => {
+          c.classList.toggle('active', c.dataset.value === value);
+        });
+      } else if (filterType === 'market') {
+        toggleArrayFilter('markets', value);
+        chip.classList.toggle('active');
+      } else if (filterType === 'tags') {
+        toggleArrayFilter('tags', value);
+        chip.classList.toggle('active');
+      }
+
+      updateMobileFilterCounts();
+      applyFilters();
+    }
+
+    function toggleArrayFilter(filterKey, value) {
+      const index = state.filters[filterKey].indexOf(value);
+      if (index > -1) {
+        state.filters[filterKey].splice(index, 1);
+      } else {
+        state.filters[filterKey].push(value);
+      }
+    }
+
+    /**
+     * Applica tutti i filtri attivi
+     */
+    function applyFilters() {
+      const tecnologie = state.tecnologieCache[state.selectedCluster] || [];
+      let filtered = [...tecnologie];
+
+      // Filtro Tipo
+      if (state.filters.type !== 'all') {
+        filtered = filtered.filter(t => getTechTypeCategory(t.tipo_dimostratore) === state.filters.type);
+      }
+
+      // Filtro Mercati (OR logic)
+      if (state.filters.markets.length > 0) {
+        filtered = filtered.filter(tech => {
+          if (!tech.market_targets) return false;
+          let targets = tech.market_targets;
+          if (typeof targets === 'string') {
+            try { targets = JSON.parse(targets); } catch { return false; }
+          }
+          if (!Array.isArray(targets)) return false;
+          return targets.some(t => state.filters.markets.includes(t.segment));
+        });
+      }
+
+      // Filtro Tags (OR logic)
+      if (state.filters.tags.length > 0) {
+        filtered = filtered.filter(tech => {
+          if (!tech.tags || !Array.isArray(tech.tags)) return false;
+          return tech.tags.some(tag => state.filters.tags.includes(tag));
+        });
+      }
+
+      renderFilteredTecnologie(filtered);
+    }
+
+    /**
+     * Renderizza tecnologie filtrate
+     */
+    function renderFilteredTecnologie(filtered) {
+      const container = document.getElementById('tech-container');
+      const countDisplay = document.getElementById('tech-count-display');
+      const clusterInfo = clusterData[state.selectedCluster];
+
+      if (countDisplay) {
+        countDisplay.textContent = `${filtered.length} tecnologie`;
+      }
+
+      document.getElementById('tech-section-title').textContent = `Tecnologie ${clusterInfo.name}`;
+      document.getElementById('tech-section-subtitle').textContent =
+        `${filtered.length} soluzioni pronte per test e trasferimento | ${clusterInfo.fullName}`;
+
+      currentTecnologie = filtered;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <p>Nessuna tecnologia corrisponde ai filtri selezionati.</p>
+            <button class="btn btn-ghost" onclick="resetFilters()">Resetta filtri</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="tech-grid" id="tech-grid">
+          ${filtered.map((tech, index) => renderTechCard(tech, index)).join('')}
+        </div>
+      `;
+
+      document.getElementById('tech-grid').addEventListener('click', handleTechCardClick);
+    }
+
+    /**
+     * Reset tutti i filtri
+     */
+    function resetFilters() {
+      state.filters = {
+        type: 'all',
+        markets: [],
+        tags: []
+      };
+
+      document.querySelectorAll('.filter-chip').forEach(chip => {
+        if (chip.dataset.filter === 'type' && chip.dataset.value === 'all') {
+          chip.classList.add('active');
+        } else if (chip.dataset.filter === 'type') {
+          chip.classList.remove('active');
+        } else {
+          chip.classList.remove('active');
+        }
+      });
+
+      closeMobileFilterPanel();
+      updateMobileFilterCounts();
+      applyFilters();
+    }
+
+    function updateMobileFilterCounts() {
+      const typeCount = document.getElementById('type-count');
+      const marketCount = document.getElementById('market-count');
+      const tagsCount = document.getElementById('tags-count');
+
+      const typeBtn = document.getElementById('mobile-filter-type');
+      const marketBtn = document.getElementById('mobile-filter-market');
+      const tagsBtn = document.getElementById('mobile-filter-tags');
+
+      if (state.filters.type !== 'all') {
+        if (typeCount) typeCount.textContent = '1';
+        typeBtn?.classList.add('has-selection');
+      } else {
+        if (typeCount) typeCount.textContent = '';
+        typeBtn?.classList.remove('has-selection');
+      }
+
+      if (state.filters.markets.length > 0) {
+        if (marketCount) marketCount.textContent = state.filters.markets.length;
+        marketBtn?.classList.add('has-selection');
+      } else {
+        if (marketCount) marketCount.textContent = '';
+        marketBtn?.classList.remove('has-selection');
+      }
+
+      if (state.filters.tags.length > 0) {
+        if (tagsCount) tagsCount.textContent = state.filters.tags.length;
+        tagsBtn?.classList.add('has-selection');
+      } else {
+        if (tagsCount) tagsCount.textContent = '';
+        tagsBtn?.classList.remove('has-selection');
+      }
+    }
+
+    // ==========================================
+    // MOBILE FILTERS - GESTIONE ESPANSIONE
+    // ==========================================
+
+    let currentMobileFilter = null;
+
+    function initMobileFilters() {
+      const toggles = document.querySelectorAll('.mobile-filter-toggle');
+
+      toggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+          const filterType = toggle.dataset.filter;
+
+          if (currentMobileFilter === filterType) {
+            closeMobileFilterPanel();
+          } else {
+            openMobileFilterPanel(filterType);
+            toggles.forEach(t => t.classList.remove('active'));
+            toggle.classList.add('active');
+          }
+        });
+      });
+    }
+
+    function openMobileFilterPanel(filterType) {
+      currentMobileFilter = filterType;
+      const panel = document.getElementById('mobile-filter-panel');
+      const carousel = document.getElementById('mobile-filter-carousel');
+
+      let options = [];
+
+      if (filterType === 'type') {
+        options = [
+          { value: 'all', label: 'Tutti', active: state.filters.type === 'all' },
+          { value: 'software', label: 'Software', active: state.filters.type === 'software' },
+          { value: 'physical', label: 'Hardware', active: state.filters.type === 'physical' },
+          { value: 'hybrid', label: 'Ibridi', active: state.filters.type === 'hybrid' }
+        ];
+      } else if (filterType === 'market') {
+        options = state.availableFilters.markets.map(m => ({
+          value: m,
+          label: m,
+          active: state.filters.markets.includes(m)
+        }));
+      } else if (filterType === 'tags') {
+        options = state.availableFilters.tags.map(t => ({
+          value: t,
+          label: t,
+          active: state.filters.tags.includes(t)
+        }));
+      }
+
+      carousel.innerHTML = options.map(opt => `
+        <button class="filter-chip ${opt.active ? 'active' : ''}"
+                data-filter="${filterType}"
+                data-value="${opt.value}">
+          ${opt.label}
+        </button>
+      `).join('');
+
+      carousel.querySelectorAll('.filter-chip').forEach(chip => {
+        chip.addEventListener('click', handleFilterClick);
+      });
+
+      panel.classList.add('active');
+    }
+
+    function closeMobileFilterPanel() {
+      currentMobileFilter = null;
+      const panel = document.getElementById('mobile-filter-panel');
+      const toggles = document.querySelectorAll('.mobile-filter-toggle');
+
+      panel?.classList.remove('active');
+      toggles.forEach(t => t.classList.remove('active'));
+    }
+
+    // Legacy compatibility
+    function filterByType(type) {
+      state.filters.type = type;
+      applyFilters();
     }
 
     function showLoading(show) {
@@ -985,12 +1431,11 @@
         });
       });
 
-      // Type filter handlers
-      document.querySelectorAll('.type-filter').forEach(btn => {
-        btn.addEventListener('click', function() {
-          filterByType(this.dataset.type);
-        });
-      });
+      // Initialize mobile filters
+      initMobileFilters();
+
+      // Reset filters button
+      document.getElementById('btn-reset-filters')?.addEventListener('click', resetFilters);
 
       // Form submit handler
       document.getElementById('booking-form').addEventListener('submit', function(e) {
